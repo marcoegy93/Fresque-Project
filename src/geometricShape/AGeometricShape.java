@@ -14,8 +14,18 @@ public abstract class AGeometricShape {
 
     }
 
-    public void translate(){
-
+    public void translate(int x, int y){
+        this.anchor.setX(anchor.getX() + x);
+        this.anchor.setY(anchor.getY() + y);
     }
 
+    public void centralSymmetry(Point O){
+        int x_translation = O.getX() - anchor.getX();
+        int y_translation = O.getY() - anchor.getY();
+        translate(x_translation, y_translation);
+    }
+
+    public void axialSymmetry(int axe){
+
+    }
 }
