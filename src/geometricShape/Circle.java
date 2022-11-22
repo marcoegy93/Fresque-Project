@@ -1,18 +1,19 @@
 package geometricShape;
 
-public class Circle {
+public class Circle implements IGeometricalShape{
+    private Point center;
     private double rayon;
-    private final double pi = 3.14159;
 
-    public Circle(double rayon){
+    public Circle(double rayon, Point center){
         this.rayon = rayon;
+        this.center = center;
     }
 
-    public double calculPerimeter(){
-        return 2 * this.rayon * this.pi;
+    public double computePerimeter(){
+        return 2 * this.rayon * Math.PI;
     }
 
-    public double calculArea(){
-        return this.pi * this.rayon * this.rayon;
+    public double area(){
+        return Math.PI * this.rayon * this.rayon;
     }
 }
