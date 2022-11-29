@@ -48,8 +48,7 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public void translation(double x, double y) {
-        this.center.setX(this.center.getX() + x);
-        this.center.setY(this.center.getY() + y);
+        this.center.translate(x,y);
         this.bigAxis.translation(x,y);
         this.littleAxis.translation(x,y);
     }
@@ -65,13 +64,15 @@ public class Ellipse extends GeometricShapeAbs {
     }
 
     @Override
-    public void centralSymetry(Point p) {
-
+    public void centralSymmetry(Point p) {
+        littleAxis.centralSymmetry(p);
+        bigAxis.centralSymmetry(p);
     }
 
     @Override
-    public void axialSymetry(Line l) {
-
+    public void axialSymmetry(Line l) {
+        littleAxis.axialSymmetry(l);
+        bigAxis.axialSymmetry(l);
     }
 
     @Override

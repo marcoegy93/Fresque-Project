@@ -8,6 +8,6 @@ public interface ITransformation {
     void translation(double x, double y);
     void homothetie(Point p, double ratio);
     void rotation(Point p, double angle);
-    void centralSymetry(Point p);
-    void axialSymetry(Line l);
+    void centralSymmetry(Point p);
+    void axialSymmetry(Line l);
 }

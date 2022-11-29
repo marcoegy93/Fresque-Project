@@ -43,10 +43,8 @@ public class Circle extends GeometricShapeAbs {
 
     @Override
     public void translation(double x, double y) {
-        this.center.setX(this.center.getX() + x);
-        this.center.setY(this.center.getY() + y);
-        this.pointOfCircle.setX(this.pointOfCircle.getX() + x);
-        this.pointOfCircle.setY(this.pointOfCircle.getY() + y);
+        pointOfCircle.translate(x,y);
+        center.translate(x,y);
     }
 
     @Override
@@ -63,17 +61,17 @@ public class Circle extends GeometricShapeAbs {
 
     @Override
     public void rotation(Point p, double angle) {
-
+        return;
     }
 
     @Override
-    public void centralSymetry(Point p) {
-
+    public void centralSymmetry(Point p) {
+        center.centralSymmetry(p);
     }
 
     @Override
-    public void axialSymetry(Line l) {
-
+    public void axialSymmetry(Line l) {
+        center.axialSymmetry(l);
     }
 
     @Override

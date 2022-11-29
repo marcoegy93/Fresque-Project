@@ -70,16 +70,16 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void centralSymetry(Point p) {
+    public void centralSymmetry(Point p) {
         for(GeometricShapeAbs gs : shapes){
-            gs.centralSymetry(p);
+            gs.centralSymmetry(p);
         }
     }
 
     @Override
-    public void axialSymetry(Line l) {
+    public void axialSymmetry(Line l) {
         for(GeometricShapeAbs gs : shapes){
-            gs.axialSymetry(l);
+            gs.axialSymmetry(l);
         }
     }
 

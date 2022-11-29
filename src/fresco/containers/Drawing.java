@@ -73,16 +73,16 @@ public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
     }
 
     @Override
-    public void centralSymetry(Point p) {
+    public void centralSymmetry(Point p) {
         for(Image i : images){
-            i.centralSymetry(p);
+            i.centralSymmetry(p);
         }
     }
 
     @Override
-    public void axialSymetry(Line l) {
+    public void axialSymmetry(Line l) {
         for(Image i : images){
-            i.axialSymetry(l);
+            i.axialSymmetry(l);
         }
     }
 

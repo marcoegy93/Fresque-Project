@@ -49,10 +49,8 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public void translation(double x, double y) {
-        Point a = new Point(this.getPointA().getX()+x,this.getPointA().getY()+y);
-        Point b =new Point(this.getPointB().getX()+x,this.getPointB().getY()+y);
-        this.setPointA(a);
-        this.setPointB(b);
+        pointA.translate(x,y);
+        pointB.translate(x,y);
     }
 
     @Override
@@ -66,13 +64,15 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void centralSymetry(Point p) {
-
+    public void centralSymmetry(Point p) {
+        this.pointA.centralSymmetry(p);
+        this.pointB.centralSymmetry(p);
     }
 
     @Override
-    public void axialSymetry(Line l) {
-
+    public void axialSymmetry(Line l) {
+        this.pointB.axialSymmetry(l);
+        this.pointA.axialSymmetry(l);
     }
 
     @Override

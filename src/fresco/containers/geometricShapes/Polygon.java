@@ -41,7 +41,7 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public void translation(double x, double y) {
-
+        for(Point point : points) point.translate(x,y);
     }
 
     @Override
@@ -55,13 +55,13 @@ public class Polygon extends GeometricShapeAbs {
     }
 
     @Override
-    public void centralSymetry(Point p) {
-
+    public void centralSymmetry(Point p) {
+        for(Point point : points) point.centralSymmetry(p);
     }
 
     @Override
-    public void axialSymetry(Line l) {
-
+    public void axialSymmetry(Line l) {
+        for(Point point : points) point.axialSymmetry(l);
     }
 
     @Override

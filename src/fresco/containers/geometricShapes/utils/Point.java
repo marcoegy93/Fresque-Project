@@ -1,6 +1,7 @@
 package fresco.containers.geometricShapes.utils;
 
 import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Line;
 
 public class Point {
     private double x;
@@ -34,6 +35,23 @@ public class Point {
 
     public static double calculateDistance(Point a, Point b){
         return Math.sqrt(Math.pow(b.getX() - a.getX(),2) + Math.pow(b.getY() - a.getY(),2));
+    }
+
+    public void translate(double x_translation, double y_translation){
+        this.setX(x + x_translation);
+        this.setY(y + y_translation);
+    }
+
+    public void centralSymmetry(Point o){
+        double x_distance = o.getX() - x;
+        double y_distance = o.getY() - y;
+        translate(x_distance*2, y_distance*2);
+    }
+
+    public void axialSymmetry(Line l){
+        double x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
+        double y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
+        translate(x_distance, y_distance);
     }
 
     @Override
