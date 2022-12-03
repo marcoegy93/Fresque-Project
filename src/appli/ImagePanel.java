@@ -41,10 +41,10 @@ public class ImagePanel extends JPanel {
         image.addShape(shape);
         removeAll();
         repaint();
+        revalidate();
     }
 
     private void drawingDispatcher(GeometricShapeAbs s, Graphics g){
-        System.out.println(s.getClass().getSimpleName());
         switch(s.getClass().getSimpleName()){
             case "Line":
                 g.drawLine(0,0,1000,500);
