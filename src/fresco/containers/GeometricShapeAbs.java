@@ -4,10 +4,11 @@ import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
 import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
+import java.awt.Graphics;
 
-import java.util.Set;
+import javax.swing.JComponent;
 
-public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, ITransformation {
+public abstract class GeometricShapeAbs extends JComponent  implements ICalculatePerimeterAndArea, ITransformation {
     protected Point center;
 
     public GeometricShapeAbs(){
@@ -39,4 +40,6 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
     public abstract void centralSymmetry(Point p);
 
     public abstract void axialSymmetry(Line l);
+    
+    public abstract void paintComponent(Graphics g);
 }

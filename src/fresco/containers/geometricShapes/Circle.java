@@ -3,8 +3,12 @@ package fresco.containers.geometricShapes;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.Objects;
 import java.util.Set;
+
+import javax.swing.JComponent;
 
 public class Circle extends GeometricShapeAbs {
 
@@ -85,4 +89,10 @@ public class Circle extends GeometricShapeAbs {
         }
         return false;
     }
+
+	@Override
+	public void paintComponent(Graphics g) {
+		Graphics g2 = (Graphics2D) g;
+		g2.drawOval(80,80,150,150);
+	}
 }

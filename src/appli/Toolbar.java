@@ -3,6 +3,7 @@ package appli;
 import javax.swing.*;
 
 public class Toolbar extends JToolBar {
+
     public Toolbar(){
         // TODO: 01/12/2022 CHANGE WITH ICONS
         add(new DrawingButton("Line"));

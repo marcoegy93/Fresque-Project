@@ -3,6 +3,8 @@ package fresco.containers.geometricShapes;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.Set;
 
 public class Line extends GeometricShapeAbs {
@@ -16,7 +18,8 @@ public class Line extends GeometricShapeAbs {
         this.center = getCenter();
     }
 
-    public Point getPointA() {
+
+	public Point getPointA() {
         return pointA;
     }
 
@@ -86,4 +89,18 @@ public class Line extends GeometricShapeAbs {
         }
         return false;
     }
+
+	@Override
+	public void paintComponent(Graphics g) {
+		Graphics g2 = (Graphics2D) g;
+        int height = 200;
+        int width = 100;
+        for(int i=0; i<10; i++){
+            g2.drawLine((width/10)*i, 0, (width/10)*i, height);
+            g2.drawLine(0, (height/10)*i, width, (height/10)*i);
+        }
+		
+	}
+
+
 }

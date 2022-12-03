@@ -3,6 +3,7 @@ package fresco.containers.geometricShapes;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
+import java.awt.Graphics;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -76,4 +77,10 @@ public class Polygon extends GeometricShapeAbs {
         }
         return false;
     }
+
+	@Override
+	public void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
 }

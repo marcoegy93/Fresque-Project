@@ -5,10 +5,13 @@ import fresco.containers.geometricShapes.utils.Point;
 
 import static java.lang.Math.sqrt;
 
+import java.awt.Graphics;
+
 public class Ellipse extends GeometricShapeAbs {
 
     private Line littleAxis;
     private Line bigAxis;
+    static int t  = 10;
 
     public Ellipse(Point center, double littleRadius,double bigRadius) {
         super(center);
@@ -86,4 +89,16 @@ public class Ellipse extends GeometricShapeAbs {
         }
         return false;
     }
+
+	public void paint(Graphics g) {
+		g.drawOval(t+40,t+90,t+80,t+150);
+		t+=10;
+		
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
 }

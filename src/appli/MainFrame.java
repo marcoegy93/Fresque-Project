@@ -10,7 +10,9 @@ public class MainFrame extends JFrame {
         setSize(1280, 720);//RATIO 16:9
         setResizable(false);
         setLayout(new BorderLayout());
-        add(new ImagePanel(), BorderLayout.CENTER);
+        ImagePanel imagePanel = new ImagePanel();
+        X.implementImagePanel(imagePanel);
+        add( imagePanel, BorderLayout.CENTER);
         //------------SHOULD ALWAYS BE AT THE END !!--------------
         setVisible(true);
     }

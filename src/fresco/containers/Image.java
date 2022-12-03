@@ -5,11 +5,17 @@ import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.*;
 
-public class Image implements ICalculatePerimeterAndArea, ITransformation {
-    private Set<GeometricShapeAbs> shapes;
+import javax.swing.JComponent;
 
+public class Image extends JComponent implements ICalculatePerimeterAndArea, ITransformation {
+	
+    private Set<GeometricShapeAbs> shapes;
+    Graphics g2;
     public Image(){
         this.shapes = new LinkedHashSet<GeometricShapeAbs>();
     }
@@ -28,6 +34,10 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
 
     public void addShape(GeometricShapeAbs gs){
         this.shapes.add(gs);
+        gs.setVisible(true);
+        gs.setSize(500,500);
+        add(gs);
+      
     }
 
     @Override
@@ -97,4 +107,13 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
         Set<GeometricShapeAbs> shapes = new LinkedHashSet<>(list);
         this.setShapes(shapes);
     }
+    
+    @Override
+	public void paintComponent(Graphics g) {
+		 g2 = (Graphics2D) g;
+		
+	}
+
+
+ 
 }
