@@ -16,21 +16,20 @@ public class DrawingButton extends JButton {
    
         setText(name);
         addActionListener(e -> {
-        	
-            JOptionPane.showInternalMessageDialog(null, "Creating "+name);
+
             if(name =="Line") {
         		Line l =new Line(new Point(),new Point());
-                 X.addShape(l);
+                ImagePanelDrawUtil.addShape(l);
         	}
         	if(name=="Circle") {
-        		Circle c = new Circle(new Point(),new Point());
-                X.addShape(c);
+        		Circle c = new Circle(new Point(10,20),new Point(200,300));
 
+                ImagePanelDrawUtil.addShape(c);
         	}
         	if(name=="Ellipse") {
         		Ellipse el = new Ellipse(new Point(),5,10);
-                X.addShape(el);
 
+                ImagePanelDrawUtil.addShape(el);
         	}
            
         });

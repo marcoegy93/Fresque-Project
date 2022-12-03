@@ -89,18 +89,4 @@ public class Line extends GeometricShapeAbs {
         }
         return false;
     }
-
-	@Override
-	public void paintComponent(Graphics g) {
-		Graphics g2 = (Graphics2D) g;
-        int height = 200;
-        int width = 100;
-        for(int i=0; i<10; i++){
-            g2.drawLine((width/10)*i, 0, (width/10)*i, height);
-            g2.drawLine(0, (height/10)*i, width, (height/10)*i);
-        }
-		
-	}
-
-
 }

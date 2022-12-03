@@ -78,9 +78,4 @@ public class Polygon extends GeometricShapeAbs {
         return false;
     }
 
-	@Override
-	public void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
-		
-	}
 }

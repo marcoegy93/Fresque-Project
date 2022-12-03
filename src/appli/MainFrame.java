@@ -11,8 +11,9 @@ public class MainFrame extends JFrame {
         setResizable(false);
         setLayout(new BorderLayout());
         ImagePanel imagePanel = new ImagePanel();
-        X.implementImagePanel(imagePanel);
+        ImagePanelDrawUtil.ImagePanelDrawUtil(imagePanel);
         add( imagePanel, BorderLayout.CENTER);
+
         //------------SHOULD ALWAYS BE AT THE END !!--------------
         setVisible(true);
     }

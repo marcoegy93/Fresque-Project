@@ -12,10 +12,10 @@ import java.util.*;
 
 import javax.swing.JComponent;
 
-public class Image extends JComponent implements ICalculatePerimeterAndArea, ITransformation {
+public class Image implements ICalculatePerimeterAndArea, ITransformation {
 	
     private Set<GeometricShapeAbs> shapes;
-    Graphics g2;
+
     public Image(){
         this.shapes = new LinkedHashSet<GeometricShapeAbs>();
     }
@@ -34,10 +34,6 @@ public class Image extends JComponent implements ICalculatePerimeterAndArea, ITr
 
     public void addShape(GeometricShapeAbs gs){
         this.shapes.add(gs);
-        gs.setVisible(true);
-        gs.setSize(500,500);
-        add(gs);
-      
     }
 
     @Override
@@ -93,27 +89,18 @@ public class Image extends JComponent implements ICalculatePerimeterAndArea, ITr
         }
     }
 
-    public void shapesSort(){
+    public void shapesSort() {
         List<GeometricShapeAbs> list = new ArrayList<GeometricShapeAbs>(shapes);
-        for(int i = 0; i < list.size(); i++){
-            for(int j = 0; j < list.size(); j++){
-                if(list.get(i).calculatePerimeter() < list.get(j).calculatePerimeter()){
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(i).calculatePerimeter() < list.get(j).calculatePerimeter()) {
                     GeometricShapeAbs tmp = list.get(i);
-                    list.set(i,list.get(j));
-                    list.set(j,tmp);
+                    list.set(i, list.get(j));
+                    list.set(j, tmp);
                 }
             }
         }
         Set<GeometricShapeAbs> shapes = new LinkedHashSet<>(list);
         this.setShapes(shapes);
     }
-    
-    @Override
-	public void paintComponent(Graphics g) {
-		 g2 = (Graphics2D) g;
-		
-	}
-
-
- 
 }
