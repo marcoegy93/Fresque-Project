@@ -14,9 +14,11 @@ public class ImagePanelDrawUtil {
         i = new Image();
     }
 
-    public static void addShape(GeometricShapeAbs shape) {
-        imagePanel.addShape(shape);
+    public static void openModalShape(String shape) {
+        imagePanel.openModalShape(shape);
     }
 
-
+    public static void openModalAction(String action) {
+        imagePanel.openModalAction(action);
+    }
 }

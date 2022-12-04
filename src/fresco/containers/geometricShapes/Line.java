@@ -89,4 +89,11 @@ public class Line extends GeometricShapeAbs {
         }
         return false;
     }
+
+
+	@Override
+	public void draw(Graphics g) {
+        g.drawLine((int)this.pointA.getX(),(int)this.pointA.getY(),(int)this.pointB.getX(),(int)this.pointB.getY());
+		
+	}
 }

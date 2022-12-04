@@ -11,10 +11,18 @@ public class Toolbar extends JToolBar {
         add(new DrawingButton("Ellipse"));
         add(new DrawingButton("Polygon"));
         addSeparator();
+        addSeparator();
+
+       
+
+        add(new ActionButton("Show area"));
+        add(new ActionButton("Show perimeter"));
+        
+        addSeparator();
+        addSeparator();
+        
         String[] transformations = {"Rotation", "Axial Symmetry", "Central Symmetry", "Homothetie", "Translation"};
         add(new JComboBox(transformations));
-        addSeparator();
-        add(new JButton("Show area"));
-        add(new JButton("Show perimeter"));
+        add(new ActionButton("DO"));
     }
 }

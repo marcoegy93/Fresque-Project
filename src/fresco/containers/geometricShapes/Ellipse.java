@@ -96,4 +96,10 @@ public class Ellipse extends GeometricShapeAbs {
 		
 	}
 
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

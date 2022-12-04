@@ -26,14 +26,8 @@ public class ImagePanel extends JPanel {
         int height = getHeight();
         int width = getWidth();
 
-        /*
-        for (int i = 0; i < 10; i++) {
-            g.drawLine((width / 10) * i, 0, (width / 10) * i, height);
-            g.drawLine(0, (height / 10) * i, width, (height / 10) * i);
-        }
-         */
         for(GeometricShapeAbs shape : image.getShapes()){
-            drawingDispatcher(shape, g2);
+           shape.draw(g2);
         }
     }
     
@@ -44,13 +38,86 @@ public class ImagePanel extends JPanel {
         revalidate();
     }
 
-    private void drawingDispatcher(GeometricShapeAbs s, Graphics g){
-        switch(s.getClass().getSimpleName()){
-            case "Line":
-                g.drawLine(0,0,1000,500);
-                break;
-            case "Circle":
-                g.drawOval((int)s.getCenter().getX(), (int)s.getCenter().getY(), 200, 200);
-        }
+    public void openModalShape(String shape) {
+    	int result;
+    	switch (shape) {
+    	case "Line":
+    	  JTextField x1FieldLine = new JTextField(5);
+  	      JTextField y1FieldLine  = new JTextField(5);
+  	      
+  	      JTextField x2FieldLine  = new JTextField(5);
+	      JTextField y2FieldLine  = new JTextField(5);
+
+  	      JPanel myPanelLine  = new JPanel();
+  	      myPanelLine .add(new JLabel("x1:"));
+  	      myPanelLine .add(x1FieldLine );
+  	      myPanelLine .add(Box.createHorizontalStrut(10)); // a spacer
+  	      myPanelLine .add(new JLabel("y1:"));
+  	      myPanelLine .add(y1FieldLine );
+
+  	      myPanelLine .add(Box.createHorizontalStrut(20)); // a spacer
+  	      
+  	     myPanelLine .add(new JLabel("x2:"));
+	      myPanelLine .add(x2FieldLine );
+	      myPanelLine .add(Box.createHorizontalStrut(10)); // a spacer
+	      myPanelLine .add(new JLabel("y2:"));
+	      myPanelLine .add(y2FieldLine );
+	      
+	     result =  JOptionPane.showConfirmDialog(null, myPanelLine , 
+	                 "Adding Line", JOptionPane.OK_CANCEL_OPTION);
+	     
+	     if (result == JOptionPane.OK_OPTION) {
+	    	 addShape( 
+	    			 new Line(
+		    			 new Point(Double.parseDouble(x1FieldLine .getText()),Double.parseDouble(y1FieldLine .getText())), 
+		    			 new Point(Double.parseDouble(x2FieldLine .getText()),Double.parseDouble(y2FieldLine .getText()))
+	    					 )
+	    			 );
+	        
+	      }
+	     break;
+    	case "Circle":
+    		  JTextField xFieldCircle = new JTextField(5);
+      	      JTextField yField = new JTextField(5);
+    		  JTextField rayFieldCircle = new JTextField(5);
+
+
+      	      JPanel myPanelCircle = new JPanel();
+      	      myPanelCircle.add(new JLabel("x:"));
+      	      myPanelCircle.add(xFieldCircle);
+      	      myPanelCircle.add(Box.createHorizontalStrut(10)); // a spacer
+      	      myPanelCircle.add(new JLabel("y:"));
+      	      myPanelCircle.add(yField);
+
+      	      myPanelCircle.add(Box.createHorizontalStrut(20)); // a spacer
+      	      
+      	     myPanelCircle.add(new JLabel("Ray:"));
+    	      myPanelCircle.add(rayFieldCircle);
+    	    
+    	      
+    	     result =  JOptionPane.showConfirmDialog(null, myPanelCircle, 
+    	                 "Adding  Circle", JOptionPane.OK_CANCEL_OPTION);
+    	     
+    	     if (result == JOptionPane.OK_OPTION) {
+    	    	 // faireeeeee addShape( ); 			
+    	        
+    	      }
+    		break;
+    	}
     }
+    
+    
+   public void openModalAction(String action) {
+	   System.out.println(action);
+	   switch (action) {
+	   case "Show area": 
+		   JOptionPane.showMessageDialog(null,"The total area of this image is " + this.image.calculateArea(), "Total Area", JOptionPane.INFORMATION_MESSAGE);
+		   break;
+	   case "Show perimeter":
+		   JOptionPane.showMessageDialog(null,"The total perimeter of this image is " + this.image.calculatePerimeter(), "Total Perimeter", JOptionPane.INFORMATION_MESSAGE);
+		   break;
+	   }
+   }
+  
+   
 }

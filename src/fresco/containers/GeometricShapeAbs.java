@@ -40,4 +40,7 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
     public abstract void centralSymmetry(Point p);
 
     public abstract void axialSymmetry(Line l);
+    
+    public abstract void draw(Graphics g);
+
 }
