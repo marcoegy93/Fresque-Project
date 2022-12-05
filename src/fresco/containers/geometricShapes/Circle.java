@@ -52,12 +52,14 @@ public class Circle extends GeometricShapeAbs {
 
     @Override
     public void homothetie(Point p, int ratio) {
-        int newCenterX = ratio * (this.center.getX() - p.getX()) + p.getX();
+        /*int newCenterX = ratio * (this.center.getX() - p.getX()) + p.getX();
         int newCenterY = ratio * (this.center.getY() - p.getY()) + p.getY();
         Point newCenter = new Point(newCenterX, newCenterY);
         this.setCenter(newCenter);
 
-       this.radius*= ratio;
+       this.radius*= ratio;*/
+        this.center.homothetie(p, ratio);
+        this.radius*= ratio;
     }
 
     @Override

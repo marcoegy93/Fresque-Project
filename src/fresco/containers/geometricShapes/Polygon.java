@@ -60,7 +60,9 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public void homothetie(Point p, int ratio) {
-
+        for(Point point : points){
+            point.homothetie(p,ratio);
+        }
     }
 
     @Override

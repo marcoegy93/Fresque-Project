@@ -54,6 +54,14 @@ public class Point {
         translate(x_distance, y_distance);
     }
 
+    public void homothetie(Point p, int ratio){
+        int x_distance = this.getX() - p.x;
+        int y_distance = this.getY() - p.y;
+        p.translate(x_distance*ratio, y_distance*ratio);
+        this.setX(p.x);
+        this.setY(p.y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if(o == null){
