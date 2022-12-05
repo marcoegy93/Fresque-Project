@@ -80,8 +80,13 @@ public class Polygon extends GeometricShapeAbs {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+        int points_x [] = new int[points.size()];
+        int points_y [] = new int[points.size()];
+        for(int i=0; i<points.size(); i++){
+            points_x[i] = points.stream().toList().get(i).getX();
+            points_y[i] = points.stream().toList().get(i).getY();
+        }
+        g.drawPolygon(points_x, points_y, points.size());
 	}
 
 }

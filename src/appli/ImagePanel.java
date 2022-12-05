@@ -5,6 +5,7 @@ import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.Line;
 
+import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 import javax.swing.*;
 import java.awt.*;
@@ -141,6 +142,18 @@ public class ImagePanel extends JPanel {
 							Integer.parseInt(heightEllipse.getText())
 					));
 				}
+				break;
+
+			case "Polygon":
+				Polygon p = new Polygon();
+				p.addPoint(new Point(200,300));
+
+				p.addPoint(new Point(300,300));
+
+				p.addPoint(new Point(350,500));
+
+				p.addPoint(new Point(150,500));
+				addShape(p);
 				break;
     	}
     }
