@@ -4,26 +4,27 @@ import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Polygon extends GeometricShapeAbs {
 
-    private Set<Point> points;
+    private ArrayList<Point> points;
 
     public Polygon() {
         super();
-        this.points = new LinkedHashSet<Point>();
+        this.points = new ArrayList<>();
     }
 
-    public Polygon(Set<Point> points) {
+    public Polygon(ArrayList<Point> points) {
         super();
         this.points = points;
     }
 
 
 
-    public void setPoints(Set<Point> points) {
+    public void setPoints(ArrayList<Point> points) {
         this.points = points;
     }
     public void addPoint(final Point point){
@@ -80,8 +81,13 @@ public class Polygon extends GeometricShapeAbs {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+        int points_x [] = new int[points.size()];
+        int points_y [] = new int[points.size()];
+        for(int i=0; i<points.size(); i++){
+            points_x[i] = points.get(i).getX();
+            points_y[i] = points.get(i).getY();
+        }
+        g.drawPolygon(points_x, points_y, points.size());
 	}
 
 }

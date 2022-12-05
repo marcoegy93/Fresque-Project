@@ -5,9 +5,14 @@ import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.Line;
 
+import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import fresco.containers.Image;
 
 public class ImagePanel extends JPanel {
@@ -39,7 +44,10 @@ public class ImagePanel extends JPanel {
         repaint();
         revalidate();
     }
-
+    
+    ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();
+	ArrayList<JTextField> yFieldPoligonList = new ArrayList<JTextField>();
+	
     public void openModalShape(String shape) {
     	int result;
     	switch (shape) {
@@ -142,6 +150,67 @@ public class ImagePanel extends JPanel {
 					));
 				}
 				break;
+
+			case "Polygon":
+				
+				xFieldPoligonList.add( new JTextField(5) );
+				yFieldPoligonList.add( new JTextField(5));
+				
+				JPanel myPanelPolygon = new JPanel();
+				myPanelPolygon.setPreferredSize(new Dimension(400, 400));
+				myPanelPolygon .add(new JLabel("x:"));
+				myPanelPolygon .add(xFieldPoligonList.get(0));
+				myPanelPolygon .add(new JLabel("y:"));
+				myPanelPolygon .add(yFieldPoligonList.get(0));
+				JButton addButton = new JButton("ADD");
+				addButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						myPanelPolygon.removeAll();
+
+						xFieldPoligonList.add( new JTextField(5) );
+						yFieldPoligonList.add( new JTextField(5));
+
+						for(int i = 0; i<xFieldPoligonList.size();i++) {
+
+							myPanelPolygon.add(new JLabel("x:"));
+							myPanelPolygon.add(xFieldPoligonList.get(i));
+							myPanelPolygon.add(new JLabel("y:"));
+							myPanelPolygon.add(yFieldPoligonList.get(i));
+						}
+						myPanelPolygon.add(addButton);
+						myPanelPolygon.repaint();
+						myPanelPolygon.revalidate();
+					}
+				});
+				myPanelPolygon.add(addButton);
+						
+				result =  JOptionPane.showConfirmDialog(null, myPanelPolygon,
+						"Adding  Polygon", JOptionPane.OK_CANCEL_OPTION);
+				
+				if (result == JOptionPane.OK_OPTION) {
+					System.out.println("d");
+					Polygon p = new Polygon();
+					for(int i = 0; i<xFieldPoligonList.size()-1;i++) {
+						p.addPoint(
+								new Point(
+										Integer.parseInt(xFieldPoligonList.get(i).getText()),
+										Integer.parseInt(yFieldPoligonList.get(i).getText())
+										)
+									);
+					}
+					
+					addShape(p);
+					xFieldPoligonList = new ArrayList<JTextField>();
+					yFieldPoligonList = new ArrayList<JTextField>();
+				}
+				else {
+					xFieldPoligonList = new ArrayList<JTextField>();
+					yFieldPoligonList = new ArrayList<JTextField>();
+				}
+				break;
+		
     	}
     }
     
