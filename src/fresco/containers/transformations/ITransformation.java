@@ -5,9 +5,9 @@ import fresco.containers.geometricShapes.utils.Point;
 
 public interface ITransformation {
 
-    void translation(double x, double y);
-    void homothetie(Point p, double ratio);
-    void rotation(Point p, double angle);
+    void translation(int x, int y);
+    void homothetie(Point p, int ratio);
+    void rotation(Point p, int angle);
     void centralSymmetry(Point p);
     void axialSymmetry(Line l);
 }

@@ -41,17 +41,17 @@ public class Polygon extends GeometricShapeAbs {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         for(Point point : points) point.translate(x,y);
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
 
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
 
     }
 

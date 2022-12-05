@@ -40,6 +40,7 @@ public class Line extends GeometricShapeAbs {
         return new Point((this.getPointA().getX() + this.getPointB().getX()) / 2,
                 (this.getPointA().getY() + this.getPointB().getY()) / 2);
     }
+
     @Override
     public double calculatePerimeter() {
         return Point.calculateDistance(this.pointA,this.pointB);
@@ -51,18 +52,18 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         pointA.translate(x,y);
         pointB.translate(x,y);
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
 
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
 
     }
 

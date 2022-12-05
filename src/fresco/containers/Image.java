@@ -55,21 +55,21 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         for(GeometricShapeAbs gs : shapes){
             gs.translation(x,y);
         }
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
         for(GeometricShapeAbs gs : shapes){
             gs.homothetie(p,ratio);
         }
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
         for(GeometricShapeAbs gs : shapes){
             gs.rotation(p,angle);
         }

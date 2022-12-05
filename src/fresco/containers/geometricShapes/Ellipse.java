@@ -11,9 +11,8 @@ public class Ellipse extends GeometricShapeAbs {
 
     private Line littleAxis;
     private Line bigAxis;
-    static int t  = 10;
 
-    public Ellipse(Point center, double littleRadius,double bigRadius) {
+    public Ellipse(Point center, int littleRadius,int bigRadius) {
         super(center);
         this.littleAxis = new Line(center,new Point(center.getX(),center.getY() + littleRadius));
         this.bigAxis = new Line(center,new Point(center.getX() + bigRadius, center.getY()));
@@ -50,19 +49,19 @@ public class Ellipse extends GeometricShapeAbs {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         this.center.translate(x,y);
         this.bigAxis.translation(x,y);
         this.littleAxis.translation(x,y);
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
 
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
 
     }
 
@@ -90,16 +89,9 @@ public class Ellipse extends GeometricShapeAbs {
         return false;
     }
 
-	public void paint(Graphics g) {
-		g.drawOval(t+40,t+90,t+80,t+150);
-		t+=10;
-		
-	}
-
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		g.drawOval(center.getX(), center.getY(), (int)littleAxis.calculatePerimeter(), (int)bigAxis.calculatePerimeter());
 	}
 
 }

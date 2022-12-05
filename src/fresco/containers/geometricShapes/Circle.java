@@ -12,59 +12,44 @@ import javax.swing.JComponent;
 
 public class Circle extends GeometricShapeAbs {
 
-    private Point pointOfCircle;
+    private int radius;
 
-    public Circle(Point center, Point pointOfCircle){
+    public Circle(Point center, int radius){
         super(center);
-        this.pointOfCircle = pointOfCircle;
+        this.radius = radius;
     }
 
-    public Point getPointOfCircle() {
-        return pointOfCircle;
-    }
+    public int getRadius() {return radius;}
 
-    public void setPointOfCircle(Point pointOfCircle) {
-        this.pointOfCircle = pointOfCircle;
-    }
-
-    public double getRadius(){
-        return Point.calculateDistance(center, pointOfCircle);
-    }
-
-    public void setRadius(double radius){
-        this.pointOfCircle.setX(this.center.getX() + radius);
-    }
+    public void setRadius(int radius) {this.radius = radius;}
 
     @Override
     public double calculatePerimeter() {
-        return Math.PI * 2 * this.getRadius();
+        return Math.PI * 2 * radius;
     }
 
     @Override
     public double calculateArea() {
-        return Math.pow(this.getRadius(),2) * Math.PI;
+        return Math.pow(radius,2) * Math.PI;
     }
 
     @Override
-    public void translation(double x, double y) {
-        pointOfCircle.translate(x,y);
+    public void translation(int x, int y) {
         center.translate(x,y);
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
-        double newCenterX = ratio * (this.center.getX() - p.getX()) + p.getX();
-        double newCenterY = ratio * (this.center.getY() - p.getY()) + p.getY();
+    public void homothetie(Point p, int ratio) {
+        int newCenterX = ratio * (this.center.getX() - p.getX()) + p.getX();
+        int newCenterY = ratio * (this.center.getY() - p.getY()) + p.getY();
         Point newCenter = new Point(newCenterX, newCenterY);
         this.setCenter(newCenter);
-        double newPointofCircleX = ratio *(this.pointOfCircle.getX() - p.getX()) + p.getX();
-        double newPointofCircleY = ratio *(this.pointOfCircle.getY() - p.getY()) + p.getY();
-        Point newPointOfCircle = new Point(newPointofCircleX,newPointofCircleY);
-        this.setPointOfCircle(newPointOfCircle);
+
+       this.radius*= ratio;
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
         return;
     }
 
@@ -92,8 +77,7 @@ public class Circle extends GeometricShapeAbs {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		g.drawOval(center.getX(), center.getY(), radius, radius);
 	}
 
 }

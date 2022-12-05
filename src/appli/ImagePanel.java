@@ -1,6 +1,7 @@
 package appli;
 
 import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Line;
 
 import fresco.containers.geometricShapes.utils.Point;
@@ -69,8 +70,8 @@ public class ImagePanel extends JPanel {
 	     if (result == JOptionPane.OK_OPTION) {
 	    	 addShape( 
 	    			 new Line(
-		    			 new Point(Double.parseDouble(x1FieldLine .getText()),Double.parseDouble(y1FieldLine .getText())), 
-		    			 new Point(Double.parseDouble(x2FieldLine .getText()),Double.parseDouble(y2FieldLine .getText()))
+		    			 new Point(Integer.parseInt(x1FieldLine .getText()),Integer.parseInt(y1FieldLine .getText())),
+		    			 new Point(Integer.parseInt(x2FieldLine .getText()),Integer.parseInt(y2FieldLine .getText()))
 	    					 )
 	    			 );
 	        
@@ -78,7 +79,7 @@ public class ImagePanel extends JPanel {
 	     break;
     	case "Circle":
     		  JTextField xFieldCircle = new JTextField(5);
-      	      JTextField yField = new JTextField(5);
+      	      JTextField yFieldCircle = new JTextField(5);
     		  JTextField rayFieldCircle = new JTextField(5);
 
 
@@ -87,7 +88,7 @@ public class ImagePanel extends JPanel {
       	      myPanelCircle.add(xFieldCircle);
       	      myPanelCircle.add(Box.createHorizontalStrut(10)); // a spacer
       	      myPanelCircle.add(new JLabel("y:"));
-      	      myPanelCircle.add(yField);
+      	      myPanelCircle.add(yFieldCircle);
 
       	      myPanelCircle.add(Box.createHorizontalStrut(20)); // a spacer
       	      
@@ -99,10 +100,16 @@ public class ImagePanel extends JPanel {
     	                 "Adding  Circle", JOptionPane.OK_CANCEL_OPTION);
     	     
     	     if (result == JOptionPane.OK_OPTION) {
-    	    	 // faireeeeee addShape( ); 			
-    	        
+    	    	 addShape(new Circle(new Point(
+						 Integer.parseInt(xFieldCircle.getText()),
+						 Integer.parseInt(yFieldCircle.getText())),
+						 Integer.parseInt(rayFieldCircle.getText())
+				 ));
     	      }
     		break;
+			case "Ellipse":
+
+				break;
     	}
     }
     
