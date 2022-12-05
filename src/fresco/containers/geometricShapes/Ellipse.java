@@ -6,7 +6,30 @@ import fresco.containers.geometricShapes.utils.Point;
 import static java.lang.Math.sqrt;
 
 import java.awt.Graphics;
+import java.awt.Graphics;
 
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.utils.Point;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.swing.JComponent;
+import fresco.containers.Drawing;
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
+import fresco.containers.geometricShapes.Line;
+
+import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.utils.Point;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 public class Ellipse extends GeometricShapeAbs {
     private int height,width;
 
@@ -80,7 +103,8 @@ public class Ellipse extends GeometricShapeAbs {
     }
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g, Color c ) {
+		g.setColor(c);
 		g.drawOval(center.getX(), center.getY(),width, height);
 	}
 

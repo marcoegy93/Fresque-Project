@@ -1,5 +1,6 @@
 package appli;
 
+import fresco.containers.Drawing;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Ellipse;
@@ -8,6 +9,9 @@ import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,32 +21,153 @@ import fresco.containers.Image;
 
 public class ImagePanel extends JPanel {
 	private Toolbar toolbar;
-    private Image image;
-    public ImagePanel(){
-        image = new Image();
-        toolbar = new Toolbar();
-        this.add(toolbar);
-    }
+    private Drawing drawing;
+    private Image currentImage;
+    private JList<String> listImage;
+    private  JButton addNewImageBtn;
+    private  JButton showDrawing;
+    private boolean showDrawingBool = false;
 
+    public ImagePanel(){
+        toolbar = new Toolbar();
+        drawing = new Drawing();
+        
+		JTextField imageName = new JTextField(50);
+		  JPanel addNewImage  = new JPanel();
+
+		  addNewImage.add(new JLabel("Image Name:"));
+		  addNewImage.add(imageName);
+		  addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
+		  JColorChooser colorChooser = new JColorChooser();
+		  addNewImage.add(colorChooser);
+		 int result =  JOptionPane.showConfirmDialog(null, addNewImage , 
+	                 "Create Image",  JOptionPane.DEFAULT_OPTION,
+	                 JOptionPane.PLAIN_MESSAGE);
+		 
+		 if(result == JOptionPane.OK_OPTION) {
+			Color c = colorChooser.getColor();
+			 currentImage = new Image(imageName.getText(),c);
+			 drawing.addImage(currentImage);
+		     DefaultListModel<String> l = new DefaultListModel<>();
+		     l.addElement(currentImage.getName());
+		     listImage= new JList<>(l);
+
+		        listImage.setPreferredSize(new Dimension(250,500));
+			     listImage.setSelectedIndex(0);
+			     listImage.addListSelectionListener(new ListSelectionListener() {
+
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						
+					for(Image image: drawing.getImages()) {
+						if(listImage.getSelectedValue() == image.getName()) {
+							currentImage = image;
+					    	repaint();
+						}
+						}
+					}
+				
+			     
+			     });
+
+		     addNewImageBtn = new JButton("Add New");
+		    addNewImageBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JTextField imageName = new JTextField(50);
+					  JPanel addNewImage  = new JPanel();
+
+					  addNewImage.add(new JLabel("Image Name:"));
+					  addNewImage.add(imageName);
+					  addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
+					  JColorChooser colorChooser = new JColorChooser();
+					  addNewImage.add(colorChooser);
+					 int result =  JOptionPane.showConfirmDialog(null, addNewImage , 
+				                 "Create Image",  JOptionPane.DEFAULT_OPTION,
+				                 JOptionPane.PLAIN_MESSAGE);
+					 if(result == JOptionPane.OK_OPTION) {
+						 Color c = colorChooser.getColor();
+						 currentImage = new Image(imageName.getText(),c);
+						 drawing.addImage(currentImage);
+					     String[] l = new String[drawing.getImages().size()];
+					     int index = 0;
+						 for(Image image :  drawing.getImages()) {
+							l[index]=image.getName(); 
+							index++;
+						 }
+					     listImage.setListData(l)  ;
+					     listImage.setSelectedIndex(drawing.getImages().size()-1);
+					     repaint();
+
+					 }
+					 
+				}
+			});
+		    
+		    showDrawing = new JButton("Show the Drawing");
+		    showDrawing .addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					showDrawingBool = !showDrawingBool;
+			    	repaint();
+
+				}
+				
+		    
+				
+		 });
+		 }
+    }
+    
+    private int getPanelAddImage() {
+    	JTextField imageName = new JTextField(50);
+		JPanel addNewImage  = new JPanel();
+
+		  addNewImage.add(new JLabel("Image Name:"));
+		  addNewImage.add(imageName);
+		  addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
+		  JColorChooser colorChooser = new JColorChooser();
+		  addNewImage.add(colorChooser);
+		return   JOptionPane.showConfirmDialog(null, addNewImage , 
+	                 "Create Image",  JOptionPane.DEFAULT_OPTION,
+	                 JOptionPane.PLAIN_MESSAGE);
+    }
     //Draw a grid
     @Override
     public void paintComponent(Graphics g) {
+    	super.paintComponent(g);
+       
+    	this.add(listImage);
+	    this.add(addNewImageBtn);
+	    this.add(showDrawing);
         this.add(toolbar);
-        //https://tips4java.wordpress.com/2009/05/08/custom-painting-approaches/
+        
+    	
         Graphics g2 = (Graphics2D) g;
-        int height = getHeight();
-        int width = getWidth();
-
-        for(GeometricShapeAbs shape : image.getShapes()){
-           shape.draw(g2);
+     
+        if(showDrawingBool) {
+        	for(Image image :this.drawing.getImages()) {
+        		 for(GeometricShapeAbs shape : image.getShapes()){
+        	            shape.draw(g2, image.getColor());
+        	         }
+        	}
         }
+        for(GeometricShapeAbs shape : currentImage.getShapes()){
+            shape.draw(g2,currentImage.getColor());
+         }
+        
+       
     }
     
     public void addShape(GeometricShapeAbs shape) {
-        image.addShape(shape);
-        removeAll();
-        repaint();
-        revalidate();
+    	revalidate();
+    	repaint();
+    	currentImage.addShape(shape);
+    	removeAll();
+    	revalidate();
+    	repaint();
     }
     
     ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();
@@ -219,10 +344,10 @@ public class ImagePanel extends JPanel {
 	   System.out.println(action);
 	   switch (action) {
 	   case "Show area": 
-		   JOptionPane.showMessageDialog(null,"The total area of this image is " + this.image.calculateArea(), "Total Area", JOptionPane.INFORMATION_MESSAGE);
+		   JOptionPane.showMessageDialog(null,"The total area of this image is " + this.currentImage.calculateArea(), "Total Area", JOptionPane.INFORMATION_MESSAGE);
 		   break;
 	   case "Show perimeter":
-		   JOptionPane.showMessageDialog(null,"The total perimeter of this image is " + this.image.calculatePerimeter(), "Total Perimeter", JOptionPane.INFORMATION_MESSAGE);
+		   JOptionPane.showMessageDialog(null,"The total perimeter of this image is " + this.currentImage.calculatePerimeter(), "Total Perimeter", JOptionPane.INFORMATION_MESSAGE);
 		   break;
 	   }
    }
