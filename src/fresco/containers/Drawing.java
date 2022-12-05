@@ -52,21 +52,21 @@ public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         for(Image i : images){
             i.translation(x,y);
         }
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
         for(Image i : images){
             i.homothetie(p,ratio);
         }
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
         for(Image i : images){
             i.rotation(p,angle);
         }

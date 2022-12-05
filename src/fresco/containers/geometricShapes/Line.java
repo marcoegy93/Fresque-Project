@@ -3,6 +3,8 @@ package fresco.containers.geometricShapes;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.Set;
 
 public class Line extends GeometricShapeAbs {
@@ -16,7 +18,8 @@ public class Line extends GeometricShapeAbs {
         this.center = getCenter();
     }
 
-    public Point getPointA() {
+
+	public Point getPointA() {
         return pointA;
     }
 
@@ -37,6 +40,7 @@ public class Line extends GeometricShapeAbs {
         return new Point((this.getPointA().getX() + this.getPointB().getX()) / 2,
                 (this.getPointA().getY() + this.getPointB().getY()) / 2);
     }
+
     @Override
     public double calculatePerimeter() {
         return Point.calculateDistance(this.pointA,this.pointB);
@@ -48,18 +52,18 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         pointA.translate(x,y);
         pointB.translate(x,y);
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
 
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
 
     }
 
@@ -86,4 +90,11 @@ public class Line extends GeometricShapeAbs {
         }
         return false;
     }
+
+
+	@Override
+	public void draw(Graphics g) {
+        g.drawLine((int)this.pointA.getX(),(int)this.pointA.getY(),(int)this.pointB.getX(),(int)this.pointB.getY());
+		
+	}
 }

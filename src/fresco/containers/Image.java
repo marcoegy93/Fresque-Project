@@ -5,9 +5,15 @@ import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.*;
 
+import javax.swing.JComponent;
+
 public class Image implements ICalculatePerimeterAndArea, ITransformation {
+	
     private Set<GeometricShapeAbs> shapes;
 
     public Image(){
@@ -49,21 +55,21 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void translation(double x, double y) {
+    public void translation(int x, int y) {
         for(GeometricShapeAbs gs : shapes){
             gs.translation(x,y);
         }
     }
 
     @Override
-    public void homothetie(Point p, double ratio) {
+    public void homothetie(Point p, int ratio) {
         for(GeometricShapeAbs gs : shapes){
             gs.homothetie(p,ratio);
         }
     }
 
     @Override
-    public void rotation(Point p, double angle) {
+    public void rotation(Point p, int angle) {
         for(GeometricShapeAbs gs : shapes){
             gs.rotation(p,angle);
         }
@@ -83,14 +89,14 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
         }
     }
 
-    public void shapesSort(){
+    public void shapesSort() {
         List<GeometricShapeAbs> list = new ArrayList<GeometricShapeAbs>(shapes);
-        for(int i = 0; i < list.size(); i++){
-            for(int j = 0; j < list.size(); j++){
-                if(list.get(i).calculatePerimeter() < list.get(j).calculatePerimeter()){
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(i).calculatePerimeter() < list.get(j).calculatePerimeter()) {
                     GeometricShapeAbs tmp = list.get(i);
-                    list.set(i,list.get(j));
-                    list.set(j,tmp);
+                    list.set(i, list.get(j));
+                    list.set(j, tmp);
                 }
             }
         }
