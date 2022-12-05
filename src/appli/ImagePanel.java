@@ -2,6 +2,7 @@ package appli;
 
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.Line;
 
 import fresco.containers.geometricShapes.utils.Point;
@@ -108,7 +109,38 @@ public class ImagePanel extends JPanel {
     	      }
     		break;
 			case "Ellipse":
+				JTextField xFieldEllipse = new JTextField(5);
+				JTextField yFieldEllipse = new JTextField(5);
+				JTextField widthEllipse = new JTextField(5);
+				JTextField heightEllipse = new JTextField(5);
 
+
+				JPanel myPanelEllipse = new JPanel();
+				myPanelEllipse.add(Box.createHorizontalStrut(10)); // a spacer
+				myPanelEllipse.add(new JLabel("x:"));
+				myPanelEllipse.add(xFieldEllipse);
+				myPanelEllipse.add(new JLabel("y:"));
+				myPanelEllipse.add(yFieldEllipse);
+
+				myPanelEllipse.add(Box.createHorizontalStrut(20)); // a spacer
+
+				myPanelEllipse.add(new JLabel("width:"));
+				myPanelEllipse.add(widthEllipse);
+				myPanelEllipse.add(new JLabel("height:"));
+				myPanelEllipse.add(heightEllipse);
+
+
+				result =  JOptionPane.showConfirmDialog(null, myPanelEllipse,
+						"Adding  Ellipse", JOptionPane.OK_CANCEL_OPTION);
+
+				if (result == JOptionPane.OK_OPTION) {
+					addShape(new Ellipse(new Point(
+							Integer.parseInt(xFieldEllipse.getText()),
+							Integer.parseInt(yFieldEllipse.getText())),
+							Integer.parseInt(widthEllipse.getText()),
+							Integer.parseInt(heightEllipse.getText())
+					));
+				}
 				break;
     	}
     }
