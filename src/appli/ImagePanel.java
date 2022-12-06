@@ -16,6 +16,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Set;
 
 import fresco.containers.Image;
 
@@ -23,9 +24,7 @@ public class ImagePanel extends JPanel {
 	private Toolbar toolbar;
     private Drawing drawing;
     private Image currentImage;
-    private JList<String> listImage;
-    private  JButton addNewImageBtn;
-    private  JButton showDrawing;
+    private ListPanel listPanel;
     private boolean showDrawingBool = false;
 
     public ImagePanel(){
@@ -50,76 +49,19 @@ public class ImagePanel extends JPanel {
 			 drawing.addImage(currentImage);
 		     DefaultListModel<String> l = new DefaultListModel<>();
 		     l.addElement(currentImage.getName());
-		     listImage= new JList<>(l);
+		     listPanel = new ListPanel(currentImage.getName());
+		     listPanel.setPreferredSize(new Dimension(250,690));
 
-		        listImage.setPreferredSize(new Dimension(250,500));
-			     listImage.setSelectedIndex(0);
-			     listImage.addListSelectionListener(new ListSelectionListener() {
-
-					@Override
-					public void valueChanged(ListSelectionEvent e) {
-						
-					for(Image image: drawing.getImages()) {
-						if(listImage.getSelectedValue() == image.getName()) {
-							currentImage = image;
-					    	repaint();
-						}
-						}
-					}
-				
-			     
-			     });
-
-		     addNewImageBtn = new JButton("Add New");
-		    addNewImageBtn.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					JTextField imageName = new JTextField(50);
-					  JPanel addNewImage  = new JPanel();
-
-					  addNewImage.add(new JLabel("Image Name:"));
-					  addNewImage.add(imageName);
-					  addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
-					  JColorChooser colorChooser = new JColorChooser();
-					  addNewImage.add(colorChooser);
-					 int result =  JOptionPane.showConfirmDialog(null, addNewImage , 
-				                 "Create Image",  JOptionPane.DEFAULT_OPTION,
-				                 JOptionPane.PLAIN_MESSAGE);
-					 if(result == JOptionPane.OK_OPTION) {
-						 Color c = colorChooser.getColor();
-						 currentImage = new Image(imageName.getText(),c);
-						 drawing.addImage(currentImage);
-					     String[] l = new String[drawing.getImages().size()];
-					     int index = 0;
-						 for(Image image :  drawing.getImages()) {
-							l[index]=image.getName(); 
-							index++;
-						 }
-					     listImage.setListData(l)  ;
-					     listImage.setSelectedIndex(drawing.getImages().size()-1);
-					     repaint();
-
-					 }
-					 
-				}
-			});
 		    
-		    showDrawing = new JButton("Show the Drawing");
-		    showDrawing .addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					showDrawingBool = !showDrawingBool;
-			    	repaint();
-
-				}
-				
 		    
-				
-		 });
 		 }
+	    	setLayout(new BorderLayout());
+
+		    this.add(listPanel, BorderLayout.WEST);
+	        this.add(toolbar, BorderLayout.NORTH);
     }
+    
+    
     
     private int getPanelAddImage() {
     	JTextField imageName = new JTextField(50);
@@ -134,14 +76,44 @@ public class ImagePanel extends JPanel {
 	                 "Create Image",  JOptionPane.DEFAULT_OPTION,
 	                 JOptionPane.PLAIN_MESSAGE);
     }
+    
+    public void showDrawingChange() {
+    	showDrawingBool = !showDrawingBool;
+    	repaint();
+    }
+    
+    public void addNewImageBtnClick() {
+    	JTextField imageName = new JTextField(50);
+		  JPanel addNewImage  = new JPanel();
+
+		  addNewImage.add(new JLabel("Image Name:"));
+		  addNewImage.add(imageName);
+		  addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
+		  JColorChooser colorChooser = new JColorChooser();
+		  addNewImage.add(colorChooser);
+		 int result =  JOptionPane.showConfirmDialog(null, addNewImage , 
+	                 "Create Image",  JOptionPane.DEFAULT_OPTION,
+	                 JOptionPane.PLAIN_MESSAGE);
+		 if(result == JOptionPane.OK_OPTION) {
+			 Color c = colorChooser.getColor();
+			 currentImage = new Image(imageName.getText(),c);
+			 drawing.addImage(currentImage);
+			 listPanel.setNewDataOnList( drawing.getImages());
+		    	repaint();
+		    	removeAll();
+		    	revalidate();
+		    	repaint();
+
+		 }
+    }
+    
+    
     //Draw a grid
     @Override
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
-       
-    	this.add(listImage);
-	    this.add(addNewImageBtn);
-	    this.add(showDrawing);
+    	setLayout(new BorderLayout());
+    	this.add( listPanel, BorderLayout.WEST);
         this.add(toolbar);
         
     	
@@ -352,5 +324,15 @@ public class ImagePanel extends JPanel {
 	   }
    }
   
+   public void setCurrentImage(String name){
+		
+		for(Image image: drawing.getImages()) {
+			if(name == image.getName()) {
+				currentImage = image;
+		    	repaint();
+			}
+			}
+		}
+   
    
 }

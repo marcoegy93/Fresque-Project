@@ -21,8 +21,11 @@ public class Toolbar extends JToolBar {
         addSeparator();
         addSeparator();
         
-        String[] transformations = {"Rotation", "Axial Symmetry", "Central Symmetry", "Homothetie", "Translation"};
-        add(new JComboBox(transformations));
+        String[] transformations = {"","Rotation", "Axial Symmetry", "Central Symmetry", "Homothetie", "Translation"};
+        JComboBox  jComboBox =  new JComboBox(transformations);
+        jComboBox. setSelectedIndex(0);
+        jComboBox.setLightWeightPopupEnabled(false);
+        add(jComboBox);
         add(new ActionButton("DO"));
     }
 }

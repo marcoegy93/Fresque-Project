@@ -1,6 +1,8 @@
 package appli;
 
 import java.awt.Dimension;
+import java.util.List;
+import java.util.Set;
 
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.Image;
@@ -18,5 +20,20 @@ public class ImagePanelDrawUtil {
 
     public static void openModalAction(String action) {
         imagePanel.openModalAction(action);
+    }
+    
+    public static void setCurrentImage(String name) {
+        imagePanel.setCurrentImage(name);
+
+    }
+    
+    
+    public static void addNewImageBtnClick() {
+        imagePanel.addNewImageBtnClick();
+
+    }
+    
+    public static void showDrawingChange() {
+    	imagePanel.showDrawingChange();
     }
 }
