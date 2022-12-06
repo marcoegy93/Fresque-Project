@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.List;
 import java.util.Set;
 
+import UI.panels.ImagePanel;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.Image;
 
@@ -26,7 +27,6 @@ public class ImagePanelDrawUtil {
         imagePanel.setCurrentImage(name);
 
     }
-    
     
     public static void addNewImageBtnClick() {
         imagePanel.addNewImageBtnClick();

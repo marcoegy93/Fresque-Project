@@ -1,4 +1,4 @@
-package appli;
+package UI.panels;
 
 import fresco.containers.Drawing;
 import fresco.containers.GeometricShapeAbs;
@@ -11,6 +11,8 @@ import fresco.containers.geometricShapes.utils.Point;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import UI.components.Toolbar;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -256,14 +258,15 @@ public class ImagePanel extends JPanel {
 				yFieldPoligonList.add( new JTextField(5));
 				
 				JPanel myPanelPolygon = new JPanel();
+				myPanelPolygon.setLayout(new BoxLayout(myPanelPolygon, BoxLayout.PAGE_AXIS));
 				myPanelPolygon.setPreferredSize(new Dimension(400, 400));
-				myPanelPolygon .add(new JLabel("x:"));
+				myPanelPolygon .add(new JLabel("x1:"));
 				myPanelPolygon .add(xFieldPoligonList.get(0));
-				myPanelPolygon .add(new JLabel("y:"));
+				myPanelPolygon .add(new JLabel("y1:"));
 				myPanelPolygon .add(yFieldPoligonList.get(0));
 				JButton addButton = new JButton("ADD");
 				addButton.addActionListener(new ActionListener() {
-
+				
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						myPanelPolygon.removeAll();
@@ -273,9 +276,9 @@ public class ImagePanel extends JPanel {
 
 						for(int i = 0; i<xFieldPoligonList.size();i++) {
 
-							myPanelPolygon.add(new JLabel("x:"));
+							myPanelPolygon.add(new JLabel("x"+(i+1)+": "));
 							myPanelPolygon.add(xFieldPoligonList.get(i));
-							myPanelPolygon.add(new JLabel("y:"));
+							myPanelPolygon.add(new JLabel("y"+(i+1)+": "));
 							myPanelPolygon.add(yFieldPoligonList.get(i));
 						}
 						myPanelPolygon.add(addButton);

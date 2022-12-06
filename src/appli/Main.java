@@ -8,6 +8,9 @@ import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.utils.Point;
 
 import javax.swing.*;
+
+import UI.MainFrame;
+
 import java.awt.*;
 
 public class Main {

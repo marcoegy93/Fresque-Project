@@ -1,4 +1,4 @@
-package appli;
+package UI.panels;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import appli.ImagePanelDrawUtil;
 import fresco.containers.Image;
 
 public class ListPanel extends JPanel{

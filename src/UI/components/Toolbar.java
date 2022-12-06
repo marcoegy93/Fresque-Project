@@ -1,4 +1,4 @@
-package appli;
+package UI.components;
 
 import javax.swing.*;
 
@@ -26,6 +26,6 @@ public class Toolbar extends JToolBar {
         jComboBox. setSelectedIndex(0);
         jComboBox.setLightWeightPopupEnabled(false);
         add(jComboBox);
-        add(new ActionButton("DO"));
-    }
+        addSeparator();
+        addSeparator();    }
 }

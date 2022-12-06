@@ -1,6 +1,10 @@
-package appli;
+package UI;
 
 import javax.swing.*;
+
+import UI.panels.ImagePanel;
+import appli.ImagePanelDrawUtil;
+
 import java.awt.*;
 
 public class MainFrame extends JFrame {
@@ -10,6 +14,7 @@ public class MainFrame extends JFrame {
         setSize(1280, 720);//RATIO 16:9
         setResizable(false);
         //setLayout(new BorderLayout());
+        
         ImagePanel imagePanel = new ImagePanel();
         ImagePanelDrawUtil.ImagePanelDrawUtil(imagePanel);
         add( imagePanel);
