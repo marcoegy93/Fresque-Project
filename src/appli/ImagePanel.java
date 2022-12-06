@@ -119,6 +119,10 @@ public class ImagePanel extends JPanel {
 				
 		 });
 		 }
+		this.add(listImage);
+		this.add(addNewImageBtn);
+		this.add(showDrawing);
+		this.add(toolbar);
     }
     
     private int getPanelAddImage() {
