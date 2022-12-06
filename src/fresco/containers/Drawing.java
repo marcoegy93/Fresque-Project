@@ -66,9 +66,9 @@ public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
+    public void rotation(int angle) {
         for(Image i : images){
-            i.rotation(p,angle);
+            i.rotation(angle);
         }
     }
 

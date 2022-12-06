@@ -62,6 +62,11 @@ public class Point {
         this.setY(p.y);
     }
 
+    public void rotation(Point p, int angle) {
+        int x2 = (int)Math.round(p.x - (x * Math.cos((angle * Math.PI) / 180) - y * Math.sin((angle * Math.PI) / 180)));
+        int y2 = (int)Math.round(p.y - (x * Math.sin((angle * Math.PI) / 180) + y * Math.cos((angle * Math.PI) / 180)));
+    }
+
     @Override
     public boolean equals(Object o) {
         if(o == null){

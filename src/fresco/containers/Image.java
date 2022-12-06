@@ -93,9 +93,9 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
+    public void rotation(int angle) {
         for(GeometricShapeAbs gs : shapes){
-            gs.rotation(p,angle);
+            gs.rotation(angle);
         }
     }
 

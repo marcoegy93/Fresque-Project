@@ -86,8 +86,9 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
-
+    public void rotation(int angle) {
+        this.pointA.rotation(this.center, angle);
+        this.pointB.rotation(this.center, angle);
     }
 
     @Override
