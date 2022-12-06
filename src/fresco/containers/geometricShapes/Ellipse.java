@@ -72,7 +72,9 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public void homothetie(Point p, int ratio) {
-
+        this.center.homothetie(p, ratio);
+        this.height*= ratio;
+        this.width*= ratio;
     }
 
     @Override

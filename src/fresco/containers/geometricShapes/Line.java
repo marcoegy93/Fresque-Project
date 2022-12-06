@@ -81,7 +81,8 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public void homothetie(Point p, int ratio) {
-
+        this.pointA.homothetie(p, ratio);
+        this.pointB.homothetie(p, ratio);
     }
 
     @Override

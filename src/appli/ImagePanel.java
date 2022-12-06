@@ -55,10 +55,12 @@ public class ImagePanel extends JPanel {
 		    
 		    
 		 }
+
 	    	setLayout(new BorderLayout());
 
 		    this.add(listPanel, BorderLayout.WEST);
 	        this.add(toolbar, BorderLayout.NORTH);
+
     }
     
     
