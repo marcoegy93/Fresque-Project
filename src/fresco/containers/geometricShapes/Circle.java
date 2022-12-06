@@ -9,7 +9,19 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.swing.JComponent;
+import fresco.containers.Drawing;
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
+import fresco.containers.geometricShapes.Line;
 
+import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.utils.Point;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 public class Circle extends GeometricShapeAbs {
 
     private int radius;
@@ -76,7 +88,8 @@ public class Circle extends GeometricShapeAbs {
     }
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,Color c ) {
+		g.setColor(c);
 		g.drawOval(center.getX(), center.getY(), radius, radius);
 	}
 

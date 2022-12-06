@@ -7,7 +7,19 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import fresco.containers.Drawing;
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
+import fresco.containers.geometricShapes.Line;
 
+import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.utils.Point;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 public class Polygon extends GeometricShapeAbs {
 
     private ArrayList<Point> points;
@@ -80,7 +92,8 @@ public class Polygon extends GeometricShapeAbs {
     }
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,Color c) {
+		g.setColor(c);
         int points_x [] = new int[points.size()];
         int points_y [] = new int[points.size()];
         for(int i=0; i<points.size(); i++){

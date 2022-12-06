@@ -9,15 +9,39 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.JComponent;
 
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
+import fresco.containers.geometricShapes.Line;
+
+import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.utils.Point;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class Image implements ICalculatePerimeterAndArea, ITransformation {
 	
     private Set<GeometricShapeAbs> shapes;
+    private String name;
+    private Color c ;
 
-    public Image(){
+    public Image(String name, Color c){
         this.shapes = new LinkedHashSet<GeometricShapeAbs>();
+        this.name = name;
+        this.c = c;
+    }
+    
+    public String getName() {
+    	return this.name;
+    }
+    
+    public Color getColor() {
+    	return this.c;
     }
 
     public Image(Set<GeometricShapeAbs> shapes){
