@@ -36,4 +36,9 @@ public class ImagePanelDrawUtil {
     public static void showDrawingChange() {
     	imagePanel.showDrawingChange();
     }
+    
+    public static void doTransformation(String transformation) {
+    	if(imagePanel!= null)
+    		imagePanel.doTransformation(transformation);
+    }
 }

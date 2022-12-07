@@ -337,7 +337,149 @@ public class ImagePanel extends JPanel {
 		    	repaint();
 			}
 			}
-		}
+	}
+   
+   
+   public void doTransformation(String transformation) {
+	   int result;
+	   switch(transformation) {
+	   case "Rotation":
+		   JTextField xRotation = new JTextField(5);
+   	      JTextField yRotation = new JTextField(5);
+ 		  JTextField angleRotation = new JTextField(5);
+
+
+   	      JPanel myPanelRotation = new JPanel();
+   	   myPanelRotation.add(new JLabel("x:"));
+   	myPanelRotation.add(xRotation);
+   	myPanelRotation.add(Box.createHorizontalStrut(10)); // a spacer
+   	myPanelRotation.add(new JLabel("y:"));
+   	myPanelRotation.add(yRotation);
+
+   	myPanelRotation.add(Box.createHorizontalStrut(20)); // a spacer
+   	      
+   	myPanelRotation.add(new JLabel("Angle:"));
+   	myPanelRotation.add(angleRotation);
+ 	    
+ 	      
+ 	     result =  JOptionPane.showConfirmDialog(null, myPanelRotation, 
+ 	                 "Rotation", JOptionPane.OK_CANCEL_OPTION);
+ 	     
+ 	     if (result == JOptionPane.OK_OPTION) {
+  	    	currentImage.rotation(new Point(Integer.parseInt(xRotation.getText()),Integer.parseInt(yRotation.getText())), Integer.parseInt(angleRotation.getText()));
+ 	      }
+ 	    repaint();
+		   break;
+	   case "Axial Symmetry":
+		   JTextField x1AxialSymmetry = new JTextField(5);
+   	      JTextField y1AxialSymmetry = new JTextField(5);
+   	   JTextField x2AxialSymmetry = new JTextField(5);
+	      JTextField y2AxialSymmetry = new JTextField(5);
+
+
+   	      JPanel myPanelAxialSymmetry = new JPanel();
+   	   myPanelAxialSymmetry.add(new JLabel("x1:"));
+   	myPanelAxialSymmetry.add(x1AxialSymmetry);
+   	myPanelAxialSymmetry.add(Box.createHorizontalStrut(10)); // a spacer
+   	myPanelAxialSymmetry.add(new JLabel("y1:"));
+   	myPanelAxialSymmetry.add(y1AxialSymmetry);
+
+   	myPanelAxialSymmetry.add(Box.createHorizontalStrut(20)); // a spacer
+   	      
+    myPanelAxialSymmetry.add(new JLabel("x2:"));
+   	myPanelAxialSymmetry.add(x2AxialSymmetry);
+   	myPanelAxialSymmetry.add(Box.createHorizontalStrut(10)); // a spacer
+   	myPanelAxialSymmetry.add(new JLabel("y2:"));
+   	myPanelAxialSymmetry.add(y2AxialSymmetry);
+ 	    
+ 	      
+ 	     result =  JOptionPane.showConfirmDialog(null, myPanelAxialSymmetry, 
+ 	                 "Axial Symmetry", JOptionPane.OK_CANCEL_OPTION);
+ 	     
+ 	     if (result == JOptionPane.OK_OPTION) {
+ 	    	currentImage.axialSymmetry(
+	    				new Line(
+ 	    						new Point(
+ 	    								 Integer.parseInt(x1AxialSymmetry.getText()),
+ 	    								 Integer.parseInt(y1AxialSymmetry.getText())
+ 	    								),
+ 	    						new Point(
+	    								 Integer.parseInt(x2AxialSymmetry.getText()),
+	    								 Integer.parseInt(y2AxialSymmetry.getText())
+	    								)
+ 	    						 )
+ 							);
+ 	     }
+ 	    repaint();
+		   break;
+	   case "Central Symmetry":
+		   JTextField xCentralSymetrie = new JTextField(5);
+   	      JTextField yCentralSymetrie = new JTextField(5);
+
+
+   	      JPanel myPanelCentralSymetrie = new JPanel();
+   	   myPanelCentralSymetrie.add(new JLabel("x:"));
+   	myPanelCentralSymetrie.add(xCentralSymetrie);
+   	myPanelCentralSymetrie.add(Box.createHorizontalStrut(10)); // a spacer
+   	myPanelCentralSymetrie.add(new JLabel("y:"));
+   	myPanelCentralSymetrie.add(yCentralSymetrie);
+
+ 	     result =  JOptionPane.showConfirmDialog(null, myPanelCentralSymetrie, 
+ 	                 "Central Symmetry", JOptionPane.OK_CANCEL_OPTION);
+ 	     
+ 	     if (result == JOptionPane.OK_OPTION) {
+ 	    	for(GeometricShapeAbs shape : currentImage.getShapes()) {
+ 	    		shape.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()),Integer.parseInt(yCentralSymetrie.getText())));
+ 	    	}
+ 	      }
+ 	    repaint();
+		   break;
+	   case "Homothetie":
+		   JTextField xHomothetie = new JTextField(5);
+   	      JTextField yHomothetie = new JTextField(5);
+   	      JTextField ratioHomothetie = new JTextField(5);
+
+
+   	      JPanel myHomothetie = new JPanel();
+   	   myHomothetie.add(new JLabel("x:"));
+   	myHomothetie.add(xHomothetie);
+   	myHomothetie.add(Box.createHorizontalStrut(10)); // a spacer
+   	myHomothetie.add(new JLabel("y:"));
+   	myHomothetie.add(yHomothetie);
+   	myHomothetie.add(Box.createHorizontalStrut(20)); // a spacer
+   	myHomothetie.add(new JLabel("ratio:"));
+   	myHomothetie.add(ratioHomothetie);
+ 	     result =  JOptionPane.showConfirmDialog(null, myHomothetie, 
+ 	                 "Homothetie", JOptionPane.OK_CANCEL_OPTION);
+ 	     
+ 	     if (result == JOptionPane.OK_OPTION) {
+ 	    	currentImage.homothetie(new Point(Integer.parseInt(xHomothetie.getText()),Integer.parseInt(yHomothetie.getText())), Integer.parseInt(ratioHomothetie.getText()));
+ 	      }
+ 	    repaint();
+		   break;
+	   case "Translation":
+		   JTextField xTranslation = new JTextField(5);
+   	      JTextField yTranslation = new JTextField(5);
+
+
+   	      JPanel myPanelTranslation = new JPanel();
+   	   myPanelTranslation.add(new JLabel("x:"));
+   	myPanelTranslation.add(xTranslation);
+   	myPanelTranslation.add(Box.createHorizontalStrut(10)); // a spacer
+   	myPanelTranslation.add(new JLabel("y:"));
+   	myPanelTranslation.add(yTranslation);
+   	
+ 	     result =  JOptionPane.showConfirmDialog(null,  myPanelTranslation, 
+ 	                 "Translation", JOptionPane.OK_CANCEL_OPTION);
+ 	     
+ 	     if (result == JOptionPane.OK_OPTION) {
+ 	    	currentImage.translation(Integer.parseInt(xTranslation.getText()),Integer.parseInt(yTranslation.getText()));
+ 	      }
+ 	    repaint();
+		   break;
+	   }
+	   
+   }
    
    
 }

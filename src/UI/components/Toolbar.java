@@ -1,6 +1,13 @@
 package UI.components;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import appli.ImagePanelDrawUtil;
 
 public class Toolbar extends JToolBar {
 
@@ -23,6 +30,14 @@ public class Toolbar extends JToolBar {
         
         String[] transformations = {"","Rotation", "Axial Symmetry", "Central Symmetry", "Homothetie", "Translation"};
         JComboBox  jComboBox =  new JComboBox(transformations);
+        jComboBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+            	ImagePanelDrawUtil.doTransformation( transformations[jComboBox.getSelectedIndex()] );
+			}
+        });
+      
         jComboBox. setSelectedIndex(0);
         jComboBox.setLightWeightPopupEnabled(false);
         add(jComboBox);
