@@ -11,7 +11,7 @@ import fresco.containers.Image;
 public class ImagePanelDrawUtil {
     private static ImagePanel imagePanel;
 
-    public static void ImagePanelDrawUtil( ImagePanel newImagePanel) {
+    public ImagePanelDrawUtil( ImagePanel newImagePanel) {
         imagePanel = newImagePanel;
     }
 
@@ -24,17 +24,17 @@ public class ImagePanelDrawUtil {
     }
     
     public static void setCurrentImage(String name) {
-        imagePanel.setCurrentImage(name);
+        //imagePanel.setCurrentImage(name);
 
     }
     
     public static void addNewImageBtnClick() {
-        imagePanel.addNewImageBtnClick();
+        //imagePanel.addNewImageBtnClick();
 
     }
     
     public static void showDrawingChange() {
-    	imagePanel.showDrawingChange();
+    	//imagePanel.showDrawingChange();
     }
     
     public static void doTransformation(String transformation) {
