@@ -1,6 +1,5 @@
 package fresco.containers.geometricShapes;
 
-import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
@@ -13,16 +12,6 @@ public class Polygon extends GeometricShapeAbs {
     public Polygon() {
         super();
         this.points = new ArrayList<>();
-    }
-
-    public Polygon(ArrayList<Point> points) {
-        super();
-        this.points = points;
-    }
-
-
-    public void setPoints(ArrayList<Point> points) {
-        this.points = points;
     }
 
     public void addPoint(final Point point) {

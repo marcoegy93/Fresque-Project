@@ -43,7 +43,7 @@ public class MainPanel extends JPanel {
         drawingPanel.add(ba, BorderLayout.NORTH);
 
         ImagePanel imagePanel = new ImagePanel(drawingPanel);
-        JButton bb = new JButton("Back to drawing panel");
+        JButton bb = new JButton("<< Back to drawing panel");
         bb.addActionListener(new Switcher(cardA));
         imagePanel.getToolbar().add(bb);
 

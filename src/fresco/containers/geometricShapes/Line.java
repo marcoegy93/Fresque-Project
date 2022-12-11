@@ -1,6 +1,5 @@
 package fresco.containers.geometricShapes;
 
-import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
@@ -23,14 +22,6 @@ public class Line extends GeometricShapeAbs {
 
     public Point getPointB() {
         return pointB;
-    }
-
-    public void setPointA(Point pointA) {
-        this.pointA = pointA;
-    }
-
-    public void setPointB(Point pointB) {
-        this.pointB = pointB;
     }
 
     @Override

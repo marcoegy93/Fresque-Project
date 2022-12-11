@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class Toolbar extends JToolBar {
     private final DrawingButton addLine;
@@ -15,13 +16,13 @@ public class Toolbar extends JToolBar {
     private final DrawingButton addPolygon;
 
     public Toolbar() {
-        addLine = new DrawingButton("Line");
+        addLine = new DrawingButton("Line", "resources/icons/line.png");
         add(addLine);
-        addCircle = new DrawingButton("Circle");
+        addCircle = new DrawingButton("Circle", "resources/icons/circle.png");
         add(addCircle);
-        addEllipse = new DrawingButton("Ellipse");
+        addEllipse = new DrawingButton("Ellipse", "resources/icons/ellipse.png");
         add(addEllipse);
-        addPolygon = new DrawingButton("Polygon");
+        addPolygon = new DrawingButton("Polygon", "resources/icons/polygon.png");
         add(addPolygon);
         addSeparator();
         addSeparator();
@@ -62,6 +63,7 @@ public class Toolbar extends JToolBar {
             }
         });
         add(editImage);
+        addSeparator();
     }
 
     public void disableButton(String simpleName) {

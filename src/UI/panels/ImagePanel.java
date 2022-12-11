@@ -2,7 +2,7 @@ package UI.panels;
 
 import UI.components.Toolbar;
 import appli.ImagePanelDrawUtil;
-import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.GeometricShapeAbs;
 import fresco.containers.Image;
 import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Ellipse;
@@ -39,11 +39,13 @@ public class ImagePanel extends JPanel {
 
 
     public ImagePanel(Image image) {
+        setBackground(Color.white);
         this.setPreferredSize(new Dimension(1280, 720));
         this.currentImage = image;
     }
 
     public ImagePanel(DrawingPanel drawingPanel) {
+        setBackground(Color.white);
         linkedDrawing = drawingPanel;
         toolbar = new Toolbar();
         ImagePanelDrawUtil imagePanelDrawUtil = new ImagePanelDrawUtil(this);
@@ -85,6 +87,7 @@ public class ImagePanel extends JPanel {
             }
 
             removeAll();
+            toolbar.addSeparator();
             toolbar.add(createNewImage);
             add(toolbar);
             revalidate();
@@ -272,7 +275,6 @@ public class ImagePanel extends JPanel {
                         "Adding  Polygon", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    System.out.println("d");
                     Polygon p = new Polygon();
                     for (int i = 0; i < xFieldPoligonList.size() - 1; i++) {
                         p.addPoint(
@@ -297,7 +299,6 @@ public class ImagePanel extends JPanel {
 
 
     public void openModalAction(String action) {
-        System.out.println(action);
         switch (action) {
             case "Show area":
                 JOptionPane.showMessageDialog(null, "The total area of this image is " + this.currentImage.calculateArea(), "Total Area", JOptionPane.INFORMATION_MESSAGE);

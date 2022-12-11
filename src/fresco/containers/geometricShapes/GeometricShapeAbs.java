@@ -1,4 +1,4 @@
-package fresco.containers;
+package fresco.containers.geometricShapes;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
 import fresco.containers.geometricShapes.Line;
@@ -20,10 +20,6 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
 
     public Point getCenter() {
         return center;
-    }
-
-    public void setCenter(Point center) {
-        this.center = center;
     }
 
     public abstract double calculatePerimeter();

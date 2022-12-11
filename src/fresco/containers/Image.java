@@ -1,6 +1,7 @@
 package fresco.containers;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
+import fresco.containers.geometricShapes.GeometricShapeAbs;
 import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;

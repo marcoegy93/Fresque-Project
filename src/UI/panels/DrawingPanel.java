@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class DrawingPanel extends JPanel {
     private JPanel insidePanel;
-    private JButton showDrawing;
 
     public Drawing getDrawing() {
         return drawing;
