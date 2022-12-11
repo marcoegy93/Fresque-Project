@@ -1,5 +1,6 @@
 package UI.panels;
 
+import appli.Main;
 import fresco.containers.Drawing;
 import fresco.containers.Image;
 
@@ -9,7 +10,6 @@ import java.awt.*;
 public class DrawingPanel extends JPanel {
     private JPanel insidePanel;
     private JButton showDrawing;
-    private final JScrollPane jScrollPane;
 
     public Drawing getDrawing() {
         return drawing;
@@ -19,14 +19,11 @@ public class DrawingPanel extends JPanel {
 
     public DrawingPanel() {
         setLayout(new BorderLayout());
-
-        jScrollPane = new JScrollPane(insidePanel);
-        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         insidePanel = new JPanel();
         insidePanel.setBackground(Color.orange);
         insidePanel.setLayout(new GridLayout(3, 3));
         drawing = new Drawing();
+        MainPanel.getFresco().addDrawing(drawing);
         add(insidePanel, BorderLayout.CENTER);
     }
 
@@ -41,6 +38,5 @@ public class DrawingPanel extends JPanel {
         for (int i = 0; i < 9 - drawing.getImages().size(); i++) {
             insidePanel.add(new JPanel());
         }
-
     }
 }

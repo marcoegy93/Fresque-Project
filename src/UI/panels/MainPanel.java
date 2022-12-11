@@ -1,6 +1,8 @@
 package UI.panels;
 
 
+import fresco.Fresco;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,25 +14,31 @@ public class MainPanel extends JPanel {
     private static final String cardA = "A";
     private static final String cardB = "B";
 
+    public static Fresco getFresco() {
+        return fresco;
+    }
+
+    private static Fresco fresco;
+
     private class Switcher implements ActionListener {
         String card;
-
         Switcher(String card) {
             this.card = card;
         }
-
         @Override
         public void actionPerformed(ActionEvent e) {
             cardHolder.revalidate();
             cardHolder.repaint();
             cards.show(cardHolder, card);
         }
-
     }
 
     public MainPanel() {
+        fresco = new Fresco();
+
         DrawingPanel drawingPanel = new DrawingPanel();
         JButton ba = new JButton("Go to image panel");
+
         ba.addActionListener(new Switcher(cardB));
         drawingPanel.add(ba, BorderLayout.NORTH);
 
