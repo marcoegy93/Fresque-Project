@@ -7,14 +7,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainPanel extends JPanel {
-    private CardLayout cards;
+    private final CardLayout cards;
     private final JPanel cardHolder = this;
     private static final String cardA = "A";
     private static final String cardB = "B";
 
-    private class Switcher implements ActionListener{
+    private class Switcher implements ActionListener {
         String card;
-        Switcher(String card) { this.card = card; }
+
+        Switcher(String card) {
+            this.card = card;
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             cardHolder.revalidate();
@@ -23,7 +27,8 @@ public class MainPanel extends JPanel {
         }
 
     }
-    public MainPanel(){
+
+    public MainPanel() {
         DrawingPanel drawingPanel = new DrawingPanel();
         JButton ba = new JButton("Go to image panel");
         ba.addActionListener(new Switcher(cardB));

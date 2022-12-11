@@ -1,27 +1,32 @@
 package UI.panels;
 
+import UI.components.Toolbar;
 import appli.ImagePanelDrawUtil;
 import fresco.containers.GeometricShapeAbs;
+import fresco.containers.Image;
 import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.Line;
-
 import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 
 import javax.swing.*;
-
-import UI.components.Toolbar;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import fresco.containers.Image;
-
 public class ImagePanel extends JPanel {
+    public void setCurrentImage(Image currentImage) {
+        this.currentImage = currentImage;
+    }
+
     private Image currentImage;
+
+    public DrawingPanel getLinkedDrawing() {
+        return linkedDrawing;
+    }
+
     private DrawingPanel linkedDrawing;
 
     public Toolbar getToolbar() {
@@ -43,7 +48,7 @@ public class ImagePanel extends JPanel {
         toolbar = new Toolbar();
         ImagePanelDrawUtil imagePanelDrawUtil = new ImagePanelDrawUtil(this);
         editMode = true;
-        createNewImage = new JButton("Create a new image");
+        createNewImage = new JButton("+ New image");
         createNewImage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,13 +58,12 @@ public class ImagePanel extends JPanel {
         add(createNewImage, BorderLayout.CENTER);
     }
 
-    public void createNewImage(){
-        if(linkedDrawing.getDrawing().getImages().size() == 9){
+    public void createNewImage() {
+        if (linkedDrawing.getDrawing().getImages().size() == 9) {
             String message = "You reached the maximum amount of images in a drawing\n";
             JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
                     JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+        } else {
             JPanel addNewImage = new JPanel();
 
             addNewImage.add(new JLabel("Image Name:"));
@@ -75,7 +79,8 @@ public class ImagePanel extends JPanel {
 
             if (result == JOptionPane.OK_OPTION) {
                 Color c = colorChooser.getColor();
-                currentImage = new Image(imageName.getText(), c);
+                String name = imageName.getText().isEmpty() ? "Image " + linkedDrawing.getDrawing().getImages().size() + 1 : imageName.getText();
+                currentImage = new Image(name, c);
                 linkedDrawing.getDrawing().addImage(currentImage);
             }
 
@@ -91,11 +96,13 @@ public class ImagePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        if(editMode) {
+        if (editMode) {
             add(toolbar);
+            toolbar.enableButtons();
+            disableDrawingButtons();
         }
-        if(!editMode)g2.scale(0.33,0.33);
-        if(currentImage != null) {
+        if (!editMode) g2.scale(0.33, 0.33);
+        if (currentImage != null) {
             for (GeometricShapeAbs shape : currentImage.getShapes()) {
                 shape.draw(g2, currentImage.getColor());
             }
@@ -103,12 +110,20 @@ public class ImagePanel extends JPanel {
     }
 
     public void addShape(GeometricShapeAbs shape) {
-    	revalidate();
-    	repaint();
+        revalidate();
+        repaint();
         removeAll();
-    	currentImage.addShape(shape);
-    	revalidate();
-    	repaint();
+        currentImage.addShape(shape);
+        revalidate();
+        repaint();
+    }
+
+    public void disableDrawingButtons() {
+        if (currentImage != null) {
+            for (GeometricShapeAbs shape : currentImage.getShapes()) {
+                toolbar.disableButton(shape.getClass().getSimpleName());
+            }
+        }
     }
 
     ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();

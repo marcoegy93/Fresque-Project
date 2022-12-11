@@ -10,14 +10,14 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
+public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
     private Set<Image> images;
 
-    public Drawing(){
+    public Drawing() {
         this.images = new LinkedHashSet<Image>();
     }
 
-    public Drawing(Set<Image> images){
+    public Drawing(Set<Image> images) {
         this.images = images;
     }
 
@@ -29,15 +29,15 @@ public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
         this.images = images;
     }
 
-    public void addImage(Image img){
+    public void addImage(Image img) {
         this.images.add(img);
     }
 
     @Override
     public double calculatePerimeter() {
         double perimeter = 0;
-        for(Image i : images){
-            perimeter+= i.calculatePerimeter();
+        for (Image i : images) {
+            perimeter += i.calculatePerimeter();
         }
         return perimeter;
     }
@@ -45,59 +45,59 @@ public class Drawing implements ICalculatePerimeterAndArea,ITransformation {
     @Override
     public double calculateArea() {
         double area = 0;
-        for(Image i : images){
-            area+= i.calculateArea();
+        for (Image i : images) {
+            area += i.calculateArea();
         }
         return area;
     }
 
     @Override
     public void translation(int x, int y) {
-        for(Image i : images){
-            i.translation(x,y);
+        for (Image i : images) {
+            i.translation(x, y);
         }
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
-        for(Image i : images){
-            i.homothetie(p,ratio);
+        for (Image i : images) {
+            i.homothetie(p, ratio);
         }
     }
 
     @Override
     public void rotation(Point p, int angle) {
-        for(Image i : images){
-            i.rotation(p,angle);
+        for (Image i : images) {
+            i.rotation(p, angle);
         }
     }
 
     @Override
     public void centralSymmetry(Point p) {
-        for(Image i : images){
+        for (Image i : images) {
             i.centralSymmetry(p);
         }
     }
 
     @Override
     public void axialSymmetry(Line l) {
-        for(Image i : images){
+        for (Image i : images) {
             i.axialSymmetry(l);
         }
     }
 
-    public Drawing copyDrawing(){
+    public Drawing copyDrawing() {
         return new Drawing(this.images);
     }
 
-    public void imagesSort(){
+    public void imagesSort() {
         List<Image> list = new ArrayList<Image>(images);
-        for(int i = 0; i < list.size(); i++){
-            for(int j = 0; j < list.size(); j++){
-                if(list.get(i).calculateArea() < list.get(j).calculateArea()){
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(i).calculateArea() < list.get(j).calculateArea()) {
                     Image tmp = list.get(i);
-                    list.set(i,list.get(j));
-                    list.set(j,tmp);
+                    list.set(i, list.get(j));
+                    list.set(j, tmp);
                 }
             }
         }

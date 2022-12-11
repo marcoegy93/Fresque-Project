@@ -1,6 +1,5 @@
 package fresco.containers.geometricShapes.utils;
 
-import fresco.containers.geometricShapes.Circle;
 import fresco.containers.geometricShapes.Line;
 
 public class Point {
@@ -33,44 +32,41 @@ public class Point {
         this.y = y;
     }
 
-    public static double calculateDistance(Point a, Point b){
-        return Math.sqrt(Math.pow(b.getX() - a.getX(),2) + Math.pow(b.getY() - a.getY(),2));
+    public static double calculateDistance(Point a, Point b) {
+        return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
     }
 
-    public void translate(int x_translation, int y_translation){
+    public void translate(int x_translation, int y_translation) {
         this.setX(x + x_translation);
         this.setY(y + y_translation);
     }
 
-    public void centralSymmetry(Point o){
+    public void centralSymmetry(Point o) {
         int x_distance = o.getX() - x;
         int y_distance = o.getY() - y;
-        translate(x_distance*2, y_distance*2);
+        translate(x_distance * 2, y_distance * 2);
     }
 
-    public void axialSymmetry(Line l){
+    public void axialSymmetry(Line l) {
         int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
         int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
         translate(x_distance, y_distance);
     }
 
-    public void homothetie(Point p, int ratio){
+    public void homothetie(Point p, int ratio) {
         int x_distance = this.getX() - p.x;
         int y_distance = this.getY() - p.y;
-        p.translate(x_distance*ratio, y_distance*ratio);
+        p.translate(x_distance * ratio, y_distance * ratio);
         this.setX(p.x);
         this.setY(p.y);
     }
 
     @Override
     public boolean equals(Object o) {
-        if(o == null){
+        if (o == null) {
             return false;
         }
         Point p = (Point) o;
-        if(p.getX() == this.getX() && p.getY() == this.getY()){
-            return true;
-        }
-        return false;
+        return p.getX() == this.getX() && p.getY() == this.getY();
     }
 }

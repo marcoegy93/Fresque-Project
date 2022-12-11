@@ -1,16 +1,12 @@
 package UI;
 
-import javax.swing.*;
-
-import UI.panels.DrawingPanel;
-import UI.panels.ImagePanel;
 import UI.panels.MainPanel;
-import appli.ImagePanelDrawUtil;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    public MainFrame(){
+    public MainFrame() {
         super("Draw me a sheep...");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280, 720);//RATIO 16:9

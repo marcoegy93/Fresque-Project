@@ -1,17 +1,15 @@
 package appli;
 
-import java.awt.Dimension;
-import java.util.List;
-import java.util.Set;
-
 import UI.panels.ImagePanel;
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.Image;
 
 public class ImagePanelDrawUtil {
     private static ImagePanel imagePanel;
 
-    public ImagePanelDrawUtil( ImagePanel newImagePanel) {
+    public static ImagePanel getImagePanel() {
+        return imagePanel;
+    }
+
+    public ImagePanelDrawUtil(ImagePanel newImagePanel) {
         imagePanel = newImagePanel;
     }
 
@@ -22,23 +20,19 @@ public class ImagePanelDrawUtil {
     public static void openModalAction(String action) {
         imagePanel.openModalAction(action);
     }
-    
-    public static void setCurrentImage(String name) {
-        //imagePanel.setCurrentImage(name);
+
+    public static void setCurrentImage(int imageIndex) {
+        imagePanel.removeAll();
+        imagePanel.setCurrentImage(imagePanel.getLinkedDrawing().getDrawing().getImages().stream().toList().get(imageIndex));
+        imagePanel.revalidate();
+        imagePanel.repaint();
 
     }
-    
-    public static void addNewImageBtnClick() {
-        //imagePanel.addNewImageBtnClick();
 
-    }
-    
-    public static void showDrawingChange() {
-    	//imagePanel.showDrawingChange();
-    }
-    
     public static void doTransformation(String transformation) {
-    	if(imagePanel!= null)
-    		imagePanel.doTransformation(transformation);
+        if (imagePanel != null)
+            imagePanel.doTransformation(transformation);
     }
+
+
 }

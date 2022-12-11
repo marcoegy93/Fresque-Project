@@ -1,19 +1,18 @@
 package UI.components;
 
-import javax.swing.*;
-
 import appli.ImagePanelDrawUtil;
 
+import javax.swing.*;
+
 public class DrawingButton extends JButton {
-    public DrawingButton(String name){
-   
+    public DrawingButton(String name) {
+
         setText(name);
         addActionListener(e -> {
-        		ImagePanelDrawUtil.openModalShape(name);
-
+            ImagePanelDrawUtil.openModalShape(name);
         });
-      
+
     }
-    
- 
+
+
 }
