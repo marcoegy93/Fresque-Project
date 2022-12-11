@@ -6,9 +6,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Fresco {
-    private Set<Drawing> drawings;
+    private final Set<Drawing> drawings;
 
-    public Fresco(){
+    public Fresco() {
         this.drawings = new LinkedHashSet<Drawing>();
     }
 
@@ -16,7 +16,7 @@ public class Fresco {
         return drawings;
     }
 
-    public void addDrawing(Drawing d){
+    public void addDrawing(Drawing d) {
         this.drawings.add(d);
     }
 }

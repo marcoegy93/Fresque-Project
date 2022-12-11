@@ -4,30 +4,17 @@ import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
 import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
-import java.awt.Graphics;
 
-import javax.swing.JComponent;
-import fresco.containers.Drawing;
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.Circle;
-import fresco.containers.geometricShapes.Ellipse;
-import fresco.containers.geometricShapes.Line;
-
-import fresco.containers.geometricShapes.Polygon;
-import fresco.containers.geometricShapes.utils.Point;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, ITransformation {
     protected Point center;
 
-    public GeometricShapeAbs(){
+    public GeometricShapeAbs() {
         this.center = new Point();
     }
 
-    public GeometricShapeAbs(Point center){
+    public GeometricShapeAbs(Point center) {
         this.center = center;
     }
 
@@ -52,7 +39,7 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
     public abstract void centralSymmetry(Point p);
 
     public abstract void axialSymmetry(Line l);
-    
-    public abstract void draw(Graphics g,Color c);
+
+    public abstract void draw(Graphics g, Color c);
 
 }

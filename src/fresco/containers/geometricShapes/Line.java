@@ -3,45 +3,21 @@ package fresco.containers.geometricShapes;
 import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.Set;
-
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.utils.Point;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.swing.JComponent;
-import fresco.containers.Drawing;
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.Circle;
-import fresco.containers.geometricShapes.Ellipse;
-import fresco.containers.geometricShapes.Line;
-
-import fresco.containers.geometricShapes.Polygon;
-import fresco.containers.geometricShapes.utils.Point;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 public class Line extends GeometricShapeAbs {
 
     private Point pointA;
     private Point pointB;
 
-    public Line(Point pointA,Point pointB) {
+    public Line(Point pointA, Point pointB) {
         this.pointA = pointA;
         this.pointB = pointB;
         this.center = getCenter();
     }
 
 
-	public Point getPointA() {
+    public Point getPointA() {
         return pointA;
     }
 
@@ -65,7 +41,7 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public double calculatePerimeter() {
-        return Point.calculateDistance(this.pointA,this.pointB);
+        return Point.calculateDistance(this.pointA, this.pointB);
     }
 
     @Override
@@ -75,8 +51,8 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public void translation(int x, int y) {
-        pointA.translate(x,y);
-        pointB.translate(x,y);
+        pointA.translate(x, y);
+        pointB.translate(x, y);
     }
 
     @Override
@@ -104,21 +80,18 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public boolean equals(Object o) {
-        if(o == null){
+        if (o == null) {
             return false;
         }
         Line l = (Line) o;
-        if(l.pointA.equals(this.pointA) && l.pointB.equals(this.pointB)){
-            return true;
-        }
-        return false;
+        return l.pointA.equals(this.pointA) && l.pointB.equals(this.pointB);
     }
 
 
-	@Override
-	public void draw(Graphics g,Color c ) {
-		g.setColor(c);
-        g.drawLine((int)this.pointA.getX(),(int)this.pointA.getY(),(int)this.pointB.getX(),(int)this.pointB.getY());
-		
-	}
+    @Override
+    public void draw(Graphics g, Color c) {
+        g.setColor(c);
+        g.drawLine(this.pointA.getX(), this.pointA.getY(), this.pointB.getX(), this.pointB.getY());
+
+    }
 }
