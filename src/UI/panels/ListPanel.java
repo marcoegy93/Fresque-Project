@@ -40,6 +40,10 @@ public class ListPanel extends JPanel {
         listImage.setSelectedIndex(Images.size() - 1);
     }
 
+    /**
+     * Allows to get the index of the selected image in the list
+     * @return the index of the selected index
+     */
     public int getSelectedIndex() {
         return listImage.getSelectedIndex();
     }

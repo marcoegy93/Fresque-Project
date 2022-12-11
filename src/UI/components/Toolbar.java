@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 
 public class Toolbar extends JToolBar {
     private final DrawingButton addLine;
@@ -26,7 +25,6 @@ public class Toolbar extends JToolBar {
         add(addPolygon);
         addSeparator();
         addSeparator();
-
 
         add(new ActionButton("Show area"));
         add(new ActionButton("Show perimeter"));
@@ -66,6 +64,10 @@ public class Toolbar extends JToolBar {
         addSeparator();
     }
 
+    /**
+     * Disable a given button
+     * @param simpleName the name of the button to disable
+     */
     public void disableButton(String simpleName) {
         switch (simpleName) {
             case "Line":
@@ -83,6 +85,10 @@ public class Toolbar extends JToolBar {
         }
     }
 
+    /**
+     * Enables all the buttons of the toolbar at once
+     * Primarily used when switching between images
+     */
     public void enableButtons() {
         addLine.setEnabled(true);
         addCircle.setEnabled(true);
