@@ -17,6 +17,8 @@ public class MainPanel extends JPanel {
         Switcher(String card) { this.card = card; }
         @Override
         public void actionPerformed(ActionEvent e) {
+            cardHolder.revalidate();
+            cardHolder.repaint();
             cards.show(cardHolder, card);
         }
 
@@ -25,7 +27,7 @@ public class MainPanel extends JPanel {
         DrawingPanel drawingPanel = new DrawingPanel();
         JButton ba = new JButton("Go to image panel");
         ba.addActionListener(new Switcher(cardB));
-        drawingPanel.add(ba);
+        drawingPanel.add(ba, BorderLayout.NORTH);
 
         ImagePanel imagePanel = new ImagePanel(drawingPanel);
         JButton bb = new JButton("Back to drawing panel");

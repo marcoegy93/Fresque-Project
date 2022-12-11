@@ -32,10 +32,10 @@ public class ImagePanel extends JPanel {
     private JButton createNewImage;
     private boolean editMode = false;
 
+
     public ImagePanel(Image image) {
         this.setPreferredSize(new Dimension(1280, 720));
         this.currentImage = image;
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public ImagePanel(DrawingPanel drawingPanel) {
@@ -54,29 +54,37 @@ public class ImagePanel extends JPanel {
     }
 
     public void createNewImage(){
-        JPanel addNewImage  = new JPanel();
-
-        addNewImage.add(new JLabel("Image Name:"));
-        JTextField imageName = new JTextField(50);
-        addNewImage.add(imageName);
-
-        addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
-        JColorChooser colorChooser = new JColorChooser();
-        addNewImage.add(colorChooser);
-        int result =  JOptionPane.showConfirmDialog(null, addNewImage ,
-                "Create Image",  JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
-
-        if(result == JOptionPane.OK_OPTION) {
-            Color c = colorChooser.getColor();
-            currentImage = new Image(imageName.getText(),c);
-            linkedDrawing.getDrawing().addImage(currentImage);
+        if(linkedDrawing.getDrawing().getImages().size() == 9){
+            String message = "You reached the maximum amount of images in a drawing\n";
+            JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        removeAll();
-        toolbar.add(createNewImage);
-        add(toolbar);
-        revalidate();
-        repaint();
+        else {
+            JPanel addNewImage = new JPanel();
+
+            addNewImage.add(new JLabel("Image Name:"));
+            JTextField imageName = new JTextField(50);
+            addNewImage.add(imageName);
+
+            addNewImage.add(Box.createHorizontalStrut(10)); // a spacer
+            JColorChooser colorChooser = new JColorChooser();
+            addNewImage.add(colorChooser);
+            int result = JOptionPane.showConfirmDialog(null, addNewImage,
+                    "Create Image", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
+            if (result == JOptionPane.OK_OPTION) {
+                Color c = colorChooser.getColor();
+                currentImage = new Image(imageName.getText(), c);
+                linkedDrawing.getDrawing().addImage(currentImage);
+            }
+
+            removeAll();
+            toolbar.add(createNewImage);
+            add(toolbar);
+            revalidate();
+            repaint();
+        }
     }
 
     @Override
@@ -86,7 +94,7 @@ public class ImagePanel extends JPanel {
         if(editMode) {
             add(toolbar);
         }
-        if(!editMode)g2.scale(0.5,0.5);
+        if(!editMode)g2.scale(0.33,0.33);
         if(currentImage != null) {
             for (GeometricShapeAbs shape : currentImage.getShapes()) {
                 shape.draw(g2, currentImage.getColor());
