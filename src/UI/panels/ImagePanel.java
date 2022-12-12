@@ -397,9 +397,8 @@ public class ImagePanel extends JPanel {
                         "Central Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    for (GeometricShapeAbs shape : currentImage.getShapes()) {
-                        shape.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()), Integer.parseInt(yCentralSymetrie.getText())));
-                    }
+                    	currentImage.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()), Integer.parseInt(yCentralSymetrie.getText())));
+                    
                 }
                 repaint();
                 break;
