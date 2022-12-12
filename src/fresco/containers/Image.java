@@ -1,38 +1,50 @@
 package fresco.containers;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
-import fresco.containers.geometricShapes.GeometricShapeAbs;
 import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
+import javax.swing.JComponent;
+
+import fresco.containers.GeometricShapeAbs;
+import fresco.containers.geometricShapes.Circle;
+import fresco.containers.geometricShapes.Ellipse;
+import fresco.containers.geometricShapes.Line;
+
+import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.utils.Point;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class Image implements ICalculatePerimeterAndArea, ITransformation {
-
+	
     private Set<GeometricShapeAbs> shapes;
     private String name;
-    private Color c;
+    private Color c ;
 
-    public Image(String name, Color c) {
+    public Image(String name, Color c){
         this.shapes = new LinkedHashSet<GeometricShapeAbs>();
         this.name = name;
         this.c = c;
     }
-
+    
     public String getName() {
-        return this.name;
+    	return this.name;
     }
-
+    
     public Color getColor() {
-        return this.c;
+    	return this.c;
     }
 
-    public Image(Set<GeometricShapeAbs> shapes) {
+    public Image(Set<GeometricShapeAbs> shapes){
         this.shapes = shapes;
     }
 
@@ -44,15 +56,15 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
         this.shapes = shapes;
     }
 
-    public void addShape(GeometricShapeAbs gs) {
+    public void addShape(GeometricShapeAbs gs){
         this.shapes.add(gs);
     }
 
     @Override
     public double calculatePerimeter() {
         double perimeter = 0;
-        for (GeometricShapeAbs gs : shapes) {
-            perimeter += gs.calculatePerimeter();
+        for(GeometricShapeAbs gs : shapes){
+            perimeter+= gs.calculatePerimeter();
         }
         return perimeter;
     }
@@ -60,43 +72,43 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     @Override
     public double calculateArea() {
         double area = 0;
-        for (GeometricShapeAbs gs : shapes) {
-            area += gs.calculateArea();
+        for(GeometricShapeAbs gs : shapes){
+            area+= gs.calculateArea();
         }
         return area;
     }
 
     @Override
     public void translation(int x, int y) {
-        for (GeometricShapeAbs gs : shapes) {
-            gs.translation(x, y);
+        for(GeometricShapeAbs gs : shapes){
+            gs.translation(x,y);
         }
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
-        for (GeometricShapeAbs gs : shapes) {
-            gs.homothetie(p, ratio);
+        for(GeometricShapeAbs gs : shapes){
+            gs.homothetie(p,ratio);
         }
     }
 
     @Override
-    public void rotation(Point p, int angle) {
-        for (GeometricShapeAbs gs : shapes) {
-            gs.rotation(p, angle);
+    public void rotation(int angle) {
+        for(GeometricShapeAbs gs : shapes){
+            gs.rotation(angle);
         }
     }
 
     @Override
     public void centralSymmetry(Point p) {
-        for (GeometricShapeAbs gs : shapes) {
+        for(GeometricShapeAbs gs : shapes){
             gs.centralSymmetry(p);
         }
     }
 
     @Override
     public void axialSymmetry(Line l) {
-        for (GeometricShapeAbs gs : shapes) {
+        for(GeometricShapeAbs gs : shapes){
             gs.axialSymmetry(l);
         }
     }

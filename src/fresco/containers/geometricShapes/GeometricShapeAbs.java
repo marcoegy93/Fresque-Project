@@ -30,7 +30,7 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
 
     public abstract void homothetie(Point p, int ratio);
 
-    public abstract void rotation(Point p, int angle);
+    public abstract void rotation(int angle);
 
     public abstract void centralSymmetry(Point p);
 

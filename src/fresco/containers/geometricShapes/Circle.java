@@ -39,7 +39,7 @@ public class Circle extends GeometricShapeAbs {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
+    public void rotation(int angle) {
         return;
     }
 

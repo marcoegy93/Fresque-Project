@@ -38,7 +38,12 @@ public class Ellipse extends GeometricShapeAbs {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
+    public void rotation(int angle) {
+        //à refaire
+        Point pHeight = new Point(this.center.getX() + height, this.center.getY() + height );
+        Point pWidth = new Point(this.center.getX() + width, this.center.getY() + width );
+        pHeight.rotation(this.center,angle);
+        pWidth.rotation(this.center,angle);
 
     }
 

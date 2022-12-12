@@ -42,8 +42,10 @@ public class Polygon extends GeometricShapeAbs {
     }
 
     @Override
-    public void rotation(Point p, int angle) {
-
+    public void rotation(int angle) {
+        for(Point point : points){
+            point.rotation(this.center, angle);
+        }
     }
 
     @Override
