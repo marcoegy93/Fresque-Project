@@ -1,7 +1,8 @@
 package fresco.containers;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
-import fresco.containers.geometricShapes.Line;
+import fresco.containers.geometricShapes.*;
+import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
@@ -12,13 +13,8 @@ import java.util.*;
 import java.util.List;
 
 import javax.swing.JComponent;
-
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.Circle;
-import fresco.containers.geometricShapes.Ellipse;
 import fresco.containers.geometricShapes.Line;
 
-import fresco.containers.geometricShapes.Polygon;
 import fresco.containers.geometricShapes.utils.Point;
 import javax.swing.*;
 import java.awt.*;
