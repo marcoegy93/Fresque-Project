@@ -335,7 +335,7 @@ public class ImagePanel extends JPanel {
                         "Rotation", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    currentImage.rotation(new Point(Integer.parseInt(xRotation.getText()), Integer.parseInt(yRotation.getText())), Integer.parseInt(angleRotation.getText()));
+                    currentImage.rotation(Integer.parseInt(angleRotation.getText()));
                 }
                 repaint();
                 break;
