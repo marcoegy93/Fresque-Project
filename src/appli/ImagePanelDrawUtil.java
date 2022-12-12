@@ -1,6 +1,7 @@
 package appli;
 
 import UI.panels.ImagePanel;
+import fresco.containers.Image;
 
 public class ImagePanelDrawUtil {
     private static ImagePanel imagePanel;
@@ -23,7 +24,7 @@ public class ImagePanelDrawUtil {
 
     public static void setCurrentImage(int imageIndex) {
         imagePanel.removeAll();
-        imagePanel.setCurrentImage(imagePanel.getLinkedDrawing().getDrawing().getImages().stream().toList().get(imageIndex));
+        imagePanel.setCurrentImage((Image) imagePanel.getLinkedDrawing().getDrawing().getImages().stream().toArray()[imageIndex]);
         imagePanel.revalidate();
         imagePanel.repaint();
 

@@ -143,7 +143,7 @@ public class MainPanel extends JPanel {
 
                 if (result == JOptionPane.OK_OPTION) {
                 	for(Drawing d: fresco.getDrawings()) {
-                        d.rotation(new Point(Integer.parseInt(xRotation.getText()), Integer.parseInt(yRotation.getText())), Integer.parseInt(angleRotation.getText()));
+                        d.rotation(Integer.parseInt(angleRotation.getText()));
                 	}
                 }
                 repaint();
