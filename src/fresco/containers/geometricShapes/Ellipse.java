@@ -1,63 +1,23 @@
 package fresco.containers.geometricShapes;
 
-import fresco.containers.GeometricShapeAbs;
 import fresco.containers.geometricShapes.utils.Point;
+
+import java.awt.*;
 
 import static java.lang.Math.sqrt;
 
-import java.awt.Graphics;
-import java.awt.Graphics;
-
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.utils.Point;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.swing.JComponent;
-import fresco.containers.Drawing;
-import fresco.containers.GeometricShapeAbs;
-import fresco.containers.geometricShapes.Circle;
-import fresco.containers.geometricShapes.Ellipse;
-import fresco.containers.geometricShapes.Line;
-
-import fresco.containers.geometricShapes.Polygon;
-import fresco.containers.geometricShapes.utils.Point;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 public class Ellipse extends GeometricShapeAbs {
-    private int height,width;
+    private int height, width;
 
-    public Ellipse(Point center, int height,int width) {
+    public Ellipse(Point center, int height, int width) {
         super(center);
         this.height = height;
         this.width = width;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
     @Override
     public double calculatePerimeter() {
-        return Math.PI * (3*(height + width) - sqrt((3*height+width)*(height+3*width)));
+        return Math.PI * (3 * (height + width) - sqrt((3 * height + width) * (height + 3 * width)));
     }
 
     @Override
@@ -67,14 +27,14 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public void translation(int x, int y) {
-        this.center.translate(x,y);
+        this.center.translate(x, y);
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
         this.center.homothetie(p, ratio);
-        this.height*= ratio;
-        this.width*= ratio;
+        this.height *= ratio;
+        this.width *= ratio;
     }
 
     @Override
@@ -99,20 +59,17 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public boolean equals(Object o) {
-        if(o == null){
+        if (o == null) {
             return false;
         }
         Ellipse e = (Ellipse) o;
-        if(e.height == height && e.width == width && e.center.equals(this.center)){
-            return true;
-        }
-        return false;
+        return e.height == height && e.width == width && e.center.equals(this.center);
     }
 
-	@Override
-	public void draw(Graphics g, Color c ) {
-		g.setColor(c);
-		g.drawOval(center.getX(), center.getY(),width, height);
-	}
+    @Override
+    public void draw(Graphics g, Color c) {
+        g.setColor(c);
+        g.drawOval(center.getX(), center.getY(), width, height);
+    }
 
 }

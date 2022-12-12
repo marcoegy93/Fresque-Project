@@ -1,19 +1,19 @@
-package appli;
+package UI;
+
+import UI.panels.MainPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
-    public MainFrame(){
+    public MainFrame() {
         super("Draw me a sheep...");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280, 720);//RATIO 16:9
         setResizable(false);
-       // setLayout(new BorderLayout());
-        ImagePanel imagePanel = new ImagePanel();
-        ImagePanelDrawUtil.ImagePanelDrawUtil(imagePanel);
-        add( imagePanel, BorderLayout.CENTER);
-
+        add(new MainPanel(), BorderLayout.CENTER);
         //------------SHOULD ALWAYS BE AT THE END !!--------------
         setVisible(true);
     }
