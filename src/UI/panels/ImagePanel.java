@@ -81,7 +81,7 @@ public class ImagePanel extends JPanel {
 
             if (result == JOptionPane.OK_OPTION) {
                 Color c = colorChooser.getColor();
-                String name = imageName.getText().isEmpty() ? "Image " + linkedDrawing.getDrawing().getImages().size() + 1 : imageName.getText();
+                String name = imageName.getText().isEmpty() ? "Image " + (linkedDrawing.getDrawing().getImages().size() + 1) : imageName.getText();
                 currentImage = new Image(name, c);
                 linkedDrawing.getDrawing().addImage(currentImage);
             }
@@ -100,9 +100,14 @@ public class ImagePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (editMode) {
+
             add(toolbar);
             toolbar.enableButtons();
             disableDrawingButtons();
+
+            g2.setColor(Color.lightGray);
+            g2.drawLine(0, getHeight()/2, getWidth(), getHeight()/2);
+            g2.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
         }
         if (!editMode) g2.scale(0.33, 0.33);
         if (currentImage != null) {
@@ -110,6 +115,7 @@ public class ImagePanel extends JPanel {
                 shape.draw(g2, currentImage.getColor());
             }
         }
+
     }
 
     public void addShape(GeometricShapeAbs shape) {
@@ -229,8 +235,8 @@ public class ImagePanel extends JPanel {
                     addShape(new Ellipse(new Point(
                             Integer.parseInt(xFieldEllipse.getText()),
                             Integer.parseInt(yFieldEllipse.getText())),
-                            Integer.parseInt(widthEllipse.getText()),
-                            Integer.parseInt(heightEllipse.getText())
+                            Integer.parseInt(heightEllipse.getText()),
+                            Integer.parseInt(widthEllipse.getText())
                     ));
                 }
                 break;

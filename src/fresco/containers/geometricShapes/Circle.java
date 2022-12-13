@@ -4,15 +4,30 @@ import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
 
+/**
+ * Class that represents a Circle
+ */
 public class Circle extends GeometricShapeAbs {
 
+    /**
+     * The radius of the Circle
+     */
     private int radius;
 
+    /**
+     * The constructor of a Circle
+     * @param center the center Point of the circle
+     * @param radius the radius of the circle
+     */
     public Circle(Point center, int radius) {
         super(center);
         this.radius = radius;
     }
 
+    /**
+     * Getter that gets the radius of the circle
+     * @return the radius of the circle
+     */
     public int getRadius() {
         return radius;
     }
@@ -61,6 +76,7 @@ public class Circle extends GeometricShapeAbs {
         Circle c = (Circle) o;
         return c.center.equals(this.center) && c.getRadius() == this.getRadius();
     }
+
 
     @Override
     public void draw(Graphics g, Color c) {

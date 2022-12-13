@@ -8,21 +8,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class which represents the Toolbar used to do various operations on an image
+ */
 public class Toolbar extends JToolBar {
-    private final DrawingButton addLine;
-    private final DrawingButton addCircle;
-    private final DrawingButton addEllipse;
-    private final DrawingButton addPolygon;
+    /**
+     * The buttons that draws the shapes
+     */
+    private final DrawingButton addLine, addCircle, addEllipse, addPolygon;
 
+    /**
+     * The constructor
+     */
     public Toolbar() {
-        addLine = new DrawingButton("Line", "resources/icons/line.png");
-        add(addLine);
-        addCircle = new DrawingButton("Circle", "resources/icons/circle.png");
-        add(addCircle);
-        addEllipse = new DrawingButton("Ellipse", "resources/icons/ellipse.png");
-        add(addEllipse);
-        addPolygon = new DrawingButton("Polygon", "resources/icons/polygon.png");
-        add(addPolygon);
+        add(addLine = new DrawingButton("Line", "resources/icons/line.png"));
+        add(addCircle = new DrawingButton("Circle", "resources/icons/circle.png"));
+        add(addEllipse = new DrawingButton("Ellipse", "resources/icons/ellipse.png"));
+        add(addPolygon = new DrawingButton("Polygon", "resources/icons/polygon.png"));
         addSeparator();
         addSeparator();
 
