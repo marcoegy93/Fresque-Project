@@ -276,7 +276,7 @@ public class ImagePanel extends JPanel {
 
                 if (result == JOptionPane.OK_OPTION) {
                     Polygon p = new Polygon();
-                    for (int i = 0; i < xFieldPoligonList.size() - 1; i++) {
+                    for (int i = 0; i < xFieldPoligonList.size(); i++) {
                         p.addPoint(
                                 new Point(
                                         Integer.parseInt(xFieldPoligonList.get(i).getText()),
@@ -313,19 +313,10 @@ public class ImagePanel extends JPanel {
         int result;
         switch (transformation) {
             case "Rotation":
-                JTextField xRotation = new JTextField(5);
-                JTextField yRotation = new JTextField(5);
                 JTextField angleRotation = new JTextField(5);
 
 
                 JPanel myPanelRotation = new JPanel();
-                myPanelRotation.add(new JLabel("x:"));
-                myPanelRotation.add(xRotation);
-                myPanelRotation.add(Box.createHorizontalStrut(10)); // a spacer
-                myPanelRotation.add(new JLabel("y:"));
-                myPanelRotation.add(yRotation);
-
-                myPanelRotation.add(Box.createHorizontalStrut(20)); // a spacer
 
                 myPanelRotation.add(new JLabel("Angle:"));
                 myPanelRotation.add(angleRotation);
