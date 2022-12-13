@@ -1,6 +1,5 @@
 package UI.panels;
 
-import appli.Main;
 import fresco.containers.Drawing;
 import fresco.containers.Image;
 
@@ -8,13 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DrawingPanel extends JPanel {
-    private JPanel insidePanel;
-
-    public Drawing getDrawing() {
-        return drawing;
-    }
-
     private final Drawing drawing;
+    private JPanel insidePanel;
 
     public DrawingPanel() {
         setLayout(new BorderLayout());
@@ -24,6 +18,10 @@ public class DrawingPanel extends JPanel {
         drawing = new Drawing();
         MainPanel.getFresco().addDrawing(drawing);
         add(insidePanel, BorderLayout.CENTER);
+    }
+
+    public Drawing getDrawing() {
+        return drawing;
     }
 
     @Override

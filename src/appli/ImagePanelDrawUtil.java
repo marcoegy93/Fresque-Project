@@ -6,12 +6,12 @@ import fresco.containers.Image;
 public class ImagePanelDrawUtil {
     private static ImagePanel imagePanel;
 
-    public static ImagePanel getImagePanel() {
-        return imagePanel;
-    }
-
     public ImagePanelDrawUtil(ImagePanel newImagePanel) {
         imagePanel = newImagePanel;
+    }
+
+    public static ImagePanel getImagePanel() {
+        return imagePanel;
     }
 
     public static void openModalShape(String shape) {
@@ -35,7 +35,5 @@ public class ImagePanelDrawUtil {
             imagePanel.doTransformation(transformation);
     }
 
-    
-    
 
 }

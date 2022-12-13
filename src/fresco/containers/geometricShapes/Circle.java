@@ -16,6 +16,7 @@ public class Circle extends GeometricShapeAbs {
 
     /**
      * The constructor of a Circle
+     *
      * @param center the center Point of the circle
      * @param radius the radius of the circle
      */
@@ -26,6 +27,7 @@ public class Circle extends GeometricShapeAbs {
 
     /**
      * Getter that gets the radius of the circle
+     *
      * @return the radius of the circle
      */
     public int getRadius() {
@@ -64,12 +66,12 @@ public class Circle extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(int width, int height,String s) {
+    public void axialSymmetry(int width, int height, String s) {
         center.axialSymmetry(width, height, s);
-        if(s == "vertical"){
-            this.center.setX(this.center.getX() - radius *2);
-        }else{
-            this.center.setY(this.center.getY() - radius *2);
+        if (s == "vertical") {
+            this.center.setX(this.center.getX() - radius * 2);
+        } else {
+            this.center.setY(this.center.getY() - radius * 2);
         }
     }
 

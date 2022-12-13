@@ -1,8 +1,6 @@
 package appli;
 
 import UI.MainFrame;
-import fresco.containers.geometricShapes.Line;
-import fresco.containers.geometricShapes.utils.Point;
 
 import javax.swing.*;
 

@@ -25,6 +25,7 @@ public class Fresco {
 
     /**
      * Getter that gets the drawings
+     *
      * @return the Set of Drawing
      */
     public Set<Drawing> getDrawings() {
@@ -33,6 +34,7 @@ public class Fresco {
 
     /**
      * Method that adds the given Drawing to the Set
+     *
      * @param d the Drawing to add to the Set
      */
     public void addDrawing(Drawing d) {

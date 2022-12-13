@@ -68,6 +68,7 @@ public class Toolbar extends JToolBar {
 
     /**
      * Disable a given button
+     *
      * @param simpleName the name of the button to disable
      */
     public void disableButton(String simpleName) {

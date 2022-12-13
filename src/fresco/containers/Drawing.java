@@ -1,7 +1,6 @@
 package fresco.containers;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
-import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
@@ -30,6 +29,7 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
 
     /**
      * Constructor of a drawing that copies the given Set
+     *
      * @param images the given Set to copy
      */
     public Drawing(Set<Image> images) {
@@ -38,6 +38,7 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
 
     /**
      * Getter that gets the Set of Image
+     *
      * @return the Set of Image
      */
     public Set<Image> getImages() {
@@ -46,6 +47,7 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
 
     /**
      * Setter that sets the Set of Image with a given Set
+     *
      * @param images the given Set of Image
      */
     public void setImages(Set<Image> images) {
@@ -54,6 +56,7 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
 
     /**
      * Methods that adds an Image to the Set of Image
+     *
      * @param img the Image to add to the Set
      */
     public void addImage(Image img) {
@@ -62,6 +65,7 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
 
     /**
      * Methods that copies the current drawing
+     *
      * @return the copied drawing
      */
     public Drawing copyDrawing() {

@@ -16,6 +16,7 @@ public class Line extends GeometricShapeAbs {
 
     /**
      * The constructor of a Line
+     *
      * @param pointA the edge Point of the Line
      * @param pointB the other edge Point of the Line
      */
@@ -66,7 +67,7 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(int width, int height,String s) {
+    public void axialSymmetry(int width, int height, String s) {
         this.pointB.axialSymmetry(width, height, s);
         this.pointA.axialSymmetry(width, height, s);
     }

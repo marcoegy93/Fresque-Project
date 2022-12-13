@@ -12,6 +12,7 @@ public class ActionButton extends JButton {
 
     /**
      * Constructor that creates a button that shows a given property for the current shape
+     *
      * @param name the property name
      */
     public ActionButton(String name) {

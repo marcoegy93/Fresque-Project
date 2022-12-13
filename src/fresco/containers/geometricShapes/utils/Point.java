@@ -1,7 +1,5 @@
 package fresco.containers.geometricShapes.utils;
 
-import fresco.containers.geometricShapes.Line;
-
 public class Point {
     private int x;
     private int y;
@@ -16,24 +14,24 @@ public class Point {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
+    public static double calculateDistance(Point a, Point b) {
+        return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
     }
 
-    public int getY() {
-        return y;
+    public int getX() {
+        return x;
     }
 
     public void setX(int x) {
         this.x = x;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public int getY() {
+        return y;
     }
 
-    public static double calculateDistance(Point a, Point b) {
-        return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void translate(int x_translation, int y_translation) {
@@ -63,9 +61,9 @@ public class Point {
 //        }else{
 //            rotation(l.getPointA(), (int)angle);
 //        }
-        if(s == "vertical"){
+        if (s == "vertical") {
             this.setX(width - this.x);
-        }else{
+        } else {
             this.setY(height - this.y);
         }
     }
@@ -81,21 +79,21 @@ public class Point {
     public void rotation(Point p, int angle) {
         int deplacementX = 0, deplacementY = 0;
         Point pcenter;
-        if(p.y != 0 || p.x != 0) {
+        if (p.y != 0 || p.x != 0) {
             deplacementX = p.x;
             deplacementY = p.y;
             pcenter = new Point();
             translate(-deplacementX, -deplacementY);
-        }else{
+        } else {
             pcenter = p;
         }
         double cos = Math.cos((angle * Math.PI) / 180);
         double sin = Math.sin((angle * Math.PI) / 180);
-        int x2 = (int)Math.round(pcenter.x - (x * cos - y * sin));
-        int y2 = (int)Math.round(pcenter.y - (x * sin + y * cos));
+        int x2 = (int) Math.round(pcenter.x - (x * cos - y * sin));
+        int y2 = (int) Math.round(pcenter.y - (x * sin + y * cos));
         setY(y2);
         setX(x2);
-        if(deplacementX != 0 || deplacementY != 0) {
+        if (deplacementX != 0 || deplacementY != 0) {
             translate(deplacementX, deplacementY);
         }
 //        angle = (int) (Math.PI / 180);

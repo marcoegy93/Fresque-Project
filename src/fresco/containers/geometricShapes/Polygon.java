@@ -44,7 +44,7 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public void rotation(int angle) {
-        for(Point point : points){
+        for (Point point : points) {
             point.rotation(this.center, angle);
         }
     }
@@ -80,13 +80,15 @@ public class Polygon extends GeometricShapeAbs {
         }
         g.drawPolygon(points_x, points_y, points.size());
     }
+
     @Override
-    public Point getCenter(){
-        int sumX = 0 ; int sumY = 0 ;
-        for( int i = 0 ; i < points.size() ; i++) {
+    public Point getCenter() {
+        int sumX = 0;
+        int sumY = 0;
+        for (int i = 0; i < points.size(); i++) {
             sumX += points.get(i).getX();
             sumY += points.get(i).getY();
         }
-        return new Point(sumX/ points.size(),sumY/ points.size());
+        return new Point(sumX / points.size(), sumY / points.size());
     }
 }

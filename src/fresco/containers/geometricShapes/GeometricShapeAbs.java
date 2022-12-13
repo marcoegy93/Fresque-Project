@@ -1,7 +1,6 @@
 package fresco.containers.geometricShapes;
 
 import fresco.containers.calculatePerimeterAndArea.ICalculatePerimeterAndArea;
-import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
@@ -25,6 +24,7 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
 
     /**
      * The constructor of a GeometricShape with a given center
+     *
      * @param center the center of the shape
      */
     public GeometricShapeAbs(Point center) {
@@ -33,6 +33,7 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
 
     /**
      * Getter that gets the center of the shape
+     *
      * @return the center of the shape
      */
     public Point getCenter() {
@@ -41,18 +42,21 @@ public abstract class GeometricShapeAbs implements ICalculatePerimeterAndArea, I
 
     /**
      * Methods that calculates the perimeter of the GeometricShape
+     *
      * @return the perimeter of the GeometricShape
      */
     public abstract double calculatePerimeter();
 
     /**
      * Methods that calculates the area of the GeometricShape
+     *
      * @return the area of the GeometricShape
      */
     public abstract double calculateArea();
 
     /**
      * Methods that draws the GeometricShape on a Image
+     *
      * @param g the Graphics of the JPanel to draw on
      * @param c the Color used to draw the shape
      */

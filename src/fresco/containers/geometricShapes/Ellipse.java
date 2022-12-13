@@ -17,9 +17,10 @@ public class Ellipse extends GeometricShapeAbs {
 
     /**
      * Constructor of an Ellipse
+     *
      * @param center the center of the Ellipse
      * @param height the height of the Ellipse
-     * @param width the width of the Ellipse
+     * @param width  the width of the Ellipse
      */
     public Ellipse(Point center, int height, int width) {
         super(center);
@@ -52,10 +53,10 @@ public class Ellipse extends GeometricShapeAbs {
     @Override
     public void rotation(int angle) {
         //à refaire
-        Point pHeight = new Point(this.center.getX() + height, this.center.getY() + height );
-        Point pWidth = new Point(this.center.getX() + width, this.center.getY() + width );
-        pHeight.rotation(this.center,angle);
-        pWidth.rotation(this.center,angle);
+        Point pHeight = new Point(this.center.getX() + height, this.center.getY() + height);
+        Point pWidth = new Point(this.center.getX() + width, this.center.getY() + width);
+        pHeight.rotation(this.center, angle);
+        pWidth.rotation(this.center, angle);
 
     }
 
@@ -65,12 +66,12 @@ public class Ellipse extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(int width, int height,String s) {
+    public void axialSymmetry(int width, int height, String s) {
 
         center.axialSymmetry(width, height, s);
-        if(s == "vertical"){
+        if (s == "vertical") {
             this.center.setX(this.center.getX() - this.width * 2);
-        }else{
+        } else {
             this.center.setY(this.center.getY() - this.height * 2);
         }
     }

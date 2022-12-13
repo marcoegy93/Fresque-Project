@@ -2,12 +2,9 @@ package UI.panels;
 
 import UI.components.Toolbar;
 import appli.ImagePanelDrawUtil;
-import fresco.containers.geometricShapes.GeometricShapeAbs;
 import fresco.containers.Image;
-import fresco.containers.geometricShapes.Circle;
-import fresco.containers.geometricShapes.Ellipse;
-import fresco.containers.geometricShapes.Line;
 import fresco.containers.geometricShapes.Polygon;
+import fresco.containers.geometricShapes.*;
 import fresco.containers.geometricShapes.utils.Point;
 
 import javax.swing.*;
@@ -17,32 +14,19 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ImagePanel extends JPanel {
-    public void setCurrentImage(Image currentImage) {
-        this.currentImage = currentImage;
-    }
-
+    ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();
+    ArrayList<JTextField> yFieldPoligonList = new ArrayList<JTextField>();
     private Image currentImage;
-
-    public DrawingPanel getLinkedDrawing() {
-        return linkedDrawing;
-    }
-
     private DrawingPanel linkedDrawing;
-
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
-
     private Toolbar toolbar;
     private JButton createNewImage;
     private boolean editMode = false;
-
-
     public ImagePanel(Image image) {
         setBackground(Color.white);
         this.setPreferredSize(new Dimension(1280, 720));
         this.currentImage = image;
     }
+
 
     public ImagePanel(DrawingPanel drawingPanel) {
         setBackground(Color.white);
@@ -58,6 +42,18 @@ public class ImagePanel extends JPanel {
             }
         });
         add(createNewImage, BorderLayout.CENTER);
+    }
+
+    public void setCurrentImage(Image currentImage) {
+        this.currentImage = currentImage;
+    }
+
+    public DrawingPanel getLinkedDrawing() {
+        return linkedDrawing;
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 
     public void createNewImage() {
@@ -106,8 +102,8 @@ public class ImagePanel extends JPanel {
             disableDrawingButtons();
 
             g2.setColor(Color.lightGray);
-            g2.drawLine(0, getHeight()/2, getWidth(), getHeight()/2);
-            g2.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
+            g2.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2);
+            g2.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
         }
         if (!editMode) g2.scale(0.33, 0.33);
         if (currentImage != null) {
@@ -134,9 +130,6 @@ public class ImagePanel extends JPanel {
             }
         }
     }
-
-    ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();
-    ArrayList<JTextField> yFieldPoligonList = new ArrayList<JTextField>();
 
     public void openModalShape(String shape) {
         int result;
@@ -337,34 +330,34 @@ public class ImagePanel extends JPanel {
                 repaint();
                 break;
             case "Axial Symmetry":
-            	  JRadioButton rBtn1 = new JRadioButton("Horizontal");
-                  JRadioButton rBtn2 = new JRadioButton("Vertical");
-                  rBtn1.setBounds(40,60,200,50);  
-                  rBtn2.setBounds(40,100,200,50);  
-                  ButtonGroup bg = new ButtonGroup();  
-                  bg.add(rBtn1);
-                  bg.add(rBtn2);  
-                  rBtn1.setSelected(true);
-                  JPanel myPanelAxialSymmetry = new JPanel();
-                  myPanelAxialSymmetry.add(rBtn1);
-                  myPanelAxialSymmetry.add(rBtn2);               
+                JRadioButton rBtn1 = new JRadioButton("Horizontal");
+                JRadioButton rBtn2 = new JRadioButton("Vertical");
+                rBtn1.setBounds(40, 60, 200, 50);
+                rBtn2.setBounds(40, 100, 200, 50);
+                ButtonGroup bg = new ButtonGroup();
+                bg.add(rBtn1);
+                bg.add(rBtn2);
+                rBtn1.setSelected(true);
+                JPanel myPanelAxialSymmetry = new JPanel();
+                myPanelAxialSymmetry.add(rBtn1);
+                myPanelAxialSymmetry.add(rBtn2);
 
 
                 result = JOptionPane.showConfirmDialog(null, myPanelAxialSymmetry,
                         "Axial Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                	System.out.println( getWidth());
-                	System.out.println( getHeight());
+                    System.out.println(getWidth());
+                    System.out.println(getHeight());
 
-                	String symmetrie = "horizontal";
-                	if(rBtn1.isSelected())
-                		symmetrie = "horizontal";
-                	if(rBtn2.isSelected())
-                		symmetrie = "vertical";
+                    String symmetrie = "horizontal";
+                    if (rBtn1.isSelected())
+                        symmetrie = "horizontal";
+                    if (rBtn2.isSelected())
+                        symmetrie = "vertical";
 
                     currentImage.axialSymmetry(
-                    	    getWidth(),
+                            getWidth(),
                             getHeight(),
                             symmetrie
                     );
@@ -387,8 +380,8 @@ public class ImagePanel extends JPanel {
                         "Central Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    	currentImage.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()), Integer.parseInt(yCentralSymetrie.getText())));
-                    
+                    currentImage.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()), Integer.parseInt(yCentralSymetrie.getText())));
+
                 }
                 repaint();
                 break;
