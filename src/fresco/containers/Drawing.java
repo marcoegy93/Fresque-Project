@@ -133,9 +133,9 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void axialSymmetry(Line l) {
+    public void axialSymmetry(int width, int height, String s) {
         for (Image i : images) {
-            i.axialSymmetry(l);
+            i.axialSymmetry(width, height, s);
         }
     }
 }

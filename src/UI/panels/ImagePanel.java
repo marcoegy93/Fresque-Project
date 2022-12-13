@@ -337,43 +337,36 @@ public class ImagePanel extends JPanel {
                 repaint();
                 break;
             case "Axial Symmetry":
-                JTextField x1AxialSymmetry = new JTextField(5);
-                JTextField y1AxialSymmetry = new JTextField(5);
-                JTextField x2AxialSymmetry = new JTextField(5);
-                JTextField y2AxialSymmetry = new JTextField(5);
-
-
-                JPanel myPanelAxialSymmetry = new JPanel();
-                myPanelAxialSymmetry.add(new JLabel("x1:"));
-                myPanelAxialSymmetry.add(x1AxialSymmetry);
-                myPanelAxialSymmetry.add(Box.createHorizontalStrut(10)); // a spacer
-                myPanelAxialSymmetry.add(new JLabel("y1:"));
-                myPanelAxialSymmetry.add(y1AxialSymmetry);
-
-                myPanelAxialSymmetry.add(Box.createHorizontalStrut(20)); // a spacer
-
-                myPanelAxialSymmetry.add(new JLabel("x2:"));
-                myPanelAxialSymmetry.add(x2AxialSymmetry);
-                myPanelAxialSymmetry.add(Box.createHorizontalStrut(10)); // a spacer
-                myPanelAxialSymmetry.add(new JLabel("y2:"));
-                myPanelAxialSymmetry.add(y2AxialSymmetry);
+            	  JRadioButton rBtn1 = new JRadioButton("Horizontal");
+                  JRadioButton rBtn2 = new JRadioButton("Vertical");
+                  rBtn1.setBounds(40,60,200,50);  
+                  rBtn2.setBounds(40,100,200,50);  
+                  ButtonGroup bg = new ButtonGroup();  
+                  bg.add(rBtn1);
+                  bg.add(rBtn2);  
+                  rBtn1.setSelected(true);
+                  JPanel myPanelAxialSymmetry = new JPanel();
+                  myPanelAxialSymmetry.add(rBtn1);
+                  myPanelAxialSymmetry.add(rBtn2);               
 
 
                 result = JOptionPane.showConfirmDialog(null, myPanelAxialSymmetry,
                         "Axial Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
+                	System.out.println( getWidth());
+                	System.out.println( getHeight());
+
+                	String symmetrie = "horizontal";
+                	if(rBtn1.isSelected())
+                		symmetrie = "horizontal";
+                	if(rBtn2.isSelected())
+                		symmetrie = "vertical";
+
                     currentImage.axialSymmetry(
-                            new Line(
-                                    new Point(
-                                            Integer.parseInt(x1AxialSymmetry.getText()),
-                                            Integer.parseInt(y1AxialSymmetry.getText())
-                                    ),
-                                    new Point(
-                                            Integer.parseInt(x2AxialSymmetry.getText()),
-                                            Integer.parseInt(y2AxialSymmetry.getText())
-                                    )
-                            )
+                    	    getWidth(),
+                            getHeight(),
+                            symmetrie
                     );
                 }
                 repaint();

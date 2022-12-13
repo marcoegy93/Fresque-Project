@@ -32,10 +32,5 @@ public interface ITransformation {
      * @param p the point of symmetry
      */
     void centralSymmetry(Point p);
-
-    /**
-     * Method that creates the symmetry of the shape from a given axis
-     * @param l the axis of symmetry
-     */
     void axialSymmetry(Line l);
 }
