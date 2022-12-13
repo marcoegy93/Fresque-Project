@@ -32,5 +32,5 @@ public interface ITransformation {
      * @param p the point of symmetry
      */
     void centralSymmetry(Point p);
-    void axialSymmetry(Line l);
+    void axialSymmetry(int width, int height, String s);
 }
