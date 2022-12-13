@@ -67,9 +67,9 @@ public class Circle extends GeometricShapeAbs {
     public void axialSymmetry(int width, int height,String s) {
         center.axialSymmetry(width, height, s);
         if(s == "vertical"){
-            this.center.setX(this.center.getX() - radius);
+            this.center.setX(this.center.getX() - radius *2);
         }else{
-            this.center.setY(this.center.getY() - radius);
+            this.center.setY(this.center.getY() - radius *2);
         }
     }
 
@@ -86,7 +86,7 @@ public class Circle extends GeometricShapeAbs {
     @Override
     public void draw(Graphics g, Color c) {
         g.setColor(c);
-        g.drawOval(center.getX(), center.getY(), radius, radius);
+        g.drawOval(center.getX(), center.getY(), radius * 2, radius * 2);
     }
 
 }

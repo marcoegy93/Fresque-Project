@@ -69,9 +69,9 @@ public class Ellipse extends GeometricShapeAbs {
 
         center.axialSymmetry(width, height, s);
         if(s == "vertical"){
-            this.center.setX(this.center.getX() - this.width);
+            this.center.setX(this.center.getX() - this.width * 2);
         }else{
-            this.center.setY(this.center.getY() - this.height);
+            this.center.setY(this.center.getY() - this.height * 2);
         }
     }
 
@@ -87,7 +87,7 @@ public class Ellipse extends GeometricShapeAbs {
     @Override
     public void draw(Graphics g, Color c) {
         g.setColor(c);
-        g.drawOval(center.getX(), center.getY(), width, height);
+        g.drawOval(center.getX(), center.getY(), width * 2, height * 2);
     }
 
 }
