@@ -4,30 +4,31 @@ import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
 
+/**
+ * Class that represents a Line
+ */
 public class Line extends GeometricShapeAbs {
 
-    private Point pointA;
-    private Point pointB;
+    /**
+     * Point representing the 2 edges of the line
+     */
+    private Point pointA, pointB;
 
+    /**
+     * The constructor of a Line
+     * @param pointA the edge Point of the Line
+     * @param pointB the other edge Point of the Line
+     */
     public Line(Point pointA, Point pointB) {
         this.pointA = pointA;
         this.pointB = pointB;
         this.center = getCenter();
     }
 
-
-    public Point getPointA() {
-        return pointA;
-    }
-
-    public Point getPointB() {
-        return pointB;
-    }
-
     @Override
     public Point getCenter() {
-        return new Point((this.getPointA().getX() + this.getPointB().getX()) / 2,
-                (this.getPointA().getY() + this.getPointB().getY()) / 2);
+        return new Point((pointA.getX() + pointB.getX()) / 2,
+                (pointA.getY() + pointB.getY()) / 2);
     }
 
     @Override

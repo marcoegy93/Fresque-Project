@@ -6,9 +6,21 @@ import java.awt.*;
 
 import static java.lang.Math.sqrt;
 
+/**
+ * Class that represents an Ellipse
+ */
 public class Ellipse extends GeometricShapeAbs {
+    /**
+     * Integers representing height and width
+     */
     private int height, width;
 
+    /**
+     * Constructor of an Ellipse
+     * @param center the center of the Ellipse
+     * @param height the height of the Ellipse
+     * @param width the width of the Ellipse
+     */
     public Ellipse(Point center, int height, int width) {
         super(center);
         this.height = height;

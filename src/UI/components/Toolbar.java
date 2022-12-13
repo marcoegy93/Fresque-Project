@@ -12,8 +12,14 @@ import java.awt.event.ActionListener;
  * Class which represents the Toolbar used to do various operations on an image
  */
 public class Toolbar extends JToolBar {
+    /**
+     * The buttons that draws the shapes
+     */
     private final DrawingButton addLine, addCircle, addEllipse, addPolygon;
 
+    /**
+     * The constructor
+     */
     public Toolbar() {
         add(addLine = new DrawingButton("Line", "resources/icons/line.png"));
         add(addCircle = new DrawingButton("Circle", "resources/icons/circle.png"));
