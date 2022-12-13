@@ -65,9 +65,9 @@ public class Line extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(Line l) {
-        this.pointB.axialSymmetry(l);
-        this.pointA.axialSymmetry(l);
+    public void axialSymmetry(int width, int height,String s) {
+        this.pointB.axialSymmetry(width, height, s);
+        this.pointA.axialSymmetry(width, height, s);
     }
 
     @Override
