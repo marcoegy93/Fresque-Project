@@ -47,21 +47,26 @@ public class Point {
         translate(x_distance * 2, y_distance * 2);
     }
 
-    public void axialSymmetry(Line l) {
+    public void axialSymmetry(int height, int width, String s) {
 //        int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
 //        int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
 //        translate(x_distance, y_distance);
-        Line l2 = new Line(this, l.getPointA());
-        double coeffDirecteurLine1 = ((double)l.getPointB().y -  (double)l.getPointA().y) / ((double)l.getPointB().x -  (double)l.getPointA().x);
-        double coeffDirecteurLine2 = ((double)l2.getPointB().y -  (double)l2.getPointA().y) / ((double)l2.getPointB().x -  (double)l2.getPointA().x);
-        double tangenteAngle = Math.abs((coeffDirecteurLine1 - coeffDirecteurLine2)/(1 + coeffDirecteurLine1 * coeffDirecteurLine2));
-        double angle = 2 * Math.toDegrees(Math.atan(tangenteAngle));
-        if(l.getPointA().x > this.x){
-            rotation(l.getPointA(), (int)angle);
-            rotation(l.getPointA(), (int)angle);
-            rotation(l.getPointA(), (int)angle);
+//        Line l2 = new Line(this, l.getPointA());
+//        double coeffDirecteurLine1 = ((double)l.getPointB().y -  (double)l.getPointA().y) / ((double)l.getPointB().x -  (double)l.getPointA().x);
+//        double coeffDirecteurLine2 = ((double)l2.getPointB().y -  (double)l2.getPointA().y) / ((double)l2.getPointB().x -  (double)l2.getPointA().x);
+//        double tangenteAngle = Math.abs((coeffDirecteurLine1 - coeffDirecteurLine2)/(1 + coeffDirecteurLine1 * coeffDirecteurLine2));
+//        double angle = 2 * Math.toDegrees(Math.atan(tangenteAngle));
+//        if(l.getPointA().x > this.x){
+//            rotation(l.getPointA(), (int)angle);
+//            rotation(l.getPointA(), (int)angle);
+//            rotation(l.getPointA(), (int)angle);
+//        }else{
+//            rotation(l.getPointA(), (int)angle);
+//        }
+        if(s == "vertical"){
+            this.setX(width - this.x);
         }else{
-            rotation(l.getPointA(), (int)angle);
+            this.setY(height - this.y);
         }
     }
 
