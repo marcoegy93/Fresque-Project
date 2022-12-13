@@ -16,7 +16,7 @@ public class ListPanel extends JPanel {
     public ListPanel() {
         DefaultListModel<String> l = new DefaultListModel<>();
         listImage = new JList<>(l);
-        listImage.setPreferredSize(new Dimension(75, 200));
+        listImage.setPreferredSize(new Dimension(200, 200));
         listImage.setSelectedIndex(0);
         listImage.addListSelectionListener(new ListSelectionListener() {
 

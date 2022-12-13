@@ -81,7 +81,7 @@ public class ImagePanel extends JPanel {
 
             if (result == JOptionPane.OK_OPTION) {
                 Color c = colorChooser.getColor();
-                String name = imageName.getText().isEmpty() ? "Image " + linkedDrawing.getDrawing().getImages().size() + 1 : imageName.getText();
+                String name = imageName.getText().isEmpty() ? "Image " + (linkedDrawing.getDrawing().getImages().size() + 1) : imageName.getText();
                 currentImage = new Image(name, c);
                 linkedDrawing.getDrawing().addImage(currentImage);
             }
