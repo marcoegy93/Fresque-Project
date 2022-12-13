@@ -34,7 +34,7 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public double calculatePerimeter() {
-        return Point.calculateDistance(this.pointA, this.pointB);
+        return pointA.calculateDistance(this.pointB);
     }
 
     @Override

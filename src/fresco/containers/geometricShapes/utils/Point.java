@@ -1,66 +1,101 @@
 package fresco.containers.geometricShapes.utils;
 
+/**
+ * Utility class that represents a Point placed in a 2 dimension plane
+ * It allows the abstraction of complex shape transformations to simple 2D point transformations
+ */
 public class Point {
-    private int x;
-    private int y;
+    /**
+     * Integers representing the coordinates of the point in the 2 dimension plane
+     */
+    private int x, y;
 
+    /**
+     * Default constructor of a point, where it's coordinates are set to zero
+     */
     public Point() {
         this.x = 0;
         this.y = 0;
     }
 
+    /**
+     * Constructor of a point with given coordinates
+     * @param x the x coordinate of the point
+     * @param y the y coordinate of the point
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public static double calculateDistance(Point a, Point b) {
-        return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
+    /**
+     * Method that calculates the distance to a point
+     * @param b the point to get to
+     * @return the distance to the given point
+     */
+    public double calculateDistance(Point b) {
+        return Math.sqrt(Math.pow(b.getX() - getX(), 2) + Math.pow(b.getY() - getY(), 2));
     }
 
+    /**
+     * Getter that gets the horizontal coordinate of the point
+     * @return the horizontal coordinate of the Point
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Setter that sets the horizontal coordinate of the Point from a given integer
+     * @param x the new horizontal coordinate
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * Getter that gets the vertical coordinate
+     * @return the vertical coordinate of the Point
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Setter that sets the vertical coordinate of the Point from a given integer
+     * @param y the new vertical coordinate
+     */
     public void setY(int y) {
         this.y = y;
     }
 
-    public void translate(int x_translation, int y_translation) {
-        this.setX(x + x_translation);
-        this.setY(y + y_translation);
+    /**
+     * Method that translates the point by x and y
+     * @param x the horizontal movement to apply to the Point
+     * @param y the vertical movement to apply to the Point
+     */
+    public void translate(int x, int y) {
+        this.setX(x + x);
+        this.setY(y + y);
     }
 
+    /**
+     * Method that does the center symmetry of the Point around a given point
+     * @param o the center of symmetry
+     */
     public void centralSymmetry(Point o) {
         int x_distance = o.getX() - x;
         int y_distance = o.getY() - y;
         translate(x_distance * 2, y_distance * 2);
     }
 
+    /**
+     * Method that does the axial symmetry of the Point based on horizontal or vertical axis
+     * @param width the width which defines the movement of the shape on the horizontal axis
+     * @param height the height which defines the movement of the shape on the vertical axis
+     * @param s the type of axial symmetry (whether 'Vertical' or 'Horizontal')
+     */
     public void axialSymmetry(int width, int height, String s) {
-//        int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
-//        int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
-//        translate(x_distance, y_distance);
-//        Line l2 = new Line(this, l.getPointA());
-//        double coeffDirecteurLine1 = ((double)l.getPointB().y -  (double)l.getPointA().y) / ((double)l.getPointB().x -  (double)l.getPointA().x);
-//        double coeffDirecteurLine2 = ((double)l2.getPointB().y -  (double)l2.getPointA().y) / ((double)l2.getPointB().x -  (double)l2.getPointA().x);
-//        double tangenteAngle = Math.abs((coeffDirecteurLine1 - coeffDirecteurLine2)/(1 + coeffDirecteurLine1 * coeffDirecteurLine2));
-//        double angle = 2 * Math.toDegrees(Math.atan(tangenteAngle));
-//        if(l.getPointA().x > this.x){
-//            rotation(l.getPointA(), (int)angle);
-//            rotation(l.getPointA(), (int)angle);
-//            rotation(l.getPointA(), (int)angle);
-//        }else{
-//            rotation(l.getPointA(), (int)angle);
-//        }
         if (s == "vertical") {
             this.setX(width - this.x);
         } else {
@@ -68,6 +103,11 @@ public class Point {
         }
     }
 
+    /**
+     * Method that scales to point (growing or shrinking)
+     * @param p     the origin of the homothety
+     * @param ratio the ratio that scales the shape
+     */
     public void homothetie(Point p, int ratio) {
         int x_distance = this.getX() - p.x;
         int y_distance = this.getY() - p.y;
@@ -76,6 +116,12 @@ public class Point {
         this.setY(p.y);
     }
 
+    /**
+     * Method that rotates the shape with a given angle
+     *
+     * @param p the point to help with the rotation
+     * @param angle the angle of the rotation
+     */
     public void rotation(Point p, int angle) {
         int deplacementX = 0, deplacementY = 0;
         Point pcenter;
@@ -96,13 +142,6 @@ public class Point {
         if (deplacementX != 0 || deplacementY != 0) {
             translate(deplacementX, deplacementY);
         }
-//        angle = (int) (Math.PI / 180);
-//        int xM = this.x - p.x;
-//        int yM = this.y - p.y;
-//        double x = xM * Math.cos (angle) + yM * Math.sin (angle) + p.x;
-//        double y = - xM * Math.sin (angle) + yM * Math.cos (angle) + p.y;
-//        setY((int) Math.round(y));
-//        setX((int) Math.round(x));
     }
 
     @Override
