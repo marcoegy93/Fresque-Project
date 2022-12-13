@@ -103,9 +103,9 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     }
 
     @Override
-    public void axialSymmetry(Line l) {
+    public void axialSymmetry(int width, int height, String s) {
         for(GeometricShapeAbs gs : shapes){
-            gs.axialSymmetry(l);
+            gs.axialSymmetry(width, height, s);
         }
     }
 

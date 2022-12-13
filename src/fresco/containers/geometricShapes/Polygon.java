@@ -55,8 +55,8 @@ public class Polygon extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(Line l) {
-        for (Point point : points) point.axialSymmetry(l);
+    public void axialSymmetry(int width, int height, String s) {
+        for (Point point : points) point.axialSymmetry(width, height, s);
     }
 
     @Override

@@ -9,5 +9,5 @@ public interface ITransformation {
     void homothetie(Point p, int ratio);
     void rotation(int angle);
     void centralSymmetry(Point p);
-    void axialSymmetry(Line l);
+    void axialSymmetry(int width, int height,String s);
 }

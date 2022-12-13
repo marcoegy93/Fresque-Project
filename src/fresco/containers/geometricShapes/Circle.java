@@ -49,8 +49,8 @@ public class Circle extends GeometricShapeAbs {
     }
 
     @Override
-    public void axialSymmetry(Line l) {
-        center.axialSymmetry(l);
+    public void axialSymmetry(int width, int height,String s) {
+        center.axialSymmetry(width, height, s);
     }
 
     @Override
