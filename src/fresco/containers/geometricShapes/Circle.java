@@ -66,6 +66,11 @@ public class Circle extends GeometricShapeAbs {
     @Override
     public void axialSymmetry(int width, int height,String s) {
         center.axialSymmetry(width, height, s);
+        if(s == "vertical"){
+            this.center.setX(this.center.getX() - radius);
+        }else{
+            this.center.setY(this.center.getY() - radius);
+        }
     }
 
     @Override
