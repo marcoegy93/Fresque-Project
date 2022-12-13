@@ -47,7 +47,7 @@ public class Point {
         translate(x_distance * 2, y_distance * 2);
     }
 
-    public void axialSymmetry(int height, int width, String s) {
+    public void axialSymmetry(int width, int height, String s) {
 //        int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
 //        int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
 //        translate(x_distance, y_distance);
