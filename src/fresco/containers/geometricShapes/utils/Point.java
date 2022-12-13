@@ -48,9 +48,21 @@ public class Point {
     }
 
     public void axialSymmetry(Line l) {
-        int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
-        int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
-        translate(x_distance, y_distance);
+//        int x_distance = (l.getPointA().getX() - x) + (l.getPointB().getX() - x);
+//        int y_distance = (l.getPointA().getY() - y) + (l.getPointB().getY() - y);
+//        translate(x_distance, y_distance);
+        Line l2 = new Line(this, l.getPointA());
+        double coeffDirecteurLine1 = ((double)l.getPointB().y -  (double)l.getPointA().y) / ((double)l.getPointB().x -  (double)l.getPointA().x);
+        double coeffDirecteurLine2 = ((double)l2.getPointB().y -  (double)l2.getPointA().y) / ((double)l2.getPointB().x -  (double)l2.getPointA().x);
+        double tangenteAngle = Math.abs((coeffDirecteurLine1 - coeffDirecteurLine2)/(1 + coeffDirecteurLine1 * coeffDirecteurLine2));
+        double angle = 2 * Math.toDegrees(Math.atan(tangenteAngle));
+        if(l.getPointA().x > this.x){
+            rotation(l.getPointA(), (int)angle);
+            rotation(l.getPointA(), (int)angle);
+            rotation(l.getPointA(), (int)angle);
+        }else{
+            rotation(l.getPointA(), (int)angle);
+        }
     }
 
     public void homothetie(Point p, int ratio) {
@@ -62,8 +74,32 @@ public class Point {
     }
 
     public void rotation(Point p, int angle) {
-        int x2 = (int)Math.round(p.x - (x * Math.cos((angle * Math.PI) / 180) - y * Math.sin((angle * Math.PI) / 180)));
-        int y2 = (int)Math.round(p.y - (x * Math.sin((angle * Math.PI) / 180) + y * Math.cos((angle * Math.PI) / 180)));
+        int deplacementX = 0, deplacementY = 0;
+        Point pcenter;
+        if(p.y != 0 || p.x != 0) {
+            deplacementX = p.x;
+            deplacementY = p.y;
+            pcenter = new Point();
+            translate(-deplacementX, -deplacementY);
+        }else{
+            pcenter = p;
+        }
+        double cos = Math.cos((angle * Math.PI) / 180);
+        double sin = Math.sin((angle * Math.PI) / 180);
+        int x2 = (int)Math.round(pcenter.x - (x * cos - y * sin));
+        int y2 = (int)Math.round(pcenter.y - (x * sin + y * cos));
+        setY(y2);
+        setX(x2);
+        if(deplacementX != 0 || deplacementY != 0) {
+            translate(deplacementX, deplacementY);
+        }
+//        angle = (int) (Math.PI / 180);
+//        int xM = this.x - p.x;
+//        int yM = this.y - p.y;
+//        double x = xM * Math.cos (angle) + yM * Math.sin (angle) + p.x;
+//        double y = - xM * Math.sin (angle) + yM * Math.cos (angle) + p.y;
+//        setY((int) Math.round(y));
+//        setX((int) Math.round(x));
     }
 
     @Override

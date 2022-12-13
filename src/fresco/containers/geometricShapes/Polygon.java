@@ -16,6 +16,7 @@ public class Polygon extends GeometricShapeAbs {
 
     public void addPoint(final Point point) {
         this.points.add(point);
+        this.center = getCenter();
     }
 
     @Override
@@ -79,5 +80,13 @@ public class Polygon extends GeometricShapeAbs {
         }
         g.drawPolygon(points_x, points_y, points.size());
     }
-
+    @Override
+    public Point getCenter(){
+        int sumX = 0 ; int sumY = 0 ;
+        for( int i = 0 ; i < points.size() ; i++) {
+            sumX += points.get(i).getX();
+            sumY += points.get(i).getY();
+        }
+        return new Point(sumX/ points.size(),sumY/ points.size());
+    }
 }
