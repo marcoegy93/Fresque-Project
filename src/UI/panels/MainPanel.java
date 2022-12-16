@@ -10,18 +10,41 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * UI Class that represents a containing JPanel for the app,
+ * It uses a CardLayout to easily navigate between the DrawingPanel and the ImagePanel
+ */
 public class MainPanel extends JPanel {
-    private static final String cardA = "A";
-    private static final String cardB = "B";
+    /**
+     * The Cards used in the cardLayout
+     */
+    private static final String cardA = "A", cardB = "B";
+
+    /**
+     * The Fresco of the application, which should be unique (@see Fresco)
+     */
     private static Fresco fresco;
+
+    /**
+     * The CardLayout used in the Application to allow navigation between JPanels
+     */
     private final CardLayout cards;
+
+    /**
+     * The component which will hold the CardLayout
+     */
     private final JPanel cardHolder = this;
 
+    /**
+     * The default constructor of a MainPanel,
+     * It creates a Toolbar and a DrawingPanel as it's the first things shown on the Panel.
+     * It also creates the navigation buttons (toImagePanelBtn and toDrawingPanelBtn)
+     */
     public MainPanel() {
         fresco = new Fresco();
         JToolBar newToolbar = new JToolBar();
         DrawingPanel drawingPanel = new DrawingPanel();
-        JButton ba = new JButton("Go to image panel");
+        JButton toImagePanelBtn = new JButton("Go to image panel");
         JButton areaDrawing = new JButton("Show area");
         areaDrawing.addActionListener(e -> {
             this.openModalAction(areaDrawing.getText());
@@ -30,8 +53,8 @@ public class MainPanel extends JPanel {
         perimeterDrawing.addActionListener(e -> {
             this.openModalAction(areaDrawing.getText());
         });
-        ba.setPreferredSize(new Dimension(800, 20));
-        ba.addActionListener(new Switcher(cardB));
+        toImagePanelBtn.setPreferredSize(new Dimension(800, 20));
+        toImagePanelBtn.addActionListener(new CardNavigation(cardB));
 
         String[] transformations = {"", "Rotation", "Axial Symmetry", "Central Symmetry", "Homothetie", "Translation"};
         JComboBox jComboBox = new JComboBox(transformations);
@@ -48,7 +71,7 @@ public class MainPanel extends JPanel {
         jComboBox.setLightWeightPopupEnabled(false);
 
 
-        newToolbar.add(ba);
+        newToolbar.add(toImagePanelBtn);
         newToolbar.addSeparator();
         newToolbar.addSeparator();
         newToolbar.add(areaDrawing);
@@ -59,9 +82,9 @@ public class MainPanel extends JPanel {
         drawingPanel.add(newToolbar, BorderLayout.NORTH);
 
         ImagePanel imagePanel = new ImagePanel(drawingPanel);
-        JButton bb = new JButton("<< Back to drawing panel");
-        bb.addActionListener(new Switcher(cardA));
-        imagePanel.getToolbar().add(bb);
+        JButton toDrawingPanelBtn = new JButton("<< Back to drawing panel");
+        toDrawingPanelBtn.addActionListener(new CardNavigation(cardA));
+        imagePanel.getToolbar().add(toDrawingPanelBtn);
 
         cards = new CardLayout();
         setLayout(cards);
@@ -69,10 +92,18 @@ public class MainPanel extends JPanel {
         add(imagePanel, cardB);
     }
 
+    /**
+     * Getter that gets the Fresco of the Panel
+     * @return the Fresco
+     */
     public static Fresco getFresco() {
         return fresco;
     }
 
+    /**
+     * Method that opens a Modal to show the Drawing properties (area or perimeter)
+     * @param action the property to be shown in the Modal
+     */
     public void openModalAction(String action) {
         switch (action) {
             case "Show area":
@@ -92,6 +123,11 @@ public class MainPanel extends JPanel {
         }
     }
 
+    /**
+     * Method that opens a Modal when the user wants to apply a Transformation on all the shapes in the Image contained
+     * in a drawing to get the parameters it wants
+     * @param transformation the transformation to be done on the GeometricShapes
+     */
     public void doTransformation(String transformation) {
         int result;
         switch (transformation) {
@@ -231,13 +267,27 @@ public class MainPanel extends JPanel {
 
     }
 
-    private class Switcher implements ActionListener {
+    /**
+     * Private Class used to allows the navigation between Cards in a CardLayout
+     */
+    private class CardNavigation implements ActionListener {
+        /**
+         * The card name which will be displayed
+         */
         String card;
 
-        Switcher(String card) {
+        /**
+         * The default constructor
+         * @param card the card Name
+         */
+        CardNavigation(String card) {
             this.card = card;
         }
 
+        /**
+         * On click, it shows the component with which it is linked
+         * @param e
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             cardHolder.revalidate();

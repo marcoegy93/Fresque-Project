@@ -9,10 +9,19 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.Set;
 
+/**
+ * UI Class that shows a List of the Images contained in a Drawing
+ */
 public class ListPanel extends JPanel {
+    /**
+     * The list of Images contained in a Drawing
+     */
     private final JList<String> listImage;
 
-
+    /**
+     * The default constructor of a ListPanel
+     * It creates a JList component containing all the images from the Drawing
+     */
     public ListPanel() {
         DefaultListModel<String> l = new DefaultListModel<>();
         listImage = new JList<>(l);
@@ -29,6 +38,10 @@ public class ListPanel extends JPanel {
         add(listImage);
     }
 
+    /**
+     * Method that allows to set all the Images of a given Drawing in the JList
+     * @param Images
+     */
     public void setNewDataOnList(Set<Image> Images) {
         String[] l = new String[Images.size()];
         int index = 0;

@@ -18,7 +18,12 @@ public class Toolbar extends JToolBar {
     private final DrawingButton addLine, addCircle, addEllipse, addPolygon;
 
     /**
-     * The constructor
+     * The constructor that creates the toolbar with 4 sets of buttons
+     * - Buttons for drawing shapes on the ImagePanel
+     * - Buttons to show shapes properties (area and perimeter)
+     * - Buttons do transformations on GeometricShapes in the image (@see ITransformation)
+     * - Buttons that allow the navigation in the application (Back to DrawingPanel, Change Image...)
+     * The Toolbar uses the default FlowLayout defined by Swing
      */
     public Toolbar() {
         add(addLine = new DrawingButton("Line", "resources/icons/line.png"));

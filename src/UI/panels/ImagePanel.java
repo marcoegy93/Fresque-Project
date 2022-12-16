@@ -13,21 +13,59 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * UI Class that shows a specific Image on a JPanel,
+ * which is a composition of GeometricShapes (@see Image)
+ */
 public class ImagePanel extends JPanel {
-    ArrayList<JTextField> xFieldPoligonList = new ArrayList<JTextField>();
-    ArrayList<JTextField> yFieldPoligonList = new ArrayList<JTextField>();
+    /**
+     * The Image currently shown on the ImagePanel
+     */
     private Image currentImage;
+
+    /**
+     * The parent Drawing in which the currentImage is contained in
+     */
     private DrawingPanel linkedDrawing;
+
+    /**
+     * The toolbar of the ImagePanel (@see Toolbar)
+     */
     private Toolbar toolbar;
+
+    /**
+     * Button that allows the creation of new images
+     */
     private JButton createNewImage;
+
+    /**
+     * Boolean that will tell if ImagePanel is in editing mode (changes the interface behaviour)
+     */
     private boolean editMode = false;
+
+    /**
+     * TextFields to add on user demand while creating a Polygon
+     */
+    private ArrayList<JTextField> xFieldPolygonList = new ArrayList<JTextField>(), yFieldPolygonList = new ArrayList<JTextField>();
+
+    /**
+     * Constructor of an ImagePanel used only to display an Image. (editMode = false)
+     * The constructor will only draw the GeometricShapes contained in the Image, without the Toolbar or any buttons
+     *
+     * @param image the Image to display
+     */
     public ImagePanel(Image image) {
         setBackground(Color.white);
         this.setPreferredSize(new Dimension(1280, 720));
         this.currentImage = image;
     }
 
-
+    /**
+     * Constructor of an ImagePanel used to create and edit an Image. (editMode = true)
+     * The constructor will draw the GeometricShapes if there is any, as well as drawing the Toolbar
+     *
+     * @param drawingPanel
+     */
     public ImagePanel(DrawingPanel drawingPanel) {
         setBackground(Color.white);
         linkedDrawing = drawingPanel;
@@ -44,18 +82,38 @@ public class ImagePanel extends JPanel {
         add(createNewImage, BorderLayout.CENTER);
     }
 
+    /**
+     * Setter that sets the currentImage to a given Image
+     *
+     * @param currentImage the Image to set currentImage
+     */
     public void setCurrentImage(Image currentImage) {
         this.currentImage = currentImage;
     }
 
+    /**
+     * Getter that gets the Drawing in which the currentImage is contained in
+     *
+     * @return the parent Drawing
+     */
     public DrawingPanel getLinkedDrawing() {
         return linkedDrawing;
     }
 
+    /**
+     * Getter that gets the Toolbar used by the ImagePanel
+     *
+     * @return the toolbar
+     */
     public Toolbar getToolbar() {
         return toolbar;
     }
 
+    /**
+     * Method that allows the creation of a new Image.
+     * It opens a Dialog to let the user choose its name and its color.
+     * Then, it repaints the whole ImagePanel empty in editing mode (editMode = true)
+     */
     public void createNewImage() {
         if (linkedDrawing.getDrawing().getImages().size() == 9) {
             String message = "You reached the maximum amount of images in a drawing\n";
@@ -91,6 +149,14 @@ public class ImagePanel extends JPanel {
         }
     }
 
+    /**
+     * Method that paints the component whenever it needs to be (on initialization, on update)
+     * If editMode is true, it will paint a toolbar and draw the axis (horizontal and vertical)
+     * If editMode is false, it will scale down the Image to fit in the grid of a DrawingPanel
+     * It then paints all the GeometricShapes of the Image, if there is any
+     *
+     * @param g the Graphics that allows the painting of the JPanel
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -114,6 +180,12 @@ public class ImagePanel extends JPanel {
 
     }
 
+    /**
+     * Method that adds a new GeometricShape to the Image
+     * It removes all entities on the ImagePanel, then trigger a repaint to update the ImagePanel
+     *
+     * @param shape
+     */
     public void addShape(GeometricShapeAbs shape) {
         revalidate();
         repaint();
@@ -123,6 +195,9 @@ public class ImagePanel extends JPanel {
         repaint();
     }
 
+    /**
+     * Method that disables the drawingButtons for which the shape has already been drawn for the currentImage
+     */
     public void disableDrawingButtons() {
         if (currentImage != null) {
             for (GeometricShapeAbs shape : currentImage.getShapes()) {
@@ -131,6 +206,12 @@ public class ImagePanel extends JPanel {
         }
     }
 
+    /**
+     * Method that opens a Modal when the user wants to draw a new GeometricShape.
+     * It opens a different Modal for each shape, depending on its parameter needs
+     *
+     * @param shape the Shape that the user wants to draw
+     */
     public void openModalShape(String shape) {
         int result;
         switch (shape) {
@@ -236,16 +317,16 @@ public class ImagePanel extends JPanel {
 
             case "Polygon":
 
-                xFieldPoligonList.add(new JTextField(5));
-                yFieldPoligonList.add(new JTextField(5));
+                xFieldPolygonList.add(new JTextField(5));
+                yFieldPolygonList.add(new JTextField(5));
 
                 JPanel myPanelPolygon = new JPanel();
                 myPanelPolygon.setLayout(new BoxLayout(myPanelPolygon, BoxLayout.PAGE_AXIS));
                 myPanelPolygon.setPreferredSize(new Dimension(400, 400));
                 myPanelPolygon.add(new JLabel("x1:"));
-                myPanelPolygon.add(xFieldPoligonList.get(0));
+                myPanelPolygon.add(xFieldPolygonList.get(0));
                 myPanelPolygon.add(new JLabel("y1:"));
-                myPanelPolygon.add(yFieldPoligonList.get(0));
+                myPanelPolygon.add(yFieldPolygonList.get(0));
                 JButton addButton = new JButton("ADD");
                 addButton.addActionListener(new ActionListener() {
 
@@ -253,15 +334,15 @@ public class ImagePanel extends JPanel {
                     public void actionPerformed(ActionEvent e) {
                         myPanelPolygon.removeAll();
 
-                        xFieldPoligonList.add(new JTextField(5));
-                        yFieldPoligonList.add(new JTextField(5));
+                        xFieldPolygonList.add(new JTextField(5));
+                        yFieldPolygonList.add(new JTextField(5));
 
-                        for (int i = 0; i < xFieldPoligonList.size(); i++) {
+                        for (int i = 0; i < xFieldPolygonList.size(); i++) {
 
                             myPanelPolygon.add(new JLabel("x" + (i + 1) + ": "));
-                            myPanelPolygon.add(xFieldPoligonList.get(i));
+                            myPanelPolygon.add(xFieldPolygonList.get(i));
                             myPanelPolygon.add(new JLabel("y" + (i + 1) + ": "));
-                            myPanelPolygon.add(yFieldPoligonList.get(i));
+                            myPanelPolygon.add(yFieldPolygonList.get(i));
                         }
                         myPanelPolygon.add(addButton);
                         myPanelPolygon.repaint();
@@ -275,21 +356,21 @@ public class ImagePanel extends JPanel {
 
                 if (result == JOptionPane.OK_OPTION) {
                     Polygon p = new Polygon();
-                    for (int i = 0; i < xFieldPoligonList.size(); i++) {
+                    for (int i = 0; i < xFieldPolygonList.size(); i++) {
                         p.addPoint(
                                 new Point(
-                                        Integer.parseInt(xFieldPoligonList.get(i).getText()),
-                                        Integer.parseInt(yFieldPoligonList.get(i).getText())
+                                        Integer.parseInt(xFieldPolygonList.get(i).getText()),
+                                        Integer.parseInt(yFieldPolygonList.get(i).getText())
                                 )
                         );
                     }
 
                     addShape(p);
-                    xFieldPoligonList = new ArrayList<JTextField>();
-                    yFieldPoligonList = new ArrayList<JTextField>();
+                    xFieldPolygonList = new ArrayList<JTextField>();
+                    yFieldPolygonList = new ArrayList<JTextField>();
                 } else {
-                    xFieldPoligonList = new ArrayList<JTextField>();
-                    yFieldPoligonList = new ArrayList<JTextField>();
+                    xFieldPolygonList = new ArrayList<JTextField>();
+                    yFieldPolygonList = new ArrayList<JTextField>();
                 }
                 break;
 
@@ -297,30 +378,40 @@ public class ImagePanel extends JPanel {
     }
 
 
+    /**
+     * Method that opens a Modal to show the Image properties (area or perimeter)
+     *
+     * @param action the property to be shown in the Modal
+     */
     public void openModalAction(String action) {
         switch (action) {
             case "Show area":
-                JOptionPane.showMessageDialog(null, "The total area of this image is " + this.currentImage.calculateArea(), "Total Area", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "The total area of this image is " + this.currentImage.calculateArea(),
+                        "Total Area", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "Show perimeter":
-                JOptionPane.showMessageDialog(null, "The total perimeter of this image is " + this.currentImage.calculatePerimeter(), "Total Perimeter", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "The total perimeter of this image is " + this.currentImage.calculatePerimeter(),
+                        "Total Perimeter", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
     }
 
+    /**
+     * Method that opens a Modal when the user wants to apply a Transformation on the shapes of the Image to get the
+     * parameters it wants
+     *
+     * @param transformation the transformation to be done on the GeometricShapes
+     */
     public void doTransformation(String transformation) {
         int result;
         switch (transformation) {
             case "Rotation":
                 JTextField angleRotation = new JTextField(5);
-
-
                 JPanel myPanelRotation = new JPanel();
-
                 myPanelRotation.add(new JLabel("Angle:"));
                 myPanelRotation.add(angleRotation);
-
-
                 result = JOptionPane.showConfirmDialog(null, myPanelRotation,
                         "Rotation", JOptionPane.OK_CANCEL_OPTION);
 
@@ -380,7 +471,8 @@ public class ImagePanel extends JPanel {
                         "Central Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    currentImage.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()), Integer.parseInt(yCentralSymetrie.getText())));
+                    currentImage.centralSymmetry(new Point(Integer.parseInt(xCentralSymetrie.getText()),
+                            Integer.parseInt(yCentralSymetrie.getText())));
 
                 }
                 repaint();
@@ -404,7 +496,8 @@ public class ImagePanel extends JPanel {
                         "Homothetie", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    currentImage.homothetie(new Point(Integer.parseInt(xHomothetie.getText()), Integer.parseInt(yHomothetie.getText())), Integer.parseInt(ratioHomothetie.getText()));
+                    currentImage.homothetie(new Point(Integer.parseInt(xHomothetie.getText()),
+                            Integer.parseInt(yHomothetie.getText())), Integer.parseInt(ratioHomothetie.getText()));
                 }
                 repaint();
                 break;
