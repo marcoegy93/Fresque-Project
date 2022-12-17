@@ -72,15 +72,6 @@ public class Line extends GeometricShapeAbs {
         this.pointA.axialSymmetry(width, height, s);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) {
-            return false;
-        }
-        Line l = (Line) o;
-        return l.pointA.equals(this.pointA) && l.pointB.equals(this.pointB);
-    }
-
 
     @Override
     public void draw(Graphics g, Color c) {

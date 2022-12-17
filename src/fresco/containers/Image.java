@@ -6,6 +6,8 @@ import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;

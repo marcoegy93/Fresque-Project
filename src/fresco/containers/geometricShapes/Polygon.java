@@ -4,6 +4,7 @@ import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Polygon extends GeometricShapeAbs {
 
@@ -21,8 +22,14 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public double calculatePerimeter() {
+        double perimeter = 0;
+        int i;
+        for(i = 1; i < points.size(); i++){
+            perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(i).getX(),points.get(i).getY())).calculatePerimeter();
+        }
+        perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(0).getX(),points.get(0).getY())).calculatePerimeter();
 
-        return 0;
+        return perimeter;
     }
 
     @Override
@@ -57,16 +64,6 @@ public class Polygon extends GeometricShapeAbs {
     @Override
     public void axialSymmetry(int width, int height, String s) {
         for (Point point : points) point.axialSymmetry(width, height, s);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) {
-            return false;
-        }
-        Polygon p = (Polygon) o;
-        int i = 0;
-        return this.points.size() == p.points.size() && this.points.containsAll(p.points);
     }
 
     @Override

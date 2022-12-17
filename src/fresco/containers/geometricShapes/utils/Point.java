@@ -75,8 +75,8 @@ public class Point {
      * @param y the vertical movement to apply to the Point
      */
     public void translate(int x, int y) {
-        this.setX(x + x);
-        this.setY(y + y);
+        this.setX(this.x + x);
+        this.setY(this.y + y);
     }
 
     /**
@@ -142,14 +142,5 @@ public class Point {
         if (deplacementX != 0 || deplacementY != 0) {
             translate(deplacementX, deplacementY);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) {
-            return false;
-        }
-        Point p = (Point) o;
-        return p.getX() == this.getX() && p.getY() == this.getY();
     }
 }

@@ -306,12 +306,20 @@ public class ImagePanel extends JPanel {
                         "Adding  Ellipse", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    addShape(new Ellipse(new Point(
-                            Integer.parseInt(xFieldEllipse.getText()),
-                            Integer.parseInt(yFieldEllipse.getText())),
-                            Integer.parseInt(heightEllipse.getText()),
-                            Integer.parseInt(widthEllipse.getText())
-                    ));
+                    try{
+                        addShape(new Ellipse(new Point(
+                                Integer.parseInt(xFieldEllipse.getText()),
+                                Integer.parseInt(yFieldEllipse.getText())),
+                                Integer.parseInt(heightEllipse.getText()),
+                                Integer.parseInt(widthEllipse.getText())
+                        ));
+                    }catch(Exception e){
+                        JPanel panelError = new JPanel();
+                        panelError.add(Box.createHorizontalStrut(10)); // a spacer
+                        panelError.add(new JLabel(e.getMessage()));
+                        JOptionPane.showMessageDialog(null, panelError,
+                                "ERROR Adding  Ellipse", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 break;
 

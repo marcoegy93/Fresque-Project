@@ -3,6 +3,8 @@ package fresco.containers.geometricShapes;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 
 import static java.lang.Math.sqrt;
 
@@ -22,8 +24,11 @@ public class Ellipse extends GeometricShapeAbs {
      * @param height the height of the Ellipse
      * @param width  the width of the Ellipse
      */
-    public Ellipse(Point center, int height, int width) {
+    public Ellipse(Point center, int height, int width) throws Exception {
         super(center);
+        if(height == width){
+            throw new Exception("La width et la height d'une Ellipse ne peuvent être égaux, sinon, c'est un cercle ! ");
+        }
         this.height = height;
         this.width = width;
     }
@@ -52,12 +57,6 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public void rotation(int angle) {
-        //à refaire
-        Point pHeight = new Point(this.center.getX() + height, this.center.getY() + height);
-        Point pWidth = new Point(this.center.getX() + width, this.center.getY() + width);
-        pHeight.rotation(this.center, angle);
-        pWidth.rotation(this.center, angle);
-
     }
 
     @Override
@@ -67,28 +66,15 @@ public class Ellipse extends GeometricShapeAbs {
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
-
         center.axialSymmetry(width, height, s);
-        if (s == "vertical") {
-            this.center.setX(this.center.getX() - this.width * 2);
-        } else {
-            this.center.setY(this.center.getY() - this.height * 2);
-        }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) {
-            return false;
-        }
-        Ellipse e = (Ellipse) o;
-        return e.height == height && e.width == width && e.center.equals(this.center);
     }
 
     @Override
     public void draw(Graphics g, Color c) {
         g.setColor(c);
-        g.drawOval(center.getX(), center.getY(), width * 2, height * 2);
+        int centerX = this.center.getX() - width;
+        int centerY = this.center.getY() - height;
+        g.drawOval(centerX, centerY, width * 2, height * 2);
     }
 
 }
