@@ -57,7 +57,9 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public void translation(int x, int y) {
+
         for (Point point : points) point.translate(x, y);
+        this.center = getCenter();
     }
 
     @Override
@@ -65,6 +67,7 @@ public class Polygon extends GeometricShapeAbs {
         for (Point point : points) {
             point.homothetie(p, ratio);
         }
+        this.center = getCenter();
     }
 
     @Override
@@ -72,16 +75,20 @@ public class Polygon extends GeometricShapeAbs {
         for (Point point : points) {
             point.rotation(this.center, angle);
         }
+        this.center = getCenter();
     }
 
     @Override
     public void centralSymmetry(Point p) {
+
         for (Point point : points) point.centralSymmetry(p);
+        this.center = getCenter();
     }
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
         for (Point point : points) point.axialSymmetry(width, height, s);
+        this.center = getCenter();
     }
 
     @Override

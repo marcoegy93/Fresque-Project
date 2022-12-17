@@ -51,7 +51,7 @@ public class MainPanel extends JPanel {
         });
         JButton perimeterDrawing = new JButton("Show perimeter");
         perimeterDrawing.addActionListener(e -> {
-            this.openModalAction(areaDrawing.getText());
+            this.openModalAction(perimeterDrawing.getText());
         });
         toImagePanelBtn.setPreferredSize(new Dimension(800, 20));
         toImagePanelBtn.addActionListener(new CardNavigation(cardB));
