@@ -34,7 +34,25 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public double calculateArea() {
-        return 0;
+        double somme = 0;
+        for (int j = 0; j < points.size() ; j++)
+        {
+            if (j == 0)
+            {
+                somme += points.get(j).getX() * (points.get(j+1).getY() - points.get(points.size() - 1).getY());
+            }
+            else if (j == points.size() - 1)
+            {
+                somme += points.get(j).getX() * (points.get(0).getY() - points.get(j-1).getY());
+            }
+            else
+            {
+                somme += points.get(j).getX() * (points.get(j+1).getY() - points.get(j-1).getY());
+            }
+        }
+
+        double area = 0.5 * Math.abs(somme);
+        return area;
     }
 
     @Override
