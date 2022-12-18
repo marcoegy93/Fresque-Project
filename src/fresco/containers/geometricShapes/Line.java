@@ -34,42 +34,63 @@ public class Line extends GeometricShapeAbs {
 
     @Override
     public double calculatePerimeter() {
-        return pointA.calculateDistance(this.pointB);
+        double perimeter = pointA.calculateDistance(this.pointB);
+        System.out.println("\t\tLe périmètre de la ligne vaut : : " + perimeter);
+        return perimeter;
     }
 
     @Override
     public double calculateArea() {
-        return 0;
+        double area = 0;
+        System.out.println("\t\tL'aire de la ligne vaut : " + area);
+        return area;
     }
 
     @Override
     public void translation(int x, int y) {
         pointA.translate(x, y);
         pointB.translate(x, y);
+        this.center = getCenter();
+        System.out.println("\t\tLa ligne a été translatée de " + x + " en x et de " + y + " en y. " +
+                ". Nouvelles coordonnées du centre de la ligne: " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
         this.pointA.homothetie(p, ratio);
         this.pointB.homothetie(p, ratio);
+        this.center = getCenter();
+        System.out.println("\t\tLa ligne a subi une homothétie de centre O(" +
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                ". Nouvelles coordonnées du centre de la ligne : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void rotation(int angle) {
         this.pointA.rotation(this.center, angle);
         this.pointB.rotation(this.center, angle);
+        this.center = getCenter();
+        System.out.println("\t\tLa ligne a subi une rotation à " + angle + " degrés" +
+                ". Nouvelles coordonnées du point A de la ligne : " + pointA.getX() + " en x et " + pointA.getY() + " en y.");
     }
 
     @Override
     public void centralSymmetry(Point p) {
         this.pointA.centralSymmetry(p);
         this.pointB.centralSymmetry(p);
+        this.center = getCenter();
+        System.out.println("\t\tLa ligne a subi une symetrie centrale par rapport " +
+                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre de la ligne : " +
+                center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
         this.pointB.axialSymmetry(width, height, s);
         this.pointA.axialSymmetry(width, height, s);
+        this.center = getCenter();
+        System.out.println("\t\tLa ligne a subi une symetrie axiale par rapport à l'axe " + s +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
 

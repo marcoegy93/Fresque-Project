@@ -28,7 +28,7 @@ public class Polygon extends GeometricShapeAbs {
             perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(i).getX(),points.get(i).getY())).calculatePerimeter();
         }
         perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(0).getX(),points.get(0).getY())).calculatePerimeter();
-
+        System.out.println("\t\tLe périmètre du polygone vaut : " + perimeter);
         return perimeter;
     }
 
@@ -52,6 +52,7 @@ public class Polygon extends GeometricShapeAbs {
         }
 
         double area = 0.5 * Math.abs(somme);
+        System.out.println("\t\tL'aire du polygone vaut : " + area);
         return area;
     }
 
@@ -60,6 +61,8 @@ public class Polygon extends GeometricShapeAbs {
 
         for (Point point : points) point.translate(x, y);
         this.center = getCenter();
+        System.out.println("\t\tLe polygone a été translaté de " + x + " en x et de " + y + " en y. " +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -68,6 +71,9 @@ public class Polygon extends GeometricShapeAbs {
             point.homothetie(p, ratio);
         }
         this.center = getCenter();
+        System.out.println("\t\tLe polygone a subi une homothétie de centre O(" +
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -76,6 +82,8 @@ public class Polygon extends GeometricShapeAbs {
             point.rotation(this.center, angle);
         }
         this.center = getCenter();
+        System.out.println("\t\tLe polygone a subi une rotation à " + angle + " degrés" +
+                ". Nouvelles coordonnées d'une des points du polygone : " + points.get(0).getX() + " en x et " + points.get(0).getY() + " en y.");
     }
 
     @Override
@@ -83,12 +91,17 @@ public class Polygon extends GeometricShapeAbs {
 
         for (Point point : points) point.centralSymmetry(p);
         this.center = getCenter();
+        System.out.println("\t\tLe polygone a subi une symetrie centrale par rapport " +
+                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre : " +
+                center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
         for (Point point : points) point.axialSymmetry(width, height, s);
         this.center = getCenter();
+        System.out.println("\t\tLe polygone a subi une symetrie axiale par rapport à l'axe " + s +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -105,12 +118,12 @@ public class Polygon extends GeometricShapeAbs {
 
     @Override
     public Point getCenter() {
-        int sumX = 0;
-        int sumY = 0;
+        int SommeDesX = 0;
+        int SommeDesY = 0;
         for (int i = 0; i < points.size(); i++) {
-            sumX += points.get(i).getX();
-            sumY += points.get(i).getY();
+            SommeDesX += points.get(i).getX();
+            SommeDesY += points.get(i).getY();
         }
-        return new Point(sumX / points.size(), sumY / points.size());
+        return new Point(SommeDesX / points.size(), SommeDesY / points.size());
     }
 }

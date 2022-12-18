@@ -15,6 +15,11 @@ public class Circle extends GeometricShapeAbs {
     private int radius;
 
     /**
+     * A point on the Circle
+     */
+    private Point pointOfCircle;
+
+    /**
      * The constructor of a Circle
      *
      * @param center the center Point of the circle
@@ -23,6 +28,7 @@ public class Circle extends GeometricShapeAbs {
     public Circle(Point center, int radius) {
         super(center);
         this.radius = radius;
+        this.pointOfCircle = new Point(this.center.getX() + radius,this.center.getY());
     }
 
     /**
@@ -36,38 +42,58 @@ public class Circle extends GeometricShapeAbs {
 
     @Override
     public double calculatePerimeter() {
-        return Math.PI * 2 * radius;
+        double perimeter = Math.PI * 2 * radius;
+        System.out.println("\t\tLe périmètre du cercle vaut : : " + perimeter);
+        return perimeter;
     }
 
     @Override
     public double calculateArea() {
-        return Math.pow(radius, 2) * Math.PI;
+        double area = Math.pow(radius, 2) * Math.PI;
+        System.out.println("\t\tL'aire du cercle vaut : " + area);
+        return area;
     }
 
     @Override
     public void translation(int x, int y) {
         center.translate(x, y);
+        pointOfCircle.translate(x,y);
+        System.out.println("\t\tLe cercle a été translaté de " + x + " en x et de " + y + " en y. " +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
         this.center.homothetie(p, ratio);
+        this.pointOfCircle.homothetie(p, ratio);
         this.radius *= ratio;
+        System.out.println("\t\tLe cercle a subi une homothétie de centre O(" +
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void rotation(int angle) {
-        return;
+        this.pointOfCircle.rotation(center, angle);
+        System.out.println("\t\tLe cercle a subi une rotation à " + angle + " degrés" +
+                ". Nouvelles coordonnées du point sur le cercle : " + pointOfCircle.getX() + " en x et " + pointOfCircle.getY() + " en y.");
     }
 
     @Override
     public void centralSymmetry(Point p) {
         center.centralSymmetry(p);
+        pointOfCircle.centralSymmetry(p);
+        System.out.println("\t\tLe cercle a subi une symetrie centrale par rapport " +
+                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre : " +
+                center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
         center.axialSymmetry(width, height, s);
+        pointOfCircle.axialSymmetry(width, height, s);
+        System.out.println("\t\tLe cercle a subi une symetrie axiale par rapport à l'axe " + s +
+                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
 
