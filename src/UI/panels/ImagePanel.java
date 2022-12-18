@@ -446,8 +446,6 @@ public class ImagePanel extends JPanel {
                         "Axial Symmetry", JOptionPane.OK_CANCEL_OPTION);
 
                 if (result == JOptionPane.OK_OPTION) {
-                    System.out.println(getWidth());
-                    System.out.println(getHeight());
 
                     String symmetrie = "horizontal";
                     if (rBtn1.isSelected())

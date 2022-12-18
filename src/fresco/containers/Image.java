@@ -89,6 +89,7 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
      */
     public void addShape(GeometricShapeAbs gs) {
         this.shapes.add(gs);
+        System.out.println("\tUne forme de type " + gs.getClass().getSimpleName() + " a été ajoutée à l'image");
     }
 
     /**
@@ -111,54 +112,85 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
 
     @Override
     public double calculatePerimeter() {
+        System.out.println("\tVoici l'ensemble des périmètres des formes contenues dans l'image : ");
         double perimeter = 0;
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             perimeter += gs.calculatePerimeter();
         }
+        System.out.println("\tLe périmètre de l'image vaut au total : " + perimeter);
         return perimeter;
     }
 
     @Override
     public double calculateArea() {
+        System.out.println("\tVoici l'ensemble des aires des formes contenues dans l'image : ");
         double area = 0;
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             area += gs.calculateArea();
         }
+        System.out.println("\tL'aire de l'image vaut au total : " + area);
         return area;
     }
 
     @Override
     public void translation(int x, int y) {
+        System.out.println("\tL'ensemble des formes contenues dans l'image vont être translatées de " +
+                x + " en x et de " + y + " en y : ");
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.translation(x, y);
         }
+        System.out.println("\tL'ensemble des formes contenues dans l'image ont été translatées de " +
+                x + " en x et de " + y + " en y : ");
     }
 
     @Override
     public void homothetie(Point p, int ratio) {
+        System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une homothétie de centre O(" +
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + " : ");
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.homothetie(p, ratio);
         }
+        System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une homothétie de centre O(" +
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio);
     }
 
     @Override
     public void rotation(int angle) {
+        System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une rotation à " +
+                angle + " degrés : ");
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.rotation(angle);
         }
+        System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une rotation à " +
+                angle + " degrés");
     }
 
     @Override
     public void centralSymmetry(Point p) {
+        System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une symetrie centrale par rapport " +
+                "au point O(" + p.getX() + ","+ p.getY() + ") : ");
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.centralSymmetry(p);
         }
+        System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une symetrie centrale par rapport " +
+                "au point O(" + p.getX() + ","+ p.getY() + ")");
     }
 
     @Override
     public void axialSymmetry(int width, int height, String s) {
+        System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une symetrie axiale par rapport " +
+                "à l'axe " + s + " : ");
         for (GeometricShapeAbs gs : shapes) {
+            System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.axialSymmetry(width, height, s);
         }
+        System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une symetrie axiale par rapport " +
+                "à l'axe " + s);
     }
 }
