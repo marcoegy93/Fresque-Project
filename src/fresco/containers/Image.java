@@ -6,8 +6,6 @@ import fresco.containers.geometricShapes.utils.Point;
 import fresco.containers.transformations.ITransformation;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -149,13 +147,13 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     @Override
     public void homothetie(Point p, int ratio) {
         System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + " : ");
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio + " : ");
         for (GeometricShapeAbs gs : shapes) {
             System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.homothetie(p, ratio);
         }
         System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio);
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio);
     }
 
     @Override
@@ -173,13 +171,13 @@ public class Image implements ICalculatePerimeterAndArea, ITransformation {
     @Override
     public void centralSymmetry(Point p) {
         System.out.println("\tL'ensemble des formes contenues dans l'image vont subir une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + ") : ");
+                "au point O(" + p.getX() + "," + p.getY() + ") : ");
         for (GeometricShapeAbs gs : shapes) {
             System.out.println("\t\t" + gs.getClass().getSimpleName() + " : ");
             gs.centralSymmetry(p);
         }
         System.out.println("\tL'ensemble des formes contenues dans l'image ont subies une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + ")");
+                "au point O(" + p.getX() + "," + p.getY() + ")");
     }
 
     @Override

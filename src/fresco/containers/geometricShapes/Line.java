@@ -80,7 +80,7 @@ public class Line extends GeometricShapeAbs {
         this.pointB.centralSymmetry(p);
         this.center = getCenter();
         System.out.println("\t\tLa ligne a subi une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre de la ligne : " +
+                "au point O(" + p.getX() + "," + p.getY() + "). Nouvelles coordonnées du centre de la ligne : " +
                 center.getX() + " en x et " + center.getY() + " en y.");
     }
 

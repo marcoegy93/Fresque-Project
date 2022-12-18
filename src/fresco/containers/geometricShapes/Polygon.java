@@ -24,10 +24,10 @@ public class Polygon extends GeometricShapeAbs {
     public double calculatePerimeter() {
         double perimeter = 0;
         int i;
-        for(i = 1; i < points.size(); i++){
-            perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(i).getX(),points.get(i).getY())).calculatePerimeter();
+        for (i = 1; i < points.size(); i++) {
+            perimeter += new Line(new Point(points.get(i - 1).getX(), points.get(i - 1).getY()), new Point(points.get(i).getX(), points.get(i).getY())).calculatePerimeter();
         }
-        perimeter+= new Line(new Point(points.get(i-1).getX(),points.get(i-1).getY()),new Point(points.get(0).getX(),points.get(0).getY())).calculatePerimeter();
+        perimeter += new Line(new Point(points.get(i - 1).getX(), points.get(i - 1).getY()), new Point(points.get(0).getX(), points.get(0).getY())).calculatePerimeter();
         System.out.println("\t\tLe périmètre du polygone vaut : " + perimeter);
         return perimeter;
     }
@@ -35,19 +35,13 @@ public class Polygon extends GeometricShapeAbs {
     @Override
     public double calculateArea() {
         double somme = 0;
-        for (int j = 0; j < points.size() ; j++)
-        {
-            if (j == 0)
-            {
-                somme += points.get(j).getX() * (points.get(j+1).getY() - points.get(points.size() - 1).getY());
-            }
-            else if (j == points.size() - 1)
-            {
-                somme += points.get(j).getX() * (points.get(0).getY() - points.get(j-1).getY());
-            }
-            else
-            {
-                somme += points.get(j).getX() * (points.get(j+1).getY() - points.get(j-1).getY());
+        for (int j = 0; j < points.size(); j++) {
+            if (j == 0) {
+                somme += points.get(j).getX() * (points.get(j + 1).getY() - points.get(points.size() - 1).getY());
+            } else if (j == points.size() - 1) {
+                somme += points.get(j).getX() * (points.get(0).getY() - points.get(j - 1).getY());
+            } else {
+                somme += points.get(j).getX() * (points.get(j + 1).getY() - points.get(j - 1).getY());
             }
         }
 
@@ -92,7 +86,7 @@ public class Polygon extends GeometricShapeAbs {
         for (Point point : points) point.centralSymmetry(p);
         this.center = getCenter();
         System.out.println("\t\tLe polygone a subi une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre : " +
+                "au point O(" + p.getX() + "," + p.getY() + "). Nouvelles coordonnées du centre : " +
                 center.getX() + " en x et " + center.getY() + " en y.");
     }
 
