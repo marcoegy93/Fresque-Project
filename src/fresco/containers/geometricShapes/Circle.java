@@ -43,7 +43,7 @@ public class Circle extends GeometricShapeAbs {
     @Override
     public double calculatePerimeter() {
         double perimeter = Math.PI * 2 * radius;
-        System.out.println("\t\tLe périmètre du cercle vaut : : " + perimeter);
+        System.out.println("\t\tLe périmètre du cercle vaut : " + perimeter);
         return perimeter;
     }
 
@@ -59,7 +59,7 @@ public class Circle extends GeometricShapeAbs {
         center.translate(x, y);
         pointOfCircle.translate(x,y);
         System.out.println("\t\tLe cercle a été translaté de " + x + " en x et de " + y + " en y. " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -69,14 +69,14 @@ public class Circle extends GeometricShapeAbs {
         this.radius *= ratio;
         System.out.println("\t\tLe cercle a subi une homothétie de centre O(" +
                 p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
     public void rotation(int angle) {
         this.pointOfCircle.rotation(center, angle);
-        System.out.println("\t\tLe cercle a subi une rotation à " + angle + " degrés" +
-                ". Nouvelles coordonnées du point sur le cercle : " + pointOfCircle.getX() + " en x et " + pointOfCircle.getY() + " en y.");
+        System.out.println("\t\tLe cercle a subi une rotation à " + angle + " degrés. " +
+                "Nouvelles coordonnées du point sur le cercle : " + pointOfCircle.getX() + " en x et " + pointOfCircle.getY() + " en y.");
     }
 
     @Override
