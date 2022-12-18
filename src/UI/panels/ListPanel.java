@@ -41,7 +41,7 @@ public class ListPanel extends JPanel {
     /**
      * Method that allows to set all the Images of a given Drawing in the JList
      *
-     * @param Images
+     * @param Images the Set of Images to set the JList
      */
     public void setNewDataOnList(Set<Image> Images) {
         String[] l = new String[Images.size()];

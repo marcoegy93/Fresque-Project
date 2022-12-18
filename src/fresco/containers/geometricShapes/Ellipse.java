@@ -28,6 +28,7 @@ public class Ellipse extends GeometricShapeAbs {
      * @param center the center of the Ellipse
      * @param height the height of the Ellipse
      * @param width  the width of the Ellipse
+     * @throws Exception when width and height are equal
      */
     public Ellipse(Point center, int height, int width) throws Exception {
         super(center);

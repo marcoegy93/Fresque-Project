@@ -44,7 +44,7 @@ public class ImagePanelDrawUtil {
      * Method that opens a modal on the ImagePanel
      * to let the user have the properties of the shapes (area and perimeter)
      *
-     * @param action
+     * @param action the action to do (show are or perimeter)
      */
     public static void openModalAction(String action) {
         imagePanel.openModalAction(action);

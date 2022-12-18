@@ -64,7 +64,7 @@ public class ImagePanel extends JPanel {
      * Constructor of an ImagePanel used to create and edit an Image. (editMode = true)
      * The constructor will draw the GeometricShapes if there is any, as well as drawing the Toolbar
      *
-     * @param drawingPanel
+     * @param drawingPanel the parent DrawingPanel
      */
     public ImagePanel(DrawingPanel drawingPanel) {
         setBackground(Color.white);
@@ -184,7 +184,7 @@ public class ImagePanel extends JPanel {
      * Method that adds a new GeometricShape to the Image
      * It removes all entities on the ImagePanel, then trigger a repaint to update the ImagePanel
      *
-     * @param shape
+     * @param shape the GeometricShape to add to the Image
      */
     public void addShape(GeometricShapeAbs shape) {
         revalidate();

@@ -6,15 +6,29 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that represents a Polygon
+ */
 public class Polygon extends GeometricShapeAbs {
 
+    /**
+     * An ArrayList of Point that represents the polygon (the last element is linked to the first)
+     */
     private ArrayList<Point> points;
 
+    /**
+     * The default constructor of a Polygon
+     * Initialize the ArrayList of Point
+     */
     public Polygon() {
         super();
         this.points = new ArrayList<>();
     }
 
+    /**
+     * Method that adds a new point to the ArrayList
+     * @param point the Point to add
+     */
     public void addPoint(final Point point) {
         this.points.add(point);
         this.center = getCenter();
