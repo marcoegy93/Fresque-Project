@@ -3,6 +3,8 @@ package fresco.containers.geometricShapes;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 
 import static java.lang.Math.sqrt;
 
@@ -58,7 +60,7 @@ public class Ellipse extends GeometricShapeAbs {
         this.extremityWidth.translate(x, y);
         this.extremityHeight.translate(x, y);
         System.out.println("\t\tL'ellipse a été translatée de " + x + " en x et de " + y + " en y. " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -69,8 +71,8 @@ public class Ellipse extends GeometricShapeAbs {
         this.height *= ratio;
         this.width *= ratio;
         System.out.println("\t\tL'ellipse a subi une homothétie de centre O(" +
-                p.getX() + "," + p.getY() + ") et de rapport " + ratio + ". " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -78,8 +80,8 @@ public class Ellipse extends GeometricShapeAbs {
         this.extremityWidth.rotation(center, angle);
         this.extremityHeight.rotation(center, angle);
         System.out.println("\t\tL'ellipse a subi une rotation à " + angle + " degrés" +
-                ". Nouvelles coordonnées du point à l'extrémité de la largeur : " + extremityWidth.getX() + " en x et " + extremityWidth.getY() + " en y." +
-                ". Nouvelles coordonnées du point à l'extrémité de la hauteur : " + extremityHeight.getX() + " en x et " + extremityHeight.getY() + " en y.");
+                ". Nouvelles coordonnées du point à l'extrémité de la largeur : " + extremityWidth.getX() + " en x et " + extremityWidth.getY() + " en y. " +
+                "Nouvelles coordonnées du point à l'extrémité de la hauteur : " + extremityHeight.getX() + " en x et " + extremityHeight.getY() + " en y.");
     }
 
     @Override

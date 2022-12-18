@@ -4,6 +4,7 @@ import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Polygon extends GeometricShapeAbs {
 
@@ -55,7 +56,7 @@ public class Polygon extends GeometricShapeAbs {
         for (Point point : points) point.translate(x, y);
         this.center = getCenter();
         System.out.println("\t\tLe polygone a été translaté de " + x + " en x et de " + y + " en y. " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
@@ -65,8 +66,8 @@ public class Polygon extends GeometricShapeAbs {
         }
         this.center = getCenter();
         System.out.println("\t\tLe polygone a subi une homothétie de centre O(" +
-                p.getX() + "," + p.getY() + ") et de rapport " + ratio + ". " +
-                ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
+                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                "Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
     @Override
