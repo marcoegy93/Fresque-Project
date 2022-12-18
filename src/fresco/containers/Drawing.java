@@ -130,13 +130,13 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
     @Override
     public void homothetie(Point p, int ratio) {
         System.out.println("L'ensemble des images contenues dans le dessin vont subir une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio);
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio);
         for (Image i : images) {
             System.out.println("\t" + i.getName() + " : ");
             i.homothetie(p, ratio);
         }
         System.out.println("L'ensemble des images contenues dans le dessin ont subies une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio);
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio);
     }
 
     @Override
@@ -154,13 +154,13 @@ public class Drawing implements ICalculatePerimeterAndArea, ITransformation {
     @Override
     public void centralSymmetry(Point p) {
         System.out.println("L'ensemble des images contenues dans le dessin vont subir une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + ")");
+                "au point O(" + p.getX() + "," + p.getY() + ")");
         for (Image i : images) {
             System.out.println("\t" + i.getName() + " : ");
             i.centralSymmetry(p);
         }
         System.out.println("L'ensemble des images contenues dans le dessin ont subies une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + ")");
+                "au point O(" + p.getX() + "," + p.getY() + ")");
     }
 
     @Override

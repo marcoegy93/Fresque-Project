@@ -37,6 +37,7 @@ public class DrawingPanel extends JPanel {
 
     /**
      * Getter that gets the Drawing of the DrawingPanel
+     *
      * @return the Drawing
      */
     public Drawing getDrawing() {
@@ -47,6 +48,7 @@ public class DrawingPanel extends JPanel {
      * Method that paints the component whenever it needs to be (on initialization, on update)
      * It first removes everything there is on the panel, then paints each Image as an ImagePanel
      * It then completes the grid with empty JPanels to have a consistent interface
+     *
      * @param g the Graphics that allows the painting of the JPanel
      */
     @Override

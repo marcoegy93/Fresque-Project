@@ -94,6 +94,7 @@ public class MainPanel extends JPanel {
 
     /**
      * Getter that gets the Fresco of the Panel
+     *
      * @return the Fresco
      */
     public static Fresco getFresco() {
@@ -102,6 +103,7 @@ public class MainPanel extends JPanel {
 
     /**
      * Method that opens a Modal to show the Drawing properties (area or perimeter)
+     *
      * @param action the property to be shown in the Modal
      */
     public void openModalAction(String action) {
@@ -126,6 +128,7 @@ public class MainPanel extends JPanel {
     /**
      * Method that opens a Modal when the user wants to apply a Transformation on all the shapes in the Image contained
      * in a drawing to get the parameters it wants
+     *
      * @param transformation the transformation to be done on the GeometricShapes
      */
     public void doTransformation(String transformation) {
@@ -278,6 +281,7 @@ public class MainPanel extends JPanel {
 
         /**
          * The default constructor
+         *
          * @param card the card Name
          */
         CardNavigation(String card) {
@@ -286,6 +290,7 @@ public class MainPanel extends JPanel {
 
         /**
          * On click, it shows the component with which it is linked
+         *
          * @param e
          */
         @Override
@@ -295,6 +300,4 @@ public class MainPanel extends JPanel {
             cards.show(cardHolder, card);
         }
     }
-
-
 }

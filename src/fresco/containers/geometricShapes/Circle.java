@@ -28,7 +28,7 @@ public class Circle extends GeometricShapeAbs {
     public Circle(Point center, int radius) {
         super(center);
         this.radius = radius;
-        this.pointOfCircle = new Point(this.center.getX() + radius,this.center.getY());
+        this.pointOfCircle = new Point(this.center.getX() + radius, this.center.getY());
     }
 
     /**
@@ -57,7 +57,7 @@ public class Circle extends GeometricShapeAbs {
     @Override
     public void translation(int x, int y) {
         center.translate(x, y);
-        pointOfCircle.translate(x,y);
+        pointOfCircle.translate(x, y);
         System.out.println("\t\tLe cercle a été translaté de " + x + " en x et de " + y + " en y. " +
                 ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
@@ -68,7 +68,7 @@ public class Circle extends GeometricShapeAbs {
         this.pointOfCircle.homothetie(p, ratio);
         this.radius *= ratio;
         System.out.println("\t\tLe cercle a subi une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio + ". " +
                 ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
@@ -84,7 +84,7 @@ public class Circle extends GeometricShapeAbs {
         center.centralSymmetry(p);
         pointOfCircle.centralSymmetry(p);
         System.out.println("\t\tLe cercle a subi une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre : " +
+                "au point O(" + p.getX() + "," + p.getY() + "). Nouvelles coordonnées du centre : " +
                 center.getX() + " en x et " + center.getY() + " en y.");
     }
 

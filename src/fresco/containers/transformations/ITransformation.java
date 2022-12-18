@@ -38,9 +38,10 @@ public interface ITransformation {
 
     /**
      * Method that creates the symmetry of the shape from a given axis (vertical or horizontal)
-     * @param width the width which defines the movement of the shape on the horizontal axis
+     *
+     * @param width  the width which defines the movement of the shape on the horizontal axis
      * @param height the height which defines the movement of the shape on the vertical axis
-     * @param s the type of axial symmetry (whether 'Vertical' or 'Horizontal')
+     * @param s      the type of axial symmetry (whether 'Vertical' or 'Horizontal')
      */
     void axialSymmetry(int width, int height, String s);
 }

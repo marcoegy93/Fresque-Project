@@ -3,8 +3,6 @@ package fresco.containers.geometricShapes;
 import fresco.containers.geometricShapes.utils.Point;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 
 import static java.lang.Math.sqrt;
 
@@ -20,7 +18,7 @@ public class Ellipse extends GeometricShapeAbs {
     /**
      * Point at the extremities of height and width
      */
-    private Point extremityHeight,extremityWidth;
+    private Point extremityHeight, extremityWidth;
 
     /**
      * Constructor of an Ellipse
@@ -31,13 +29,13 @@ public class Ellipse extends GeometricShapeAbs {
      */
     public Ellipse(Point center, int height, int width) throws Exception {
         super(center);
-        if(height == width){
+        if (height == width) {
             throw new Exception("La width et la height d'une Ellipse ne peuvent être égaux, sinon, c'est un cercle ! ");
         }
         this.height = height;
         this.width = width;
-        this.extremityHeight = new Point(this.center.getX(),this.center.getY() + height);
-        this.extremityWidth = new Point(this.center.getX() + width,this.center.getY());
+        this.extremityHeight = new Point(this.center.getX(), this.center.getY() + height);
+        this.extremityWidth = new Point(this.center.getX() + width, this.center.getY());
     }
 
     @Override
@@ -57,8 +55,8 @@ public class Ellipse extends GeometricShapeAbs {
     @Override
     public void translation(int x, int y) {
         this.center.translate(x, y);
-        this.extremityWidth.translate(x,y);
-        this.extremityHeight.translate(x,y);
+        this.extremityWidth.translate(x, y);
+        this.extremityHeight.translate(x, y);
         System.out.println("\t\tL'ellipse a été translatée de " + x + " en x et de " + y + " en y. " +
                 ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
@@ -71,7 +69,7 @@ public class Ellipse extends GeometricShapeAbs {
         this.height *= ratio;
         this.width *= ratio;
         System.out.println("\t\tL'ellipse a subi une homothétie de centre O(" +
-                p.getX() + ","+ p.getY() + ") et de rapport " + ratio + ". " +
+                p.getX() + "," + p.getY() + ") et de rapport " + ratio + ". " +
                 ". Nouvelles coordonnées du centre : " + center.getX() + " en x et " + center.getY() + " en y.");
     }
 
@@ -90,7 +88,7 @@ public class Ellipse extends GeometricShapeAbs {
         extremityHeight.centralSymmetry(p);
         extremityWidth.centralSymmetry(p);
         System.out.println("\t\tL'ellipse a subi une symetrie centrale par rapport " +
-                "au point O(" + p.getX() + ","+ p.getY() + "). Nouvelles coordonnées du centre : " +
+                "au point O(" + p.getX() + "," + p.getY() + "). Nouvelles coordonnées du centre : " +
                 center.getX() + " en x et " + center.getY() + " en y.");
     }
 

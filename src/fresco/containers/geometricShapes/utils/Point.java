@@ -20,6 +20,7 @@ public class Point {
 
     /**
      * Constructor of a point with given coordinates
+     *
      * @param x the x coordinate of the point
      * @param y the y coordinate of the point
      */
@@ -30,6 +31,7 @@ public class Point {
 
     /**
      * Method that calculates the distance to a point
+     *
      * @param b the point to get to
      * @return the distance to the given point
      */
@@ -39,6 +41,7 @@ public class Point {
 
     /**
      * Getter that gets the horizontal coordinate of the point
+     *
      * @return the horizontal coordinate of the Point
      */
     public int getX() {
@@ -47,6 +50,7 @@ public class Point {
 
     /**
      * Setter that sets the horizontal coordinate of the Point from a given integer
+     *
      * @param x the new horizontal coordinate
      */
     public void setX(int x) {
@@ -55,6 +59,7 @@ public class Point {
 
     /**
      * Getter that gets the vertical coordinate
+     *
      * @return the vertical coordinate of the Point
      */
     public int getY() {
@@ -63,6 +68,7 @@ public class Point {
 
     /**
      * Setter that sets the vertical coordinate of the Point from a given integer
+     *
      * @param y the new vertical coordinate
      */
     public void setY(int y) {
@@ -71,6 +77,7 @@ public class Point {
 
     /**
      * Method that translates the point by x and y
+     *
      * @param x the horizontal movement to apply to the Point
      * @param y the vertical movement to apply to the Point
      */
@@ -81,6 +88,7 @@ public class Point {
 
     /**
      * Method that does the center symmetry of the Point around a given point
+     *
      * @param o the center of symmetry
      */
     public void centralSymmetry(Point o) {
@@ -91,9 +99,10 @@ public class Point {
 
     /**
      * Method that does the axial symmetry of the Point based on horizontal or vertical axis
-     * @param width the width which defines the movement of the shape on the horizontal axis
+     *
+     * @param width  the width which defines the movement of the shape on the horizontal axis
      * @param height the height which defines the movement of the shape on the vertical axis
-     * @param s the type of axial symmetry (whether 'Vertical' or 'Horizontal')
+     * @param s      the type of axial symmetry (whether 'Vertical' or 'Horizontal')
      */
     public void axialSymmetry(int width, int height, String s) {
         if (s == "vertical") {
@@ -105,6 +114,7 @@ public class Point {
 
     /**
      * Method that scales to point (growing or shrinking)
+     *
      * @param p     the origin of the homothety
      * @param ratio the ratio that scales the shape
      */
@@ -119,7 +129,7 @@ public class Point {
     /**
      * Method that rotates the shape with a given angle
      *
-     * @param p the point to help with the rotation
+     * @param p     the point to help with the rotation
      * @param angle the angle of the rotation
      */
     public void rotation(Point p, int angle) {
